@@ -1,0 +1,122 @@
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f4f4f4;
+}
+
+.login-container{
+
+    width:350px;
+
+    margin:100px auto;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:10px;
+
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+.dashboard{
+
+    display:flex;
+
+    height:100vh;
+}
+
+.sidebar{
+
+    width:250px;
+
+    background:#1e293b;
+
+    color:white;
+
+    padding:20px;
+}
+
+.sidebar h2{
+
+    margin-top:0;
+}
+
+.sidebar button{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-top:10px;
+
+    border:none;
+
+    background:#334155;
+
+    color:white;
+
+    cursor:pointer;
+
+    border-radius:5px;
+}
+
+.sidebar button:hover{
+
+    background:#475569;
+}
+
+.content{
+
+    flex:1;
+
+    padding:30px;
+}
+
+input{
+
+    width:100%;
+
+    padding:10px;
+
+    margin-top:10px;
+
+    border:1px solid #ccc;
+
+    border-radius:5px;
+}
+
+button{
+
+    padding:10px;
+
+    margin-top:10px;
+
+    border:none;
+
+    border-radius:5px;
+
+    cursor:pointer;
+}
+
+.login-btn{
+
+    width:100%;
+
+    background:#2563eb;
+
+    color:white;
+}
+
+pre{
+
+    background:black;
+
+    color:#00ff00;
+
+    padding:15px;
+
+    border-radius:5px;
+
+    overflow:auto;
+}

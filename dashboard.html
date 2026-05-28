@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <div class="sidebar">
+
+        <h2>SAP MENU</h2>
+
+        <button onclick="showItemSearch()">
+            Item Search
+        </button>
+
+        <button onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+    <div class="content">
+
+        <h1>Item Search</h1>
+
+        <input
+            id="itemCode"
+            placeholder="Enter Item Code"
+        >
+
+        <button onclick="getItem()">
+            Search
+        </button>
+
+        <pre id="result">
+Waiting...
+        </pre>
+
+    </div>
+
+</div>
+
+<script>
+
+function showItemSearch(){
+
+    document.querySelector(".content").innerHTML = `
+
+        <h1>Item Search</h1>
+
+        <input
+            id="itemCode"
+            placeholder="Enter Item Code"
+        >
+
+        <button onclick="getItem()">
+            Search
+        </button>
+
+        <pre id="result">
+Waiting...
+        </pre>
+
+    `;
+}
+
+</script>
+
+<script src="app.js"></script>
+
+</body>
+</html>
