@@ -226,3 +226,67 @@ function showModule(module){
         `;
     }
 }
+function showModule(module){
+
+    const app =
+        document.getElementById("app");
+
+    if(module === "home"){
+
+        app.innerHTML = `
+            <h1>Welcome to Arcosteel ERP</h1>
+
+            <div class="dashboard-cards">
+
+                <div class="dash-card" onclick="showModule('items')">
+                    🔍<br>Items
+                </div>
+
+                <div class="dash-card" onclick="showModule('stock')">
+                    📦<br>Stock
+                </div>
+
+                <div class="dash-card" onclick="showModule('prices')">
+                    💰<br>Prices
+                </div>
+
+                <div class="dash-card" onclick="showModule('purchase')">
+                    🚚<br>Purchase
+                </div>
+
+            </div>
+        `;
+    }
+
+    if(module === "items"){
+
+        app.innerHTML = `
+            <h2>Items Module</h2>
+            <p>פה נוסיף את השאילתות שלך</p>
+        `;
+    }
+
+    if(module === "stock"){
+
+        app.innerHTML = `
+            <h2>Stock Module</h2>
+            <p>כאן יהיה מלאי</p>
+        `;
+    }
+
+    if(module === "prices"){
+
+        app.innerHTML = `
+            <h2>Prices Module</h2>
+            <p>כאן יהיה מחירונים</p>
+        `;
+    }
+
+    if(module === "purchase"){
+
+        app.innerHTML = `
+            <h2>Purchase Module</h2>
+            <p>כאן יהיה רכש</p>
+        `;
+    }
+}
