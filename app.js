@@ -184,3 +184,45 @@ function logout() {
     window.location.href =
         "index.html";
 }
+function showModule(module){
+
+    const app =
+        document.getElementById("app");
+
+    if(module === "search"){
+
+        app.innerHTML = `
+            <h2>Item Search</h2>
+
+            <input id="itemCode" placeholder="Enter Item Code">
+
+            <button onclick="getItem()">Search</button>
+
+            <div id="result" class="result-card">Waiting...</div>
+        `;
+    }
+
+    else if(module === "inventory"){
+
+        app.innerHTML = `
+            <h2>Inventory</h2>
+            <p>Module under development</p>
+        `;
+    }
+
+    else if(module === "prices"){
+
+        app.innerHTML = `
+            <h2>Prices</h2>
+            <p>Module under development</p>
+        `;
+    }
+
+    else if(module === "purchase"){
+
+        app.innerHTML = `
+            <h2>Purchasing</h2>
+            <p>Module under development</p>
+        `;
+    }
+}
