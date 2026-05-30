@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Arcosteel Dashboard</title>
+    <title>Arcosteel ERP</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -19,23 +19,33 @@
     <!-- SIDEBAR -->
     <div class="sidebar">
 
-        <img src="arcosteel.jpg" class="sidebar-logo">
+        <div class="sidebar-header">
+            <img src="arcosteel.jpg" class="sidebar-logo">
+        </div>
 
-        <button class="menu-btn" onclick="showModule('search')">
-            🔍 Item Search
-        </button>
+        <div class="sidebar-menu">
 
-        <button class="menu-btn" onclick="showModule('inventory')">
-            📦 Inventory
-        </button>
+            <button class="menu-btn active" onclick="showModule('home')">
+                🏠 Dashboard
+            </button>
 
-        <button class="menu-btn" onclick="showModule('prices')">
-            💰 Prices
-        </button>
+            <button class="menu-btn" onclick="showModule('items')">
+                🔍 Items
+            </button>
 
-        <button class="menu-btn" onclick="showModule('purchase')">
-            🚚 Purchasing
-        </button>
+            <button class="menu-btn" onclick="showModule('stock')">
+                📦 Stock
+            </button>
+
+            <button class="menu-btn" onclick="showModule('prices')">
+                💰 Prices
+            </button>
+
+            <button class="menu-btn" onclick="showModule('purchase')">
+                🚚 Purchase
+            </button>
+
+        </div>
 
         <button class="logout-btn" onclick="logout()">
             Logout
@@ -48,24 +58,24 @@
 
         <div id="app">
 
-            <h1>Welcome to Arcosteel System</h1>
+            <h1>Welcome to Arcosteel ERP</h1>
 
-            <div class="cards">
+            <div class="dashboard-cards">
 
-                <div class="card" onclick="showModule('search')">
-                    🔍<br>Item Search
+                <div class="dash-card" onclick="showModule('items')">
+                    🔍<br>Items
                 </div>
 
-                <div class="card">
-                    📦<br>Inventory
+                <div class="dash-card" onclick="showModule('stock')">
+                    📦<br>Stock
                 </div>
 
-                <div class="card">
+                <div class="dash-card" onclick="showModule('prices')">
                     💰<br>Prices
                 </div>
 
-                <div class="card">
-                    🚚<br>Purchasing
+                <div class="dash-card" onclick="showModule('purchase')">
+                    🚚<br>Purchase
                 </div>
 
             </div>
