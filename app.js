@@ -1,17 +1,3 @@
-if (
-    window.location.pathname.includes("dashboard.html")
-) {
-
-    const token =
-        localStorage.getItem("token");
-
-    if (!token) {
-
-        window.location.href =
-            "index.html";
-    }
-}
-
 const API_BASE =
 "https://mechanism-intermediate-glad-hour.trycloudflare.com";
 
@@ -23,37 +9,67 @@ async function login() {
     const password =
         document.getElementById("password").value;
 
-    const res = await fetch(
-        API_BASE + "/login",
-        {
-            method:"POST",
+    const errorBox =
+        document.getElementById("loginError");
 
-            headers:{
-                "Content-Type":"application/json"
-            },
+    if(errorBox){
 
-            body:JSON.stringify({
-                username,
-                password
-            })
-        }
-    );
+        errorBox.style.display = "none";
+        errorBox.innerText = "";
+    }
 
-    const data = await res.json();
+    try {
 
-    if(data.token){
+        const res = await fetch(
+            API_BASE + "/login",
+            {
+                method:"POST",
 
-        localStorage.setItem(
-            "token",
-            data.token
+                headers:{
+                    "Content-Type":"application/json"
+                },
+
+                body:JSON.stringify({
+                    username,
+                    password
+                })
+            }
         );
 
-        window.location.href =
-            "dashboard.html";
+        const data = await res.json();
 
-    }else{
+        if(data.token){
 
-        alert(JSON.stringify(data));
+            localStorage.setItem(
+                "token",
+                data.token
+            );
+
+            window.location.href =
+                "dashboard.html";
+
+        } else {
+
+            if(errorBox){
+
+                errorBox.innerText =
+                    data.detail || "Login failed";
+
+                errorBox.style.display =
+                    "block";
+            }
+        }
+
+    } catch(err) {
+
+        if(errorBox){
+
+            errorBox.innerText =
+                "Cannot connect to server";
+
+            errorBox.style.display =
+                "block";
+        }
     }
 }
 
