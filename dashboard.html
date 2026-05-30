@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Arcosteel SAP Portal</title>
+    <title>Arcosteel Dashboard</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -14,66 +14,61 @@
 
 <body>
 
-<div class="topbar">
+<div class="layout">
 
-    <img
-        src="arcosteel.jpg"
-        class="top-logo"
-        alt="Arcosteel">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
 
-    <button
-        class="logout-btn"
-        onclick="logout()">
+        <img src="arcosteel.jpg" class="sidebar-logo">
 
-        Logout
+        <button class="menu-btn" onclick="showModule('search')">
+            🔍 Item Search
+        </button>
 
-    </button>
+        <button class="menu-btn" onclick="showModule('inventory')">
+            📦 Inventory
+        </button>
 
-</div>
+        <button class="menu-btn" onclick="showModule('prices')">
+            💰 Prices
+        </button>
 
-<div class="dashboard-grid">
+        <button class="menu-btn" onclick="showModule('purchase')">
+            🚚 Purchasing
+        </button>
 
-    <div
-        class="menu-card"
-        onclick="showItemSearch()">
-
-        <div class="menu-icon">🔍</div>
-
-        <div class="menu-title">
-            Item Search
-        </div>
+        <button class="logout-btn" onclick="logout()">
+            Logout
+        </button>
 
     </div>
 
-</div>
+    <!-- MAIN -->
+    <div class="main">
 
-<div class="content-area">
+        <div id="app">
 
-    <div id="content">
+            <h1>Welcome to Arcosteel System</h1>
 
-        <div class="search-card">
+            <div class="cards">
 
-            <h2>Item Search</h2>
+                <div class="card" onclick="showModule('search')">
+                    🔍<br>Item Search
+                </div>
 
-            <input
-                id="itemCode"
-                placeholder="Enter Item Code">
+                <div class="card">
+                    📦<br>Inventory
+                </div>
 
-            <button
-                class="primary-btn"
-                onclick="getItem()">
+                <div class="card">
+                    💰<br>Prices
+                </div>
 
-                Search
+                <div class="card">
+                    🚚<br>Purchasing
+                </div>
 
-            </button>
-
-        </div>
-
-        <div
-            id="result"
-            class="result-card">
-
-            Waiting...
+            </div>
 
         </div>
 
@@ -84,4 +79,5 @@
 <script src="app.js"></script>
 
 </body>
+
 </html>
