@@ -19,33 +19,27 @@
     <!-- SIDEBAR -->
     <div class="sidebar">
 
-        <div class="sidebar-header">
-            <img src="arcosteel.jpg" class="sidebar-logo">
-        </div>
+        <img src="arcosteel.jpg" class="sidebar-logo">
 
-        <div class="sidebar-menu">
+        <button class="menu-btn active" onclick="showModule('home')">
+            🏠 Dashboard
+        </button>
 
-            <button class="menu-btn active" onclick="showModule('home')">
-                🏠 Dashboard
-            </button>
+        <button class="menu-btn" onclick="showModule('items')">
+            🔍 Items
+        </button>
 
-            <button class="menu-btn" onclick="showModule('items')">
-                🔍 Items
-            </button>
+        <button class="menu-btn" onclick="showModule('stock')">
+            📦 Stock
+        </button>
 
-            <button class="menu-btn" onclick="showModule('stock')">
-                📦 Stock
-            </button>
+        <button class="menu-btn" onclick="showModule('prices')">
+            💰 Prices
+        </button>
 
-            <button class="menu-btn" onclick="showModule('prices')">
-                💰 Prices
-            </button>
-
-            <button class="menu-btn" onclick="showModule('purchase')">
-                🚚 Purchase
-            </button>
-
-        </div>
+        <button class="menu-btn" onclick="showModule('purchase')">
+            🚚 Purchase
+        </button>
 
         <button class="logout-btn" onclick="logout()">
             Logout
