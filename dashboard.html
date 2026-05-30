@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="en">
 
 <head>
 
@@ -16,12 +16,10 @@
 
 <div class="topbar">
 
-    <div>
-        <img
-            src="arcosteel.jpg"
-            class="top-logo"
-            alt="Arcosteel">
-    </div>
+    <img
+        src="arcosteel.jpg"
+        class="top-logo"
+        alt="Arcosteel">
 
     <button
         class="logout-btn"
@@ -47,36 +45,6 @@
 
     </div>
 
-    <div class="menu-card disabled">
-
-        <div class="menu-icon">📦</div>
-
-        <div class="menu-title">
-            Inventory
-        </div>
-
-    </div>
-
-    <div class="menu-card disabled">
-
-        <div class="menu-icon">💰</div>
-
-        <div class="menu-title">
-            Price Lists
-        </div>
-
-    </div>
-
-    <div class="menu-card disabled">
-
-        <div class="menu-icon">🚚</div>
-
-        <div class="menu-title">
-            Purchasing
-        </div>
-
-    </div>
-
 </div>
 
 <div class="content-area">
@@ -91,48 +59,27 @@
                 id="itemCode"
                 placeholder="Enter Item Code">
 
-            <button onclick="getItem()">
+            <button
+                class="primary-btn"
+                onclick="getItem()">
+
                 Search
+
             </button>
 
         </div>
 
-        <pre id="result">
-Waiting...
-        </pre>
+        <div
+            id="result"
+            class="result-card">
+
+            Waiting...
+
+        </div>
 
     </div>
 
 </div>
-
-<script>
-
-function showItemSearch(){
-
-    document.getElementById("content").innerHTML = `
-
-        <div class="search-card">
-
-            <h2>Item Search</h2>
-
-            <input
-                id="itemCode"
-                placeholder="Enter Item Code">
-
-            <button onclick="getItem()">
-                Search
-            </button>
-
-        </div>
-
-        <pre id="result">
-Waiting...
-        </pre>
-
-    `;
-}
-
-</script>
 
 <script src="app.js"></script>
 
