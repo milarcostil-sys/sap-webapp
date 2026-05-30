@@ -1,6 +1,28 @@
 const API_BASE =
 "https://mechanism-intermediate-glad-hour.trycloudflare.com";
 
+/* =========================
+   AUTO PROTECT DASHBOARD
+========================= */
+
+if (
+    window.location.pathname.includes("dashboard.html")
+) {
+
+    const token =
+        localStorage.getItem("token");
+
+    if (!token) {
+
+        window.location.href =
+            "index.html";
+    }
+}
+
+/* =========================
+   LOGIN
+========================= */
+
 async function login() {
 
     const username =
@@ -12,7 +34,7 @@ async function login() {
     const errorBox =
         document.getElementById("loginError");
 
-    if(errorBox){
+    if (errorBox) {
 
         errorBox.style.display = "none";
         errorBox.innerText = "";
@@ -23,13 +45,13 @@ async function login() {
         const res = await fetch(
             API_BASE + "/login",
             {
-                method:"POST",
+                method: "POST",
 
-                headers:{
-                    "Content-Type":"application/json"
+                headers: {
+                    "Content-Type": "application/json"
                 },
 
-                body:JSON.stringify({
+                body: JSON.stringify({
                     username,
                     password
                 })
@@ -38,7 +60,7 @@ async function login() {
 
         const data = await res.json();
 
-        if(data.token){
+        if (data.token) {
 
             localStorage.setItem(
                 "token",
@@ -50,7 +72,7 @@ async function login() {
 
         } else {
 
-            if(errorBox){
+            if (errorBox) {
 
                 errorBox.innerText =
                     data.detail || "Login failed";
@@ -60,9 +82,9 @@ async function login() {
             }
         }
 
-    } catch(err) {
+    } catch (err) {
 
-        if(errorBox){
+        if (errorBox) {
 
             errorBox.innerText =
                 "Cannot connect to server";
@@ -73,7 +95,11 @@ async function login() {
     }
 }
 
-async function getItem(){
+/* =========================
+   ITEM SEARCH
+========================= */
+
+async function getItem() {
 
     const code =
         document.getElementById("itemCode").value;
@@ -81,23 +107,77 @@ async function getItem(){
     const token =
         localStorage.getItem("token");
 
-    const res = await fetch(
-        API_BASE + "/item/" + code,
-        {
-            headers:{
-                "Authorization":
-                    "Bearer " + token
+    const result =
+        document.getElementById("result");
+
+    if (!code) {
+
+        result.innerHTML =
+            `<div class="error-box">Please enter item code</div>`;
+
+        return;
+    }
+
+    try {
+
+        const res = await fetch(
+            API_BASE + "/item/" + code,
+            {
+                headers: {
+                    "Authorization":
+                        "Bearer " + token
+                }
             }
+        );
+
+        const data = await res.json();
+
+        /* ERROR FROM API */
+        if (data.error) {
+
+            result.innerHTML = `
+                <div class="error-box">
+                    ${data.error}
+                </div>
+            `;
+
+            return;
         }
-    );
 
-    const data = await res.json();
+        /* SUCCESS CARD */
+        result.innerHTML = `
+            <div class="item-card">
 
-    document.getElementById("result").innerText =
-        JSON.stringify(data, null, 2);
+                <h3>${data.ItemCode}</h3>
+
+                <p>${data.ItemName}</p>
+
+            </div>
+        `;
+
+    } catch (err) {
+
+        result.innerHTML =
+            `<div class="error-box">Server error</div>`;
+    }
 }
 
-function logout(){
+/* =========================
+   SHOW SEARCH UI
+========================= */
+
+function showItemSearch() {
+
+    document
+        .getElementById("itemCode")
+        .focus();
+}
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout() {
 
     localStorage.removeItem("token");
 
