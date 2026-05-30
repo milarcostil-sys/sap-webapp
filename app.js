@@ -262,7 +262,7 @@ function showModule(module){
 
         app.innerHTML = `
             <h2>Items Module</h2>
-            <p>פה נוסיף את השאילתות שלך</p>
+            <p>Here you will connect SAP queries</p>
         `;
     }
 
@@ -270,7 +270,7 @@ function showModule(module){
 
         app.innerHTML = `
             <h2>Stock Module</h2>
-            <p>כאן יהיה מלאי</p>
+            <p>Stock data will appear here</p>
         `;
     }
 
@@ -278,7 +278,7 @@ function showModule(module){
 
         app.innerHTML = `
             <h2>Prices Module</h2>
-            <p>כאן יהיה מחירונים</p>
+            <p>Price lists module</p>
         `;
     }
 
@@ -286,7 +286,7 @@ function showModule(module){
 
         app.innerHTML = `
             <h2>Purchase Module</h2>
-            <p>כאן יהיה רכש</p>
+            <p>Purchase history module</p>
         `;
     }
 }
