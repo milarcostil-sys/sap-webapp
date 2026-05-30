@@ -2,127 +2,140 @@
    BASE RESET
 ========================= */
 
-*{
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-body{
-    margin:0;
-    font-family:Segoe UI, Arial, sans-serif;
-    background:#f4f6f9;
-    overflow:hidden;
+body {
+    margin: 0;
+    font-family: Segoe UI, Arial, sans-serif;
+    background: #f4f6f9;
+    overflow: hidden; /* נשאר, אבל ננהל scroll נכון בתוך main */
 }
 
 /* =========================
    LAYOUT
 ========================= */
 
-.layout{
-    display:flex;
-    height:100vh;
-    width:100%;
+.layout {
+    display: flex;
+    height: 100vh;
+    width: 100%;
 }
 
 /* =========================
    SIDEBAR
 ========================= */
 
-.sidebar{
-    width:260px;
-    flex-shrink:0;
-    background:#0f172a;
-    color:white;
-    padding:20px;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
+.sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    background: #0f172a;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    height: 100vh;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.25);
 }
 
-.sidebar-logo{
-    width:160px;
-    height:auto;
-    margin:0 auto 20px auto;
-    display:block;
-    object-fit:contain;
+.sidebar-logo {
+    width: 160px;
+    height: auto;
+    margin: 0 auto 20px auto;
+    display: block;
+    object-fit: contain;
 }
 
 /* =========================
    MENU BUTTONS
 ========================= */
 
-.menu-btn{
-    background:#1e293b;
-    color:white;
-    border:none;
-    padding:12px;
-    border-radius:10px;
-    cursor:pointer;
-    text-align:left;
-    transition:0.2s;
+.menu-btn {
+    background: #1e293b;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    transition: 0.2s;
+    font-weight: 500;
 }
 
-.menu-btn:hover{
-    background:#334155;
+.menu-btn:hover {
+    background: #334155;
+    transform: translateX(3px);
 }
 
-.menu-btn.active{
-    background:#2563eb;
+.menu-btn.active {
+    background: #2563eb;
 }
 
 /* =========================
    LOGOUT
 ========================= */
 
-.logout-btn{
-    margin-top:auto;
-    background:#dc2626;
-    color:white;
-    border:none;
-    padding:12px;
-    border-radius:10px;
-    cursor:pointer;
+.logout-btn {
+    margin-top: auto;
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.logout-btn:hover {
+    background: #b91c1c;
 }
 
 /* =========================
    MAIN AREA
 ========================= */
 
-.main{
-    flex:1;
-    padding:30px;
-    overflow:auto;
+.main {
+    flex: 1;
+    padding: 30px;
+
+    height: 100vh;
+    overflow-y: auto; /* חשוב במקום overflow hidden */
 }
 
 /* =========================
    DASHBOARD CARDS
 ========================= */
 
-.dashboard-cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
-    gap:20px;
-    margin-top:20px;
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
 }
 
-.dash-card{
-    background:white;
-    padding:30px;
-    border-radius:16px;
-    text-align:center;
-    cursor:pointer;
-    box-shadow:0 6px 20px rgba(0,0,0,0.06);
-    transition:0.2s;
-    font-size:18px;
+.dash-card {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    transition: 0.25s;
+    font-size: 18px;
 }
 
-.dash-card:hover{
-    transform:translateY(-5px);
+.dash-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 }
 
 /* =========================
    MODULE CONTENT
 ========================= */
 
-#app h1, #app h2{
-    margin-top:0;
+#app h1, #app h2 {
+    margin-top: 0;
 }
