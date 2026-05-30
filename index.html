@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <title>Arcosteel SAP Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcosteel ERP Login</title>
 
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -17,35 +15,16 @@
 
     <div class="login-card">
 
-        <img
-            src="arcosteel.jpg"
-            class="logo"
-            alt="Arcosteel">
+        <img src="arcosteel.jpg" class="logo">
 
-        <h1>Arcosteel SAP Portal</h1>
+        <h1>Arcosteel ERP</h1>
 
-        <input
-            id="username"
-            type="text"
-            placeholder="Username">
+        <input id="username" placeholder="Username">
+        <input id="password" type="password" placeholder="Password">
 
-        <input
-            id="password"
-            type="password"
-            placeholder="Password">
+        <button class="login-btn" onclick="login()">Login</button>
 
-        <div
-            id="loginError"
-            class="error-message">
-        </div>
-
-        <button
-            class="login-btn"
-            onclick="login()">
-
-            Login
-
-        </button>
+        <div id="loginError" class="error-message"></div>
 
     </div>
 
@@ -54,4 +33,5 @@
 <script src="app.js"></script>
 
 </body>
+
 </html>
