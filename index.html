@@ -1,32 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Arcosteel SAP Portal</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<div class="login-wrapper">
+<div class="login-page">
 
     <div class="login-card">
 
-        <img src="arcosteel.jpg" class="logo" alt="Arcosteel">
+        <img
+            src="arcosteel.jpg"
+            class="logo"
+            alt="Arcosteel">
 
         <h1>Arcosteel SAP Portal</h1>
 
-        <input id="username" type="text" placeholder="Username">
+        <input
+            id="username"
+            type="text"
+            placeholder="Username">
 
-        <input id="password" type="password" placeholder="Password">
+        <input
+            id="password"
+            type="password"
+            placeholder="Password">
 
-        <div id="loginError" class="error"></div>
+        <div
+            id="loginError"
+            class="error-message">
+        </div>
 
-        <button class="login-btn" onclick="login()">
+        <button
+            class="login-btn"
+            onclick="login()">
+
             Login
+
         </button>
 
     </div>
