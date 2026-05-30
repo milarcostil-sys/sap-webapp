@@ -3,7 +3,7 @@ const API_BASE =
 "https://mechanism-intermediate-glad-hour.trycloudflare.com";
 
 /* =========================
-   LOGIN
+   AUTH
 ========================= */
 
 async function login() {
@@ -26,7 +26,6 @@ async function login() {
         if (data.token) {
 
             localStorage.setItem("token", data.token);
-
             window.location.href = "dashboard.html";
 
         } else {
@@ -39,7 +38,7 @@ async function login() {
 }
 
 /* =========================
-   INIT DASHBOARD
+   INIT
 ========================= */
 
 window.onload = function () {
@@ -58,53 +57,97 @@ window.onload = function () {
 };
 
 /* =========================
-   ROUTER
+   MODULE SYSTEM (NEW ARCHITECTURE)
 ========================= */
 
-function showModule(module) {
+const Modules = {};
+
+/* -------------------------
+   HOME
+------------------------- */
+
+Modules.home = function () {
+
+    return `
+        <h1>Dashboard</h1>
+        <p>Welcome to Arcosteel ERP</p>
+    `;
+};
+
+/* -------------------------
+   ITEMS (עם ACTION BAR)
+------------------------- */
+
+Modules.items = function () {
+
+    return `
+        <div class="module-header">
+
+            <h2>Items Module</h2>
+
+            <div class="action-bar">
+
+                <button onclick="getItem()">Get Item</button>
+                <button onclick="alert('Stock query')">Stock</button>
+                <button onclick="alert('Price history')">Price</button>
+
+            </div>
+
+        </div>
+
+        <div class="search-box">
+            <input id="itemCode" placeholder="Item Code">
+            <button onclick="getItem()">Search</button>
+        </div>
+
+        <div id="results"></div>
+    `;
+};
+
+/* -------------------------
+   STOCK
+------------------------- */
+
+Modules.stock = function () {
+    return `<h2>Stock Module</h2>`;
+};
+
+/* -------------------------
+   PRICES
+------------------------- */
+
+Modules.prices = function () {
+    return `<h2>Prices Module</h2>`;
+};
+
+/* -------------------------
+   PURCHASE
+------------------------- */
+
+Modules.purchase = function () {
+    return `<h2>Purchase Module</h2>`;
+};
+
+/* =========================
+   ROUTER (CLEAN)
+========================= */
+
+function showModule(name) {
 
     const app = document.getElementById("app");
 
-    if (!app) return;
+    const module = Modules[name];
 
-    if (module === "home") {
-
-        app.innerHTML = `
-            <h1>Dashboard</h1>
-
-            <p>Welcome to Arcosteel ERP</p>
-        `;
+    if (!module) {
+        app.innerHTML = "<h2>Module not found</h2>";
+        return;
     }
 
-    if (module === "items") {
-
-        app.innerHTML = `
-            <h2>Items Search</h2>
-
-            <div class="search-box">
-                <input id="itemCode" placeholder="Item Code">
-                <button onclick="getItem()">Search</button>
-            </div>
-
-            <div id="results"></div>
-        `;
-    }
-
-    if (module === "stock") {
-        app.innerHTML = `<h2>Stock</h2>`;
-    }
-
-    if (module === "prices") {
-        app.innerHTML = `<h2>Prices</h2>`;
-    }
-
-    if (module === "purchase") {
-        app.innerHTML = `<h2>Purchase</h2>`;
-    }
+    app.innerHTML = module();
 }
 
 /* =========================
-   ITEM SEARCH
+   ITEM SEARCH API
 ========================= */
 
 async function getItem() {
@@ -112,27 +155,33 @@ async function getItem() {
     const code = document.getElementById("itemCode").value;
     const token = localStorage.getItem("token");
 
-    const res = await fetch(API_BASE + "/item/" + code, {
-        headers: {
-            "Authorization": "Bearer " + token
-        }
-    });
-
-    const data = await res.json();
-
     const results = document.getElementById("results");
 
-    if (data.error) {
-        results.innerHTML = data.error;
-        return;
-    }
+    try {
 
-    results.innerHTML = `
-        <div>
-            <h3>${data.ItemCode}</h3>
-            <p>${data.ItemName}</p>
-        </div>
-    `;
+        const res = await fetch(API_BASE + "/item/" + code, {
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        });
+
+        const data = await res.json();
+
+        if (data.error) {
+            results.innerHTML = data.error;
+            return;
+        }
+
+        results.innerHTML = `
+            <div>
+                <h3>${data.ItemCode}</h3>
+                <p>${data.ItemName}</p>
+            </div>
+        `;
+
+    } catch (e) {
+        results.innerHTML = "Server error";
+    }
 }
 
 /* =========================
