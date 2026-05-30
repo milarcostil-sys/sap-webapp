@@ -2,14 +2,11 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Arcosteel ERP</title>
 
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -21,29 +18,13 @@
 
         <img src="arcosteel.jpg" class="sidebar-logo">
 
-        <button class="menu-btn active" onclick="showModule('home')">
-            🏠 Dashboard
-        </button>
+        <button class="menu-btn active" onclick="showModule('home')">🏠 Dashboard</button>
+        <button class="menu-btn" onclick="showModule('items')">🔍 Items</button>
+        <button class="menu-btn" onclick="showModule('stock')">📦 Stock</button>
+        <button class="menu-btn" onclick="showModule('prices')">💰 Prices</button>
+        <button class="menu-btn" onclick="showModule('purchase')">🚚 Purchase</button>
 
-        <button class="menu-btn" onclick="showModule('items')">
-            🔍 Items
-        </button>
-
-        <button class="menu-btn" onclick="showModule('stock')">
-            📦 Stock
-        </button>
-
-        <button class="menu-btn" onclick="showModule('prices')">
-            💰 Prices
-        </button>
-
-        <button class="menu-btn" onclick="showModule('purchase')">
-            🚚 Purchase
-        </button>
-
-        <button class="logout-btn" onclick="logout()">
-            Logout
-        </button>
+        <button class="logout-btn" onclick="logout()">Logout</button>
 
     </div>
 
@@ -54,25 +35,31 @@
 
             <h1>Welcome to Arcosteel ERP</h1>
 
-            <div class="dashboard-cards">
+            <!-- 🔍 SEARCH -->
+            <div class="search-box">
 
-                <div class="dash-card" onclick="showModule('items')">
-                    🔍<br>Items
-                </div>
+                <input
+                    type="text"
+                    id="itemSearch"
+                    placeholder="Search item code / name..."
+                    onkeyup="searchItem()">
 
-                <div class="dash-card" onclick="showModule('stock')">
-                    📦<br>Stock
-                </div>
-
-                <div class="dash-card" onclick="showModule('prices')">
-                    💰<br>Prices
-                </div>
-
-                <div class="dash-card" onclick="showModule('purchase')">
-                    🚚<br>Purchase
-                </div>
+                <button onclick="searchItem()">🔍 Search</button>
 
             </div>
+
+            <!-- DASHBOARD CARDS -->
+            <div class="dashboard-cards">
+
+                <div class="dash-card" onclick="showModule('items')">🔍<br>Items</div>
+                <div class="dash-card" onclick="showModule('stock')">📦<br>Stock</div>
+                <div class="dash-card" onclick="showModule('prices')">💰<br>Prices</div>
+                <div class="dash-card" onclick="showModule('purchase')">🚚<br>Purchase</div>
+
+            </div>
+
+            <!-- RESULTS AREA -->
+            <div id="results" style="margin-top:30px;"></div>
 
         </div>
 
