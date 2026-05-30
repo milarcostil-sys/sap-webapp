@@ -214,3 +214,86 @@ button{
     padding:15px;
     border-radius:10px;
 }
+/* =========================
+   SIDEBAR IMPROVEMENT
+========================= */
+
+.sidebar{
+    width:260px;
+    background:#0f172a;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    padding:20px;
+}
+
+.sidebar-header{
+    margin-bottom:20px;
+}
+
+.sidebar-logo{
+    width:100%;
+    border-radius:12px;
+}
+
+.sidebar-menu{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.menu-btn{
+    background:#1e293b;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:10px;
+    text-align:left;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.menu-btn:hover{
+    background:#334155;
+}
+
+.menu-btn.active{
+    background:#2563eb;
+}
+
+/* =========================
+   DASHBOARD CARDS
+========================= */
+
+.dashboard-cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
+    gap:20px;
+    margin-top:20px;
+}
+
+.dash-card{
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 6px 20px rgba(0,0,0,0.06);
+    font-size:18px;
+    transition:0.2s;
+}
+
+.dash-card:hover{
+    transform:translateY(-5px);
+}
+
+/* =========================
+   MAIN AREA
+========================= */
+
+.main{
+    flex:1;
+    padding:30px;
+    background:#f4f6f9;
+}
