@@ -35,16 +35,19 @@ body {
     flex-direction: column;
     gap: 10px;
     height: 100vh;
+
+    box-shadow: 2px 0 12px rgba(0,0,0,0.25);
 }
 
 .sidebar-logo {
     width: 150px;
     margin: 0 auto 20px auto;
     display: block;
+    object-fit: contain;
 }
 
 /* =========================
-   MENU
+   MENU BUTTONS
 ========================= */
 
 .menu-btn {
@@ -55,15 +58,22 @@ body {
     border-radius: 10px;
     cursor: pointer;
     text-align: left;
+    transition: all 0.2s ease;
+    font-weight: 500;
 }
 
 .menu-btn:hover {
     background: #334155;
+    transform: translateX(3px);
 }
 
 .menu-btn.active {
     background: #2563eb;
 }
+
+/* =========================
+   LOGOUT
+========================= */
 
 .logout-btn {
     margin-top: auto;
@@ -72,6 +82,13 @@ body {
     border: none;
     padding: 12px;
     border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: 500;
+}
+
+.logout-btn:hover {
+    background: #b91c1c;
 }
 
 /* =========================
@@ -82,43 +99,11 @@ body {
     flex: 1;
     padding: 30px;
     overflow-y: auto;
+    height: 100vh;
 }
 
 /* =========================
-   SEARCH
-========================= */
-
-.search-box {
-    margin-top: 20px;
-    display: flex;
-    gap: 10px;
-    max-width: 500px;
-}
-
-.search-box input {
-    flex: 1;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-}
-
-.search-box input:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
-    outline: none;
-}
-
-.search-box button {
-    padding: 12px 16px;
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-/* =========================
-   CARDS
+   DASHBOARD CARDS
 ========================= */
 
 .dashboard-cards {
@@ -135,18 +120,72 @@ body {
     text-align: center;
     cursor: pointer;
     box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    transition: all 0.25s ease;
+    font-size: 18px;
 }
 
 .dash-card:hover {
     transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.12);
 }
 
 /* =========================
-   RESULTS
+   SEARCH BOX
+========================= */
+
+.search-box {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: 0.2s;
+}
+
+.search-box input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+}
+
+.search-box button {
+    padding: 12px 16px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.search-box button:hover {
+    background: #1d4ed8;
+}
+
+/* =========================
+   RESULTS BOX
 ========================= */
 
 #results {
+    margin-top: 20px;
     background: white;
     padding: 15px;
     border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+/* =========================
+   HEADINGS
+========================= */
+
+#app h1,
+#app h2 {
+    margin-top: 0;
+    color: #111827;
 }
