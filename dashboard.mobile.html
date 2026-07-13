@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP Mobile</title>
+
+    <link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="modal.css">
+</head>
+
+<body class="erp-app mobile-app">
+<script>
+if (!localStorage.getItem("token")) {
+    window.location.href = "index.html";
+}
+</script>
+<!-- =========================
+     MOBILE HEADER V8 CLEAN
+========================= -->
+<header class="mobile-header" dir="ltr">
+
+    <!-- BRAND + ACTIONS -->
+    <div class="mobile-top-row">
+
+        <div class="mobile-brand">
+
+            <div class="mobile-logo-wrap">
+                <img src="arcosteel.png" class="mobile-logo">
+            </div>
+
+            <div class="mobile-brand-text">
+                <div class="mobile-title-top">
+                    ERP SYSTEM
+                </div>
+
+              
+            </div>
+
+        </div>
+
+        <div class="mobile-actions">
+
+            <button class="mobile-icon-btn"
+                    onclick="backToDashboard()">
+                📊
+            </button>
+
+            <button class="mobile-icon-btn"
+                    onclick="openQuickSearch()">
+                🔍
+            </button>
+
+            <button class="mobile-icon-btn"
+                    onclick="toggleFavorites()">
+                ⭐
+            </button>
+
+            <button id="headerThemeBtn"
+                    class="mobile-icon-btn"
+                    onclick="toggleTheme()">
+                🌙
+            </button>
+
+            <button class="mobile-icon-btn"
+                    onclick="logout()">
+                ⏻
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- SEARCH -->
+    <div class="mobile-search">
+
+        <input id="searchBox"
+               placeholder="Search queries..."
+               oninput="renderDashboard()">
+
+    </div>
+
+    <!-- MODULES -->
+    <div class="mobile-modules">
+
+        <select id="moduleFilter"
+                onchange="renderDashboard()">
+
+            <option value="">All Modules</option>
+
+        </select>
+
+    </div>
+
+</header>
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+<main>
+
+    <div id="content"></div>
+
+    <div id="query-area"></div>
+
+    <div id="results"></div>
+
+</main>
+
+<!-- DRILL MODAL -->
+<div id="drillModal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <span class="close" onclick="closeDrill()">×</span>
+
+        <div id="drillContent"></div>
+
+    </div>
+
+</div>
+<!-- =========================
+     LOGOUT MODAL
+========================= -->
+
+<div id="logoutModal" class="modal hidden">
+
+    <div class="modal-box logout-box">
+
+        <h3>Sign Out</h3>
+
+        <p>
+            Are you sure you want to sign out?
+        </p>
+
+        <div class="logout-actions">
+
+            <button
+                class="btn-secondary"
+                onclick="closeLogoutModal()">
+                Cancel
+            </button>
+
+            <button
+                class="btn-danger"
+                onclick="confirmLogout()">
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- =========================
+     JS (MOBILE ENGINE)
+========================= -->
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script src="mobile-ui.js"></script>
+
+
+</body>
+</html>

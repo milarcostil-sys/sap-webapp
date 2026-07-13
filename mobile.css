@@ -1,0 +1,2205 @@
+/* ==========================================
+   MOBILE ERP SYSTEM V9 - CLEAN THEME SYSTEM
+========================================== */
+/* =========================
+   THEME TOKENS
+========================= */
+
+body.theme-dark {
+    --bg: #000;
+    --card: rgba(255,255,255,.05);
+    --border: rgba(255,255,255,.08);
+
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+
+   --primary: #64748b;
+--primary-2: #475569;
+--primary: rgba(255,255,255,0.10);
+    --danger: #ef4444;
+}
+
+body.theme-light {
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --border: rgba(15,23,42,.08);
+
+    --text: #0f172a;
+    --muted: #64748b;
+
+    --primary: #2563eb;
+    --primary-2: #1d4ed8;
+
+    --danger: #dc2626;
+}
+
+/* =========================
+   BASE APP
+========================= */
+
+.mobile-app {
+    max-width: 520px;
+    margin: auto;
+    padding: 18px 14px 110px;
+    padding-top: 10px;
+
+    direction: rtl;
+
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    -webkit-font-smoothing: antialiased;
+
+    letter-spacing: 0.2px;
+
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.mobile-header {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+
+    backdrop-filter: blur(14px);
+
+    padding: 12px 0;
+}
+
+.mobile-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mobile-logo-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mobile-logo-box img {
+    height: 38px;
+    background: #fff;
+    padding: 6px 10px;
+    border-radius: 10px;
+}
+
+.mobile-title-top {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.mobile-subtitle {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.mobile-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.mobile-icon-btn {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+
+    color: var(--text);
+
+    cursor: pointer;
+    transition: .2s;
+}
+
+.mobile-icon-btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255,255,255,.08);
+}
+
+.mobile-icon-btn:active {
+    transform: scale(.95);
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.mobile-search input {
+    width: 100%;
+    height: 48px;
+
+    border-radius: 14px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+
+    color: var(--text);
+
+    padding: 0 14px;
+
+    outline: none;
+}
+
+.mobile-search input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59,130,246,.2);
+}
+
+/* =========================
+   MODULES
+========================= */
+
+.mobile-modules {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.mobile-modules select {
+    flex: 1;
+    height: 48px;
+
+    border-radius: 14px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+
+    color: var(--text);
+}
+
+.mobile-modules option {
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* =========================
+   GRID / CARDS
+========================= */
+
+.mobile-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.mobile-card,
+.mobile-query-card,
+.mobile-result-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+    padding: 16px;
+
+    transition: .2s;
+}
+
+.mobile-card:active {
+    transform: scale(.98);
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.mobile-title {
+    font-size: 16px;
+    font-weight: 800;
+    margin-top: 10px;
+}
+
+.mobile-desc {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.mobile-open-btn,
+.mobile-run {
+    margin-top: 0;   /* 🔥 קריטי */
+    width: 100%;
+    height: 48px;
+
+    margin-top: 14px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: linear-gradient(135deg, var(--primary), var(--primary-2));
+    color: #fff;
+
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+.mobile-export {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.mobile-export button {
+    flex: 1;
+    height: 42px;
+
+    border-radius: 12px;
+
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+}
+
+/* =========================
+   FIELD
+========================= */
+
+.mobile-field {
+    margin-bottom: 12px;
+}
+
+.mobile-field-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+
+.mobile-field input,
+.mobile-field select {
+    width: 100%;
+    height: 46px;
+
+    border-radius: 12px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+
+    color: var(--text);
+}
+
+/* =========================
+   RESULTS
+========================= */
+
+.mobile-result-card {
+    border-right: 3px solid var(--primary);
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0,0,0,.6);
+    z-index: 99999;
+}
+
+.modal-content {
+    width: min(900px, 95vw);
+    max-height: 90vh;
+    overflow: auto;
+
+    background: var(--bg);
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+    padding: 20px;
+}
+
+.close {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+
+    font-size: 28px;
+    cursor: pointer;
+}
+.mobile-back-btn {
+    width: 100%;
+    height: 46px;
+
+    margin-bottom: 14px;
+
+    border-radius: 14px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,0.04);
+    color: var(--text);
+
+    font-weight: 800;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+
+    backdrop-filter: blur(10px);
+}
+
+/* hover עדין */
+.mobile-back-btn:hover {
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-1px);
+}
+
+/* לחיצה */
+.mobile-back-btn:active {
+    transform: scale(0.97);
+}
+.mobile-search input,
+.mobile-modules select {
+    width: 100%;
+    height: 48px;
+
+    box-sizing: border-box; /* 🔥 הכי חשוב */
+}
+.mobile-search,
+.mobile-modules {
+    width: 100%;
+}
+.mobile-search input,
+.mobile-modules select {
+    margin: 0;
+    padding: 0 14px;
+}
+
+/* =========================
+   DRILL - CLEAN ERP STYLE
+========================= */
+
+/* HEADER / BODY TEXT */
+.drill-header,
+.drill-body,
+.drill-row{
+    color: var(--text);
+}
+
+/* =========================
+   ROW (הבעיה שלך הייתה כאן)
+========================= */
+
+.drill-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px 16px;   /* פחות רחב = יותר נקי */
+    border-radius: 14px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+
+    transition: .15s ease;
+}
+
+.drill-row:hover{
+    transform: translateY(-2px);
+}
+
+/* =========================
+   LABEL (קטן, לא משתלט)
+========================= */
+
+.drill-label{
+    flex: 0 0 32%;        /* פחות רחב = יותר פרופורציה */
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* =========================
+   VALUE (העיקר)
+========================= */
+
+.drill-value{
+    flex: 1;
+
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text);
+
+    text-align: left;
+    word-break: break-word;
+}
+
+/* =========================
+   SUBTITLE
+========================= */
+
+.drill-subtitle{
+    color: var(--muted);
+}
+
+/* =========================
+   MODAL (יותר פרופורציה)
+========================= */
+.modal-content{
+    width: min(520px, 95vw);  /* אותו feel של mobile-app */
+    margin: auto;
+
+    border-radius: 18px;
+    padding: 18px;
+
+    background: var(--bg);
+}
+
+/* =========================
+   BACK BUTTON (RUN STYLE MATCH)
+========================= */
+
+.mobile-back-btn{
+    width: 100%;
+    height: 52px;
+
+    border-radius: 16px;
+
+    border: 1px solid var(--border);
+
+    background: linear-gradient(135deg, var(--primary), var(--primary-2));
+    color: white;
+
+    font-weight: 900;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-bottom: 18px;
+
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.mobile-back-btn:hover{
+    transform: translateY(-1px);
+}
+
+.mobile-back-btn:active{
+    transform: scale(.97);
+}
+
+/* =========================
+   MOBILE FIX
+========================= */
+
+@media (max-width: 768px){
+
+    .drill-row{
+        padding: 12px 14px;
+        gap: 10px;
+    }
+
+    .drill-label{
+        flex: 0 0 38%;
+        font-size: 11px;
+    }
+
+    .drill-value{
+        font-size: 13px;
+    }
+
+    .modal-content{
+        width: 100vw;
+        height: 100vh;
+        max-height: none;
+        border-radius: 0;
+        padding: 18px;
+    }
+}
+.mobile-results-toolbar {
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-bottom: 16px;
+}
+
+.mobile-results-count {
+
+    font-size: 13px;
+    color: var(--muted);
+
+    text-align: center;
+}
+
+.mobile-results-filter {
+
+    width: 100%;
+    box-sizing: border-box;
+
+    min-height: 48px;   /* כמו שאר השדות */
+    padding: 12px 14px;
+
+    border-radius: 12px;
+}
+.mobile-results-filter {
+
+    width: 100%;
+    box-sizing: border-box;
+
+    min-height: 48px;
+    padding: 12px 14px;
+
+    background: var(--glass);
+    border: 1px solid var(--border);
+    color: var(--text);
+
+    border-radius: 12px;
+
+    font-size: 15px;
+}
+/* =========================
+   BACK BUTTON HOVER FIX
+========================= */
+
+.mobile-back-btn:hover {
+
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-2)
+    );
+
+    color: #fff;
+
+    transform: translateY(-1px);
+}
+
+/* LIGHT MODE */
+body.theme-light .mobile-back-btn:hover {
+
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-2)
+    );
+
+    color: #fff;
+}
+.mobile-back-btn:hover{
+    background: inherit;
+    color: #fff;
+    transform: translateY(-1px);
+}
+/* =========================
+   MOBILE DRILL FIELD
+========================= */
+
+.mobile-drill {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    cursor: pointer;
+    font-weight: 700;
+    color: #60a5fa;
+
+    padding: 6px 8px;
+    border-radius: 8px;
+
+    transition: 0.15s ease;
+}
+
+/* hover */
+.mobile-drill:hover {
+    background: rgba(59,130,246,0.08);
+    color: #93c5fd;
+}
+
+/* ICON */
+.drill-icon {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* TEXT */
+.drill-text {
+    position: relative;
+}
+
+/* פס עדין (לא full width!) */
+.mobile-drill::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 3px;
+    height: 60%;
+
+    background: rgba(96,165,250,0.6);
+    border-radius: 2px;
+
+    opacity: 0.8;
+}
+
+/* underline עדין רק על טקסט */
+.mobile-drill:hover .drill-text::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+
+    height: 1px;
+    background: rgba(96,165,250,0.5);
+}
+
+/* =========================
+   QUICK SEARCH OVERLAY
+========================= */
+
+.quick-search-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,0.65);
+
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding-top: 10vh;
+
+    z-index: 99999;
+}
+
+/* =========================
+   BOX (BASE)
+========================= */
+
+.quick-search-box {
+    width: min(600px, 92vw);
+    max-height: 70vh;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 16px;
+    padding: 12px;
+
+    overflow: hidden;
+
+    transition: 0.2s ease;
+}
+
+/* =========================
+   INPUT BASE
+========================= */
+
+#quickSearchInput {
+    width: 100%;
+    height: 44px;
+
+    border-radius: 10px;
+    padding: 0 12px;
+
+    outline: none;
+    font-size: 14px;
+}
+
+/* =========================
+   RESULTS
+========================= */
+
+#quickSearchResults {
+    margin-top: 10px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    max-height: 55vh;
+
+    border-radius: 10px;
+}
+
+/* =========================
+   ITEM BASE
+========================= */
+
+.quick-item {
+    padding: 10px;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: 0.15s ease;
+}
+
+.quick-title {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.quick-desc {
+    font-size: 12px;
+    opacity: 0.75;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.quick-empty {
+    padding: 14px;
+    text-align: center;
+    opacity: 0.6;
+    font-size: 13px;
+}
+
+/* =========================
+   DARK MODE (DEFAULT)
+========================= */
+
+body.theme-dark .quick-search-overlay {
+    background: rgba(0,0,0,0.65);
+}
+
+body.theme-dark .quick-search-box {
+    background: rgba(15, 23, 42, 0.92);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    color: #e5e7eb;
+}
+
+body.theme-dark #quickSearchInput {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+    color: #e5e7eb;
+}
+
+body.theme-dark .quick-item {
+  color: #fff;
+    background: transparent;
+}
+
+body.theme-dark .quick-item:hover {
+    background: rgba(59,130,246,0.14);
+}
+
+body.theme-dark .quick-item.active {
+    background: rgba(59,130,246,0.26);
+    border: 1px solid rgba(59,130,246,0.35);
+}
+
+/* =========================
+   LIGHT MODE
+========================= */
+
+body.theme-light .quick-search-overlay {
+    background: rgba(15,23,42,0.25);
+}
+
+body.theme-light .quick-search-box {
+    background: #ffffff;
+    border: 1px solid rgba(15,23,42,0.10);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 60px rgba(15,23,42,0.12);
+    color: #0f172a;
+}
+
+body.theme-light #quickSearchInput {
+    background: #f8fafc;
+    border: 1px solid rgba(15,23,42,0.12);
+    color: #0f172a;
+}
+
+body.theme-light .quick-item {
+    color: #0f172a;
+    background: transparent;
+}
+
+body.theme-light .quick-item:hover {
+    background: rgba(37,99,235,0.10);
+}
+
+body.theme-light .quick-item.active {
+    background: rgba(37,99,235,0.18);
+    border: 1px solid rgba(37,99,235,0.25);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.mobile-header{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+/* TOP */
+
+.mobile-top-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+}
+
+/* BRAND */
+
+.mobile-brand{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+}
+
+/* LOGO CONTAINER */
+
+.mobile-logo-wrap{
+    background:#fff;              /* חשוב ללוגו שחור */
+    border-radius:18px;
+    padding:10px 18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:var(--shadow);
+}
+
+/* LOGO */
+
+.mobile-logo{
+    width:140px;
+    max-width:100%;
+    height:auto;
+    display:block;
+    object-fit:contain;
+}
+
+/* TEXT */
+
+.mobile-brand-text{
+    display:flex;
+    flex-direction:column;
+    text-align:center;
+}
+
+.mobile-title-top{
+    font-size:18px;
+    font-weight:700;
+    line-height:1.1;
+}
+
+.mobile-subtitle{
+    font-size:12px;
+    color:var(--muted);
+}
+
+/* ACTIONS */
+
+.mobile-actions{
+    display:flex;
+    gap:8px;
+}
+
+/* SEARCH */
+
+.mobile-search input{
+    width:100%;
+}
+
+/* MODULE */
+
+.mobile-modules select{
+    width:100%;
+}
+
+/* =========================
+   SMALL DEVICES
+========================= */
+
+@media (max-width:480px){
+
+    .mobile-top-row{
+        flex-direction:column;
+        gap:16px;
+    }
+
+    .mobile-brand{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .mobile-actions{
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    .mobile-logo{
+        width:180px;   /* גדול יותר במובייל */
+    }
+
+    .mobile-title-top{
+        font-size:20px;
+    }
+}
+
+.mobile-card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:8px;
+}
+
+.mobile-icon{
+    font-size:22px;
+    line-height:1;
+}
+
+.mobile-fav{
+    font-size:18px;
+    cursor:pointer;
+    user-select:none;
+    opacity:0.9;
+    transition:0.2s;
+}
+
+.mobile-fav:active{
+    transform:scale(0.9);
+}
+body.theme-dark .mobile-header {
+    background: rgba(11, 18, 32, 0.85);
+}
+/* =========================================
+   QUERIES LIST → DESKTOP DARK ALIGN
+========================================= */
+
+body.theme-dark .mobile-query-card {
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 18px;
+    padding: 16px;
+
+    backdrop-filter: blur(14px);
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+
+    transition: 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* hover depth כמו דסקטופ */
+body.theme-dark .mobile-query-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(59,130,246,0.35);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.55);
+}
+
+/* subtle glow edge */
+body.theme-dark .mobile-query-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+
+    background: radial-gradient(
+        circle at top left,
+        rgba(59,130,246,0.10),
+        transparent 60%
+    );
+
+    pointer-events: none;
+}
+
+/* TITLE */
+body.theme-dark .mobile-query-card .mobile-title {
+    color: #e5e7eb;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+/* DESCRIPTION */
+body.theme-dark .mobile-query-card .mobile-desc {
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+/* TOP BAR (אם יש אייקון / פייב) */
+body.theme-dark .mobile-query-card .mobile-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ICON */
+body.theme-dark .mobile-query-card .mobile-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* FAVORITE */
+body.theme-dark .mobile-query-card .mobile-fav {
+    color: #facc15;
+    opacity: 0.85;
+}
+
+/* RUN / OPEN BUTTON בתוך שאילתא */
+body.theme-dark .mobile-query-card .mobile-run,
+body.theme-dark .mobile-query-card .mobile-open-btn {
+    width: 100%;
+    height: 42px;
+
+    margin-top: 12px;
+
+    border-radius: 12px;
+
+    font-weight: 900;
+
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+
+    box-shadow: 0 10px 25px rgba(37,99,235,0.25);
+
+    transition: 0.2s ease;
+}
+
+body.theme-dark .mobile-query-card .mobile-run:hover,
+body.theme-dark .mobile-query-card .mobile-open-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(37,99,235,0.35);
+}
+
+body.theme-dark .mobile-query-card .mobile-run:active,
+body.theme-dark .mobile-query-card .mobile-open-btn:active {
+    transform: scale(0.98);
+}
+body.theme-dark,
+body.theme-dark .mobile-app {
+    background: radial-gradient(
+        circle at top,
+        #000 0%,
+        #000000 70%
+    ) !important;
+}
+/* =========================
+   FULL PAGE BLACK BACKGROUND
+========================= */
+
+body.theme-dark,
+body.theme-dark .mobile-app {
+    background: #000 !important;
+}
+
+/* אם יש שכבות שמושכות צבע מהטוקן */
+body.theme-dark {
+    --bg: #000;
+}
+/* =========================
+   HARD BLACK THEME LOCK
+========================= */
+
+body.theme-dark {
+    --bg: #000 !important;
+}
+
+body.theme-dark,
+body.theme-dark .mobile-app {
+    background: #000 !important;
+}
+
+/* חשוב: מונע “אפור” מהברירת מחדל */
+html, body {
+    background: #000;
+}
+body.theme-dark .mobile-header {
+    background: rgba(0,0,0,0.92) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    backdrop-filter: blur(10px);
+}
+body.theme-dark {
+
+    /* בסיס */
+    --surface-0: #000;
+    --surface-1: #111827;
+    --surface-2: #0f0f0f;
+
+    /* glass אמיתי */
+    --glass: rgba(255,255,255,0.04);
+    --glass-hover: rgba(255,255,255,0.07);
+
+    /* border חכם */
+    --border-soft: rgba(255,255,255,0.06);
+}
+body.theme-dark .mobile-query-card {
+    background: var(--glass);
+    border: 1px solid var(--border-soft);
+}
+body.theme-dark .mobile-query-card:hover {
+    background: var(--glass-hover);
+}
+body.theme-dark .mobile-query-card .mobile-run {
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
+    box-shadow: 0 10px 25px rgba(37,99,235,0.18);
+}
+/* =========================
+   FULL PAGE BACKGROUND
+========================= */
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body.theme-dark,
+body.theme-light {
+    background: var(--bg);
+}
+
+body.theme-dark .mobile-app,
+body.theme-light .mobile-app {
+    background: transparent;
+}
+/* =========================
+   FORCE FULL PAGE THEME
+========================= */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* DARK */
+html:has(body.theme-dark),
+body.theme-dark {
+    background: #000 !important;
+}
+
+/* LIGHT */
+html:has(body.theme-light),
+body.theme-light {
+    background: #f5f7fb !important;
+}
+
+/* התוכן עצמו שקוף */
+.mobile-app {
+    background: transparent !important;
+    min-height: 100vh;
+}
+
+/* כותרת יותר קומפקטית */
+.mobile-title {
+    font-size: 14px;
+    font-weight: 800;
+    margin-top: 6px;
+}
+
+/* תיאור קצר יותר */
+.mobile-desc {
+    font-size: 12px;
+    line-height: 1.3;
+    max-height: 32px;
+    overflow: hidden;
+}
+
+/* אייקון קטן יותר */
+.mobile-icon {
+    font-size: 18px;
+}
+
+/* פייב קטן */
+.mobile-fav {
+    font-size: 16px;
+}
+.mobile-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 6px;
+}
+
+.mobile-open-mini {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+
+    cursor: pointer;
+
+    transition: 0.15s ease;
+}
+
+.mobile-open-mini:hover {
+    transform: translateY(-1px);
+}
+.mobile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    align-items: stretch;
+}
+.mobile-card {
+    padding: 12px;
+    border-radius: 14px;
+
+    width: 100%;          /* 🔥 קריטי */
+    min-height: 100px;    /* מונע פיציות */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+}
+.mobile-title {
+    font-size: 14px;
+    font-weight: 800;
+
+    min-height: 20px;
+}
+
+.mobile-desc {
+    font-size: 12px;
+    line-height: 1.3;
+
+    min-height: 10px;
+    opacity: 0.85;
+}
+.mobile-open-mini {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 10px;
+}
+.mobile-card {
+    padding: 10px 12px;
+    border-radius: 14px;
+
+    width: 100%;
+    min-height: unset;   /* 🔥 מבטל גובה כפוי */
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;            /* רווח קטן אחיד */
+
+    box-sizing: border-box;
+}
+.mobile-desc {
+    font-size: 12px;
+    line-height: 1.25;
+
+    margin: 0;          /* 🔥 קריטי */
+    padding: 0;
+
+    max-height: 28px;
+    overflow: hidden;
+}
+.mobile-card-actions {
+    margin-top: 6px;
+    display: flex;
+    justify-content: flex-end;
+}
+.mobile-open-mini {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border);
+
+    background: var(--card);
+    color: var(--text);
+
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* hover glow */
+.mobile-open-mini:hover {
+    transform: translateY(-2px);
+}
+.mobile-card {
+    padding: 10px 12px;
+    border-radius: 14px;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;              /* אחיד במקום margin-top everywhere */
+
+    min-height: unset;     /* מוחק גובה מיותר */
+
+    transition: 0.15s ease;
+}
+.mobile-title {
+    font-size: 14px;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.mobile-desc {
+    font-size: 12px;
+    line-height: 1.2;
+
+    margin: 0;
+    max-height: 28px;
+    overflow: hidden;
+}
+.mobile-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4px;
+}
+.mobile-open-mini {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    position: relative;
+    overflow: hidden;
+}
+.mobile-open-mini:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, var(--primary), var(--primary-2));
+    color: #fff;
+}
+
+/* שומר על חדות האייקון */
+.mobile-open-mini svg,
+.mobile-open-mini {
+    position: relative;
+    z-index: 2;
+}
+.mobile-card {
+    padding: 10px 12px;
+    border-radius: 14px;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;            /* 🔥 קריטי - מצמצם גובה */
+
+    min-height: unset;   /* מוחק גובה כפוי */
+}
+.mobile-open-mini {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid color-mix(in srgb, var(--c) 55%, transparent);
+    background: color-mix(in srgb, var(--c) 15%, transparent);
+    color: var(--c);
+
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    font-weight: 900;
+}
+
+/* hover - לא full fill! */
+.mobile-open-mini:hover {
+    background: color-mix(in srgb, var(--c) 85%, black);
+    color: #fff;
+    transform: translateY(-2px);
+}
+.mobile-card {
+    padding: 8px 10px;
+    gap: 3px;
+}
+.mobile-card {
+    padding: 8px 10px !important;
+    gap: 4px !important;
+
+    min-height: unset !important;
+    height: auto !important;
+
+    display: flex
+}
+.mobile-grid {
+    align-items: start !important; /* 🔥 זה פותר 80% מהבעיה */
+}
+.mobile-title {
+    margin: 0 !important;
+}
+
+.mobile-desc {
+    margin: 0 !important;
+    line-height: 1.2;
+}
+.mobile-card {
+    gap: 3px !important;
+}
+.mobile-desc {
+    margin: 0;
+    line-height: 1.2;
+}
+.mobile-card-actions {
+    margin-top: 2px !important;
+}
+.quick-search-overlay {
+    background: rgba(0,0,0,0.85) !important;
+}
+
+body.theme-dark .quick-search-overlay {
+    background: rgba(0,0,0,0.92) !important;
+}
+/* =========================
+   QUICK SEARCH FIX THEME BACKGROUND
+========================= */
+
+body.theme-dark .quick-search-box {
+    background: #111827 !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+body.theme-dark .quick-search-overlay {
+    background: rgba(0,0,0,0.75) !important;
+}
+
+/* ביטול כחול מכל ירושה מוזרה */
+.quick-search-box,
+.quick-search-overlay {
+    background-color: transparent;
+}
+.quick-search-box {
+    background: var(--bg);
+}
+#quickSearchInput {
+    background: var(--card);
+    border: 1px solid var(--border);
+}
+/* =========================
+   QUERY CARD COMPACT MODE
+========================= */
+
+.mobile-query-card .mobile-field {
+    margin-bottom: 8px !important;
+}
+
+.mobile-query-card .mobile-field-label {
+    font-size: 11px;
+    margin-bottom: 3px;
+    opacity: 0.8;
+}
+
+/* input/select בתוך query */
+.mobile-query-card input,
+.mobile-query-card select,
+.mobile-query-card textarea {
+    height: 40px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+/* =========================
+   RUN BUTTON - GREEN SMALL
+========================= */
+
+.mobile-run {
+    height: 40px !important;
+    margin-top: 10px !important;
+
+    background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+    color: white;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    border-radius: 12px;
+
+    box-shadow: 0 10px 25px rgba(34,197,94,0.18);
+}
+
+.mobile-run:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(34,197,94,0.25);
+}
+
+/* =========================
+   EXPORT BUTTONS - ORANGE STYLE
+========================= */
+
+.mobile-export button {
+    height: 38px;
+    font-size: 12px;
+    font-weight: 700;
+
+    border-radius: 10px;
+
+    transition: 0.2s ease;
+}
+
+/* Excel - כתום */
+.mobile-export button:nth-child(1) {
+    background: linear-gradient(135deg, #f97316, #fb923c);
+    color: white;
+    border: none;
+}
+
+/* PDF - אדום/כתום כהה */
+.mobile-export button:nth-child(2) {
+    background: linear-gradient(135deg, #ef4444, #f97316);
+    color: white;
+    border: none;
+}
+
+.mobile-export button:hover {
+    transform: translateY(-2px);
+}
+/* =========================
+   FIX INPUT OVERFLOW + HEIGHT
+========================= */
+
+.mobile-query-card .mobile-field {
+    overflow: hidden;
+}
+
+.mobile-query-card input,
+.mobile-query-card select,
+.mobile-query-card textarea {
+    width: 100%;
+    box-sizing: border-box;
+
+    height: 36px !important;   /* 🔥 קטן יותר */
+    padding: 6px 10px !important;
+
+    font-size: 13px;
+    line-height: 1.2;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+/* מונע “יציאה מהמסגרת” */
+.mobile-field > * {
+    max-width: 100%;
+}
+
+/* =========================
+   RUN BUTTON (חצי רוחב)
+========================= */
+
+.mobile-run {
+    width: 50% !important;   /* 🔥 חצי */
+    margin: 12px auto 0 auto !important;  /* מרכז */
+
+    display: block;
+
+    height: 38px !important;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    border-radius: 12px;
+
+    background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+    color: #fff;
+
+    box-shadow: 0 8px 20px rgba(34,197,94,0.2);
+}
+
+/* =========================
+   EXPORT BUTTONS (SMALLER)
+========================= */
+/* =========================
+   EXPORT = SAME WIDTH AS RUN
+========================= */
+
+.mobile-export {
+    display: flex;
+    gap: 8px;
+
+    width: 50%;              /* 🔥 אותו רוחב כמו RUN */
+    margin: 10px auto 0 auto; /* מרכז */
+}
+
+/* כל כפתור חצי מה-export */
+.mobile-export button {
+    flex: 1;
+
+    height: 34px !important;
+    font-size: 11px !important;
+
+    padding: 0 10px !important;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Excel */
+.mobile-export button:nth-child(1) {
+    background: linear-gradient(135deg, #f97316, #fb923c);
+    color: #fff;
+    border: none;
+}
+
+/* PDF */
+.mobile-export button:nth-child(2) {
+    background: linear-gradient(135deg, #ef4444, #f97316);
+    color: #fff;
+    border: none;
+}
+.mobile-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;   /* 🔥 קריטי */
+}
+.mobile-app {
+    position: relative;
+    z-index: 1;
+}
+.mobile-card,
+.mobile-query-card,
+.mobile-result-card {
+    position: relative;
+    z-index: 1;
+}
+.mobile-app {
+    overflow: visible;
+}
+.mobile-app {
+    height: 100vh;
+    overflow-y: auto;
+}
+html, body {
+    scroll-behavior: auto;
+}
+.mobile-result-details {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+}
+
+.mobile-expand {
+    width: 100%;
+    height: 36px;
+
+    margin-top: 10px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: rgba(255,255,255,.05);
+    color: var(--text);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+.mobile-expand {
+
+    width: 100%;
+    height: 36px;
+
+    margin-top: 10px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: rgba(255,255,255,.05);
+    color: var(--text);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .15s;
+}
+
+.mobile-expand:active {
+    transform: scale(.98);
+}
+
+.mobile-result-details {
+
+    margin-top: 12px;
+    padding-top: 12px;
+
+    border-top:
+        1px solid var(--border);
+}
+/* =========================
+   GLOBAL SAFETY
+========================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* =========================
+   OVERLAY
+========================= */
+.modal {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+
+    overflow-x: hidden;
+}
+
+/* =========================
+   PANEL (DESKTOP DEFAULT)
+========================= */
+.modal-content {
+    position: relative;
+
+    width: 95%;
+    max-width: 600px;
+
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background: var(--card);
+    border-radius: 14px;
+    padding: 20px;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+
+    font-size: 28px;
+    cursor: pointer;
+    user-select: none;
+
+    color: var(--text);
+    opacity: 0.85;
+
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+
+    transition: 0.15s;
+}
+
+.close:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* =========================
+   MOBILE (BOTTOM SHEET STYLE)
+========================= */
+@media (max-width: 768px) {
+
+    .modal-content {
+        width: 100%;
+        max-width: none;
+
+        height: 85vh;
+
+        position: absolute;
+        bottom: 0;
+
+        border-radius: 18px 18px 0 0;
+    }
+}
+
+/* =========================
+   THEMES (IMPORTANT FIX)
+========================= */
+
+/* DARK - לא שקוף! */
+body.theme-dark {
+    --card: #111827;
+    --text: #ffffff;
+}
+
+/* LIGHT */
+body.theme-light {
+    --card: #ffffff;
+    --text: #111827;
+}
+
+/* =========================
+   SAFE TEXT WRAP (FIX OVERFLOW)
+========================= */
+.mobile-field-value,
+.drill-value,
+.mobile-result-card,
+.modal-content * {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+
+    font-size: 28px;
+    cursor: pointer;
+    user-select: none;
+
+    color: var(--text);
+    opacity: 0.85;
+
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+
+    transition: opacity 0.15s ease;
+}
+
+.close:hover {
+    opacity: 1;
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px;
+}
+.close {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-result-card {
+    overflow: visible; /* חשוב */
+}
+.mobile-expand {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+
+    padding: 10px;
+    border: none;
+
+    background: rgba(255,255,255,0.06);
+    color: var(--text);
+
+    border-radius: 8px;
+    cursor: pointer;
+
+    font-size: 14px;
+}
+.mobile-expand {
+    position: relative;
+    z-index: 2;
+}
+body.theme-dark .mobile-expand {
+    background: rgba(255,255,255,0.06);
+}
+
+body.theme-light .mobile-expand {
+    background: rgba(0,0,0,0.06);
+}
+.mobile-result-details {
+    margin-top: 10px;
+    padding: 10px;
+
+    border-radius: 10px;
+    background: rgba(255,255,255,0.04);
+
+    border-left: 2px solid var(--text);
+
+    max-height: 280px;
+    overflow-y: auto;
+
+    animation: fadeIn 0.2s ease;
+}
+body.theme-dark .mobile-query-card {
+    background: #111827 !important;
+    border: 1px solid rgba(255,255,255,0.04) !important;
+}
+
+body.theme-dark .mobile-query-card:hover {
+    background: #111 !important;
+}
+body.theme-dark {
+    --bg: #000000;
+    --surface: #111827;
+    --card: #0f0f0f;
+    --card-2: #121212;
+
+    --border: rgba(255,255,255,0.06);
+    --text: #ffffff;
+    --muted: #9ca3af;
+
+    --primary: #3b82f6;
+    --primary-2: #1d4ed8;
+
+    --glass: rgba(255,255,255,0.04);
+}
+body.theme-dark {
+    --blue-glow: transparent;
+}
+.mobile-drill {
+    color: var(--text) !important;
+}
+
+.mobile-drill::before {
+    background: rgba(255,255,255,0.08) !important;
+}
+
+.mobile-drill:hover {
+    background: rgba(255,255,255,0.05) !important;
+}
+body.theme-dark .mobile-query-card,
+body.theme-dark .mobile-card,
+body.theme-dark .mobile-result-card {
+    background: #0b0b0b !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+}
+body.theme-dark .mobile-query-card:hover {
+    background: #111 !important;
+    border-color: rgba(255,255,255,0.10) !important;
+}
+body.theme-dark .quick-search-box {
+    background: #111827 !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+}
+.quick-item:hover {
+    background: rgba(255,255,255,0.06) !important;
+}
+
+body.theme-dark .quick-item.active {
+    background: rgba(255,255,255,0.06) !important;
+    border: 1px solid rgba(255,255,255,0.10) !important;
+}
+.quick-item:hover {
+    background: rgba(255,255,255,0.04) !important;
+}
+body.theme-dark #quickSearchInput {
+    background: #0b0b0b !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    color: #fff;
+}
+body.theme-dark .quick-search-box {
+    background: #0b0b0b !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+}
+body.theme-dark .mobile-query-card {
+    border-color: rgba(255,255,255,0.06) !important;
+}
+body.theme-dark .mobile-query-card::before {
+    background: radial-gradient(
+        circle at top left,
+        rgba(255,255,255,0.03),
+        transparent 60%
+    ) !important;
+}
+body.theme-dark .mobile-query-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,255,255,0.10) !important;
+    background: #111 !important;
+}
+body.theme-dark .mobile-query-card {
+    background: #0b0b0b;
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: none;
+}
+.mobile-query-card {
+    padding-left: 14px;
+}
+.mobile-card {
+    position: relative;
+    overflow: hidden;
+}
+.mobile-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--c);
+}
+.mobile-card::before {
+    box-shadow: 0 0 10px var(--c);
+}
+
+/* =========================================
+   MAIN → MOBILE MODE
+========================================= */
+
+body.mobile-mode #mainContent .content-wrapper {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 14px;
+}
+
+/* מבטל את ה-grid של הדסקטופ */
+body.mobile-mode .modules-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px;
+}
+
+/* כרטיס מודול */
+body.mobile-mode .module-card {
+
+    width: 100%;
+    min-height: unset !important;
+
+    padding: 12px 14px;
+
+    border-radius: 16px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+
+    box-sizing: border-box;
+}
+
+/* שורת עליונה */
+body.mobile-mode .module-top {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* כותרת */
+body.mobile-mode .module-title {
+    font-size: 15px;
+    font-weight: 800;
+    margin: 0;
+}
+
+/* תת כותרת */
+body.mobile-mode .module-sub {
+    font-size: 12px;
+    opacity: .75;
+    margin: 0;
+}
+
+/* כפתור */
+body.mobile-mode .module-open-btn {
+
+    width: 110px;
+    height: 36px;
+
+    margin-top: 6px;
+    margin-right: auto;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+/* badge קטן */
+body.mobile-mode .module-badge {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+    font-weight: 800;
+}

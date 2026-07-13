@@ -1,0 +1,3605 @@
+* {
+    box-sizing: border-box;
+}
+/* =========================
+   DESIGN TOKENS
+========================= */
+
+:root {
+    --bg: #0b1220;
+    --glass: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.12);
+
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+
+    --primary: #3b82f6;
+    --primary2: #2563eb;
+
+    --danger: #ef4444;
+
+    --shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+/* =========================
+   BASE
+========================= */
+
+body.erp-app {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: radial-gradient(circle at top, #0f172a, #020617);
+    color: var(--text);
+    direction: rtl;
+    text-align: right;
+}
+
+/* =========================
+   APP LAYOUT
+========================= */
+
+.app-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container {
+    padding: 20px;
+}
+
+/* =========================
+   HEADER (CLEAN FIX)
+========================= */
+
+.app-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 12px 16px;
+
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(16px);
+
+    border-bottom: 1px solid var(--border);
+}
+
+/* LOGO */
+.app-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.app-logo img {
+    height: 40px;
+    background: white;
+    padding: 6px 10px;
+    border-radius: 10px;
+}
+
+/* RIGHT SIDE */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* =========================
+   INPUTS + SELECT
+========================= */
+
+input,
+select {
+    font-family: inherit;
+    padding: 10px;
+    border-radius: 10px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,0.04);
+    color: var(--text);
+
+    outline: none;
+}
+
+/* FIX DROPDOWN VISIBILITY */
+select option {
+    background: #0f172a;
+    color: white;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: none;
+
+    cursor: pointer;
+    font-weight: 600;
+
+    background: rgba(59,130,246,0.15);
+    color: var(--text);
+
+    transition: 0.2s;
+}
+
+button:hover {
+    background: rgba(59,130,246,0.3);
+}
+
+.logout-btn {
+    background: rgba(239,68,68,0.15);
+}
+
+.logout-btn:hover {
+    background: rgba(239,68,68,0.3);
+}
+
+/* =========================
+   DASHBOARD GRID
+========================= */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+}
+
+/* CARD */
+.card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    padding: 18px;
+
+    box-shadow: var(--shadow);
+    transition: 0.2s ease;
+
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card-title {
+    font-weight: 700;
+}
+
+.card-desc {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* FAVORITE */
+.fav {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+}
+
+/* =========================
+   QUERY VIEW (FIXED UX)
+========================= */
+
+#query-area {
+    margin-top: 20px;
+}
+
+.query-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.query-card {
+    width: 100%;
+    max-width: 780px;
+
+    padding: 20px;
+    border-radius: 16px;
+
+    background: var(--glass);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+/* HEADER INSIDE QUERY */
+.query-topbar {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.back-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    background: rgba(255,255,255,0.06);
+}
+
+/* TITLE */
+.query-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* DESC */
+.query-desc {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 15px;
+}
+
+/* DIVIDER */
+.query-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    margin: 10px 0 15px;
+}
+
+/* INPUT FIELDS */
+.query-field {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 14px;
+    padding: 10px;
+
+    border-radius: 10px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.query-field label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+
+/* RUN BUTTON */
+.run-btn {
+    width: 100%;
+    padding: 12px;
+
+    border-radius: 10px;
+    border: none;
+
+    background: linear-gradient(135deg,var(--primary),var(--primary2));
+    color: white;
+
+    font-weight: 700;
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.run-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* EXPORT */
+.export-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    margin-top: 12px;
+}
+
+.export-bar button {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+}
+
+/* =========================
+   RESULTS TABLE (FULL WIDTH FIX)
+========================= */
+
+#results {
+    margin-top: 20px;
+    overflow-x: auto;
+    width: 100%;
+}
+
+#results table {
+    width: max-content;
+    min-width: 100%;
+
+    border-collapse: collapse;
+    background: var(--glass);
+    border-radius: 12px;
+}
+
+#results th {
+    background: rgba(15,23,42,0.9);
+    padding: 12px;
+    cursor: pointer;
+}
+
+#results td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+    z-index: 9999;
+}
+
+.modal-content {
+    background: rgba(15,23,42,0.95);
+    width: 850px;
+    max-width: 92%;
+
+    margin: 60px auto;
+    padding: 20px;
+
+    border-radius: 16px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .header-right {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    input,
+    select {
+        width: 100%;
+    }
+
+    .query-card {
+        max-width: 100%;
+    }
+}
+/* =========================
+   HARD LAYOUT FIX (HEADER + CENTERING)
+========================= */
+
+/* הגוף נשאר RTL לטבלאות */
+body.erp-app {
+    direction: rtl;
+}
+
+/* HEADER תמיד LTR כדי לשלוט בלייאאוט */
+.app-header {
+    direction: ltr;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* לוגו תמיד שמאל */
+.app-logo {
+    order: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* צד ימין (חיפוש וכו') */
+.header-right {
+    order: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* =========================
+   CENTER QUERY CARD (הבעיה שלך)
+========================= */
+
+.query-layout {
+    width: 100%;
+    display: flex;
+    justify-content: center;   /* 🔥 מרכז אמיתי */
+    align-items: flex-start;
+}
+
+.query-card {
+    margin: 0 auto;            /* ביטוח כפול */
+}
+/* =========================
+   TABLE TOOLBAR ALIGN FIX
+========================= */
+/* =========================
+   TABLE TOOLBAR V6
+========================= */
+
+.table-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 12px;
+    gap: 10px;
+}
+
+/* צד שמאל */
+.table-counter {
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+/* צד ימין */
+.table-filter {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* input נקי */
+.table-filter input {
+    width: 240px;
+    max-width: 100%;
+}
+
+/* =========================
+   TABLE WRAPPER (FIX SCROLL)
+========================= */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* =========================
+   CLICKABLE CELL
+========================= */
+
+.clickable-cell {
+    color: #60a5fa;
+    cursor: pointer;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.table-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    direction: ltr;   /* 🔥 מונע RTL לשבור סדר */
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+/* כל צד חוזר ל־RTL פנימי */
+.table-counter,
+.table-filter {
+    direction: rtl;
+}
+
+/* חיפוש תמיד צמוד לימין */
+.table-filter {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+/* input */
+.table-filter input {
+    width: 240px;
+    max-width: 100%;
+}
+.table-toolbar {
+    display: grid;
+
+    grid-template-columns: 1fr auto; 
+    /* שמאל = counter | ימין = filter */
+
+    align-items: center;
+    width: 100%;
+
+    margin-bottom: 12px;
+
+    direction: ltr; /* 🔥 שוברים RTL כאן */
+}
+
+/* צד שמאל */
+.table-counter {
+    text-align: left;
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+/* צד ימין */
+.table-filter {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.table-filter input {
+    width: 240px;
+}
+.home-btn {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    color: var(--text);
+
+    padding: 10px 12px;
+    border-radius: 10px;
+
+    cursor: pointer;
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.home-btn:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: var(--border);
+}
+/* =====================================
+   DRILL
+===================================== */
+
+.modal{
+
+    position:fixed;
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.65);
+
+    z-index:99999;
+
+    backdrop-filter:blur(8px);
+
+}
+
+.modal-content{
+
+    position:relative;
+
+    width:min(900px,95vw);
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    background:#0f172a;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:28px;
+
+    padding:30px;
+
+    box-shadow:
+        0 40px 80px rgba(0,0,0,.5);
+
+}
+
+.close{
+
+    position:absolute;
+
+    top:18px;
+    right:24px;
+
+    color:white;
+
+    font-size:32px;
+
+    cursor:pointer;
+
+}
+
+
+/* HEADER */
+
+.drill-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin-bottom:30px;
+
+}
+
+.drill-icon{
+
+    width:70px;
+    height:70px;
+
+    border-radius:22px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    font-size:34px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #3b82f6,
+            #2563eb
+        );
+
+}
+
+.drill-title{
+
+    font-size:28px;
+
+    font-weight:900;
+
+    color:white;
+
+}
+
+.drill-subtitle{
+
+    margin-top:5px;
+
+    color:#94a3b8;
+
+}
+
+
+/* BODY */
+
+.drill-body{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+
+/* ROW */
+
+.drill-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    padding:18px 22px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.15s;
+
+}
+
+.drill-row:hover{
+
+    transform:translateY(-2px);
+
+    background:rgba(255,255,255,.06);
+
+}
+
+
+/* LABEL */
+
+.drill-label{
+
+    color:#94a3b8;
+
+    font-weight:700;
+
+}
+
+
+/* VALUE */
+
+.drill-value{
+
+    color:white;
+
+    font-weight:900;
+
+    text-align:left;
+
+    word-break:break-word;
+
+}
+
+
+/* MOBILE */
+
+@media (max-width:768px){
+
+    .modal-content{
+
+        width:100vw;
+
+        height:100vh;
+
+        max-height:none;
+
+        border-radius:0;
+
+        padding:24px;
+
+    }
+
+    .drill-row{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:10px;
+
+    }
+
+    .drill-value{
+
+        font-size:18px;
+
+    }
+
+}
+.back-btn {
+    width: 100%;
+
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-bottom: 18px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-weight: 800;
+
+    color: #fff;
+
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.18);
+
+    transition: 0.2s ease;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+.back-btn:hover {
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.25);
+    transform: translateY(-1px);
+}
+
+.back-btn:active {
+    transform: scale(0.98);
+}
+.back-btn {
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.06),
+        rgba(255,255,255,0.03)
+    );
+}
+/* =========================================
+   DARK / LIGHT OVERRIDE (SAFE PATCH)
+========================================= */
+
+/* DARK (ברירת מחדל – מה שיש לך עכשיו) */
+body.theme-dark {
+    --bg: #0b1220;
+    --glass: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.12);
+
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+
+    --primary: #3b82f6;
+    --primary2: #2563eb;
+
+    --shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+/* LIGHT MODE */
+body.theme-light {
+    --bg: #f5f7fb;
+    --glass: #ffffff;
+    --border: rgba(15,23,42,0.10);
+
+    --text: #0f172a;
+    --muted: #475569;
+
+    --primary: #2563eb;
+    --primary2: #1d4ed8;
+
+    --shadow: 0 20px 50px rgba(15,23,42,0.08);
+}
+
+/* =========================================
+   APPLY BACKGROUND SWITCH (IMPORTANT)
+========================================= */
+
+body.theme-dark.erp-app {
+    background: radial-gradient(circle at top, #0f172a, #020617);
+}
+
+body.theme-light.erp-app {
+    background: #f5f7fb;
+}
+
+/* cards stay consistent */
+.card,
+.query-card,
+.modal-content,
+.drill-row {
+    background: var(--glass);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+/* inputs fix */
+input,
+select {
+    background: var(--glass);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+/* dropdown fix */
+select option {
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* =========================
+   DESIGN TOKENS
+========================= */
+
+:root {
+    --bg: #0b1220;
+    --glass: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.12);
+
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+
+    --primary: #3b82f6;
+    --primary2: #2563eb;
+
+    --danger: #ef4444;
+
+    --shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+/* =========================
+   BASE
+========================= */
+
+body.erp-app {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: radial-gradient(circle at top, #0f172a, #020617);
+    color: var(--text);
+    direction: rtl;
+    text-align: right;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.app-header {
+    background: var(--glass);
+    border-bottom: 1px solid var(--border);
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+input,
+select {
+    background: var(--glass);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+select option {
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    color: var(--text);
+}
+
+.back-btn {
+    color: var(--text);
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card,
+.query-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.card-desc {
+    color: var(--muted);
+}
+
+/* =========================
+   QUERY
+========================= */
+
+.query-desc {
+    color: var(--muted);
+}
+
+.query-field {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.query-field label {
+    color: var(--muted);
+}
+
+/* =========================
+   TABLE
+========================= */
+
+#results th {
+    background: var(--glass);
+    color: var(--text);
+}
+
+#results td {
+    color: var(--text);
+}
+
+/* =========================
+   MODAL / DRILL
+========================= */
+
+.modal-content {
+    background: var(--glass);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.drill-title {
+    color: var(--text);
+}
+
+.drill-subtitle {
+    color: var(--muted);
+}
+
+.drill-label {
+    color: var(--muted);
+}
+
+.drill-value {
+    color: var(--text);
+}
+
+.close {
+    color: var(--text);
+}
+
+/* =========================
+   ICON GRADIENT (SAFE)
+========================= */
+
+.drill-icon {
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary2)
+    );
+}
+
+/* =========================
+   BACKGROUND THEMES
+========================= */
+
+body.theme-dark.erp-app {
+    background: radial-gradient(circle at top, #0f172a, #020617);
+}
+
+body.theme-light.erp-app {
+    background: #f5f7fb;
+}
+
+/* =========================
+   LIGHT MODE VARIABLES
+========================= */
+
+body.theme-light {
+    --bg: #f5f7fb;
+    --glass: #ffffff;
+    --border: rgba(15,23,42,0.10);
+
+    --text: #0f172a;
+    --muted: #475569;
+
+    --primary: #2563eb;
+    --primary2: #1d4ed8;
+
+    --shadow: 0 20px 50px rgba(15,23,42,0.08);
+}
+/* =========================
+   COMPACT QUERY UX FIX
+   (ONLY DENSITY / SPACING)
+========================= */
+
+/* CARD פחות גבוה */
+.query-card {
+    padding: 14px 16px;
+}
+
+/* שדות יותר צפופים */
+.query-field {
+    margin-bottom: 10px;
+    padding: 8px 10px;
+}
+
+/* label קטן יותר */
+.query-field label {
+    font-size: 11px;
+    margin-bottom: 4px;
+    color: var(--muted);
+}
+
+/* inputs קומפקטיים */
+input,
+select {
+    padding: 8px 10px;
+    border-radius: 8px;
+}
+
+/* כפתור RUN פחות גבוה */
+.run-btn {
+    padding: 10px;
+}
+
+/* רווחים כלליים */
+.query-divider {
+    margin: 8px 0 10px;
+}
+
+/* MAIN CONTAINER פחות padding */
+.main-container {
+    padding: 14px;
+}
+
+
+
+
+/* =========================
+   WRAPPER
+========================= */
+
+.table-wrapper {
+    width: 100%;
+    max-height: 70vh;
+    overflow: auto;
+    position: relative;
+}
+
+/* =========================
+   TABLE CORE
+========================= */
+
+#results table {
+    width: 100%;
+    table-layout: fixed;   /* קריטי */
+    border-collapse: collapse;
+}
+
+/* =========================
+   LOCK ALL CELLS
+========================= */
+
+#results th,
+#results td {
+    box-sizing: border-box;
+
+    min-width: 0;
+    max-width: 0;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+#results th {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: var(--glass);
+    color: var(--text);
+    backdrop-filter: blur(10px);
+
+    padding: 10px 12px;
+    font-size: 13px;
+    font-weight: 800;
+
+    border-bottom: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+
+    user-select: none;
+}
+
+/* =========================
+   CELLS
+========================= */
+
+#results td {
+    padding: 8px 10px;
+    font-size: 13px;
+
+    color: var(--text);
+
+    border-bottom: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+}
+
+/* =========================
+   ZEBRA
+========================= */
+
+#results tbody tr:nth-child(odd) td {
+    background: rgba(255,255,255,0.015);
+}
+
+/* =========================
+   HOVER
+========================= */
+
+#results tbody tr:hover td {
+    background: rgba(59,130,246,0.10);
+}
+
+/* =========================
+   RESIZER HANDLE
+========================= */
+
+.col-resizer {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    width: 5px;
+    height: 100%;
+
+    cursor: col-resize;
+}
+
+.col-resizer:hover {
+    background: rgba(59,130,246,0.25);
+}
+
+#results table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+#results th,
+#results td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.clickable-cell {
+    cursor: pointer;
+}
+
+/* הטקסט בלבד */
+.cell-link {
+    color: #60a5fa;
+    font-weight: 700;
+
+    position: relative;
+    display: inline-block;
+
+    transition: 0.15s ease;
+}
+
+/* hover */
+.clickable-cell:hover .cell-link {
+    color: #93c5fd;
+}
+
+/* underline רק על הטקסט */
+.cell-link::after {
+    content: "";
+    position: absolute;
+
+    left: 0;
+    bottom: -2px;
+
+    width: 100%;
+    height: 1px;
+
+    background: rgba(96,165,250,0.6);
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition: 0.15s ease;
+}
+
+.clickable-cell:hover .cell-link::after {
+    transform: scaleX(1);
+}
+
+/* אייקון קטן */
+.cell-link::before {
+    content: "🔎 ";
+    opacity: 0.7;
+    font-size: 12px;
+}
+/* =========================
+   DRILL - COMPACT FIX (DESKTOP)
+========================= */
+
+.modal-content {
+
+    width: min(720px, 92vw);   /* היה 900px → עכשיו יותר קומפקטי */
+
+    padding: 20px;            /* היה 30px */
+    border-radius: 20px;      /* קצת יותר עדין */
+
+    max-height: 85vh;         /* קצת פחות גובה */
+}
+
+/* כותרת דריל יותר קטנה */
+.drill-title {
+    font-size: 22px;          /* היה 28px */
+}
+
+/* אייקון קטן יותר */
+.drill-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 26px;
+    border-radius: 16px;
+}
+
+/* שורות פחות גבוהות */
+.drill-row {
+    padding: 12px 16px;       /* היה 18px 22px */
+    border-radius: 14px;
+}
+
+/* ערכים קצת יותר קומפקטיים */
+.drill-value {
+    font-size: 14px;
+}
+
+/* רווח כללי קטן יותר */
+.drill-body {
+    gap: 10px;
+}
+
+
+/* =========================
+   COMMAND PALETTE
+========================= */
+
+.cmd-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    z-index: 999999;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding-top: 10vh;
+}
+
+.cmd-box {
+    width: min(720px, 92vw);
+
+    background: var(--glass);
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+}
+
+/* INPUT */
+.cmd-input {
+    width: 100%;
+    padding: 14px 16px;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+    color: var(--text);
+
+    font-size: 15px;
+    font-weight: 600;
+
+    border-bottom: 1px solid var(--border);
+}
+
+/* RESULTS */
+.cmd-results {
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+/* ITEM */
+.cmd-item {
+    padding: 12px 14px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    cursor: pointer;
+
+    transition: 0.15s ease;
+}
+
+.cmd-item:hover {
+    background: rgba(59,130,246,0.12);
+}
+
+.cmd-title {
+    font-weight: 700;
+    color: var(--text);
+}
+
+.cmd-sub {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.cmd-tag {
+    font-size: 11px;
+    padding: 3px 8px;
+
+    border-radius: 8px;
+
+    background: rgba(59,130,246,0.15);
+    color: #93c5fd;
+}
+.cmd-item.active {
+    background: rgba(59,130,246,0.18);
+    border-right: 3px solid #3b82f6;
+}
+
+.cmd-item {
+    transition: 0.15s ease;
+}
+
+/* =========================
+   FORCE STICKY WORKING MODE
+========================= */
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* 🔥 הכי חשוב בעולם */
+body {
+    overflow-y: auto;
+}
+
+/* 🚫 מבטל כל scroll פנימי ששובר sticky */
+.app-shell,
+.main-container,
+.mobile-app,
+.query-layout {
+    overflow: visible !important;
+    height: auto !important;
+}
+.app-header,
+.mobile-header {
+    position: sticky;
+    top: 0;
+    z-index: 99999;
+
+    background: var(--glass);
+    backdrop-filter: blur(16px);
+
+    border-bottom: 1px solid var(--border);
+}
+
+/* =====================================================
+   WEBUP V5 OVERRIDE
+   (ADD ONLY - DO NOT DELETE OLD CSS YET)
+===================================================== */
+
+/* =====================
+   THEMES
+===================== */
+
+body.theme-dark {
+    --bg: #050505;
+    --glass: #0d0d0d;
+    --surface: #161616;
+    --border: #262626;
+
+    --text: #ffffff;
+    --muted: #9ca3af;
+
+    --primary: #22c55e;
+    --primary2: #16a34a;
+
+    --shadow:
+        0 10px 40px rgba(0,0,0,.45);
+}
+
+body.theme-light {
+    --bg: #ffffff;
+    --glass: #ffffff;
+    --surface: #f8fafc;
+    --border: #e5e7eb;
+
+    --text: #111111;
+    --muted: #64748b;
+
+    --primary: #22c55e;
+    --primary2: #16a34a;
+
+    --shadow:
+        0 10px 30px rgba(0,0,0,.08);
+}
+
+/* =====================
+   BODY
+===================== */
+
+body.theme-dark.erp-app {
+    background: var(--bg);
+}
+
+body.theme-light.erp-app {
+    background: var(--bg);
+}
+
+/* =====================
+   HEADER
+===================== */
+
+.app-header {
+
+    background: rgba(10,10,10,.88);
+
+    backdrop-filter: blur(20px);
+
+    border-bottom: 1px solid var(--border);
+
+    padding: 14px 20px;
+
+    box-shadow:
+        0 5px 30px rgba(0,0,0,.15);
+}
+
+body.theme-light .app-header {
+
+    background:
+        rgba(255,255,255,.92);
+}
+
+.app-logo img {
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.15);
+}
+
+/* =====================
+   INPUTS
+===================== */
+
+input,
+select {
+
+    background: var(--glass);
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+}
+
+input:focus,
+select:focus {
+
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(34,197,94,.15);
+}
+
+select option {
+
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* =====================
+   BUTTONS
+===================== */
+
+button {
+
+    background: var(--surface);
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    font-weight: 700;
+
+    transition: .15s;
+}
+
+button:hover {
+
+    transform: translateY(-1px);
+
+    background: #202020;
+}
+
+body.theme-light button:hover {
+
+    background: #f1f5f9;
+}
+
+/* =====================
+   ACTION BUTTONS
+===================== */
+
+.run-btn {
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #16a34a
+        ) !important;
+
+    border: none !important;
+
+    color: white !important;
+}
+
+.run-btn:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #16a34a,
+            #15803d
+        ) !important;
+}
+
+.export-bar button {
+
+    background:
+        #f97316 !important;
+
+    color:
+        white !important;
+
+    border:
+        none !important;
+}
+
+.export-bar button:hover {
+
+    background:
+        #ea580c !important;
+}
+
+.logout-btn {
+
+    background:
+        #ef4444 !important;
+
+    color:
+        white !important;
+}
+
+.logout-btn:hover {
+
+    background:
+        #dc2626 !important;
+}
+
+/* =====================
+   FAVORITES
+===================== */
+
+.fav {
+
+    color: #facc15;
+
+    font-size: 20px;
+}
+
+/* =====================
+   DASHBOARD CARDS
+===================== */
+
+.card {
+
+    background:
+        var(--glass);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        20px;
+
+    padding:
+        20px;
+
+    box-shadow:
+        var(--shadow);
+
+    transition:
+        .15s;
+
+    overflow:
+        hidden;
+}
+
+.card:hover {
+
+    transform:
+        translateY(-4px);
+
+    background:
+        var(--surface);
+
+    border-color:
+        #404040;
+}
+
+.card-title {
+
+    font-size:
+        18px;
+
+    font-weight:
+        800;
+
+    margin-bottom:
+        10px;
+}
+
+.card-desc {
+
+    color:
+        var(--muted);
+
+    line-height:
+        1.5;
+}
+
+/* =====================
+   QUERY CARD
+===================== */
+
+.query-card {
+
+    background:
+        var(--glass);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        20px;
+
+    box-shadow:
+        var(--shadow);
+}
+
+.query-field {
+
+    background:
+        var(--surface);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        12px;
+}
+
+.query-divider {
+
+    background:
+        var(--border);
+}
+
+/* =====================
+   BACK BUTTON
+===================== */
+
+.back-btn {
+
+    background:
+        #2563eb !important;
+
+    color:
+        white !important;
+
+    border:
+        none !important;
+}
+
+.back-btn:hover {
+
+    background:
+        #1d4ed8 !important;
+}
+
+/* =====================
+   TABLES
+===================== */
+
+#results table {
+
+    background:
+        var(--glass);
+
+    border:
+        1px solid var(--border);
+}
+
+#results th {
+
+    background:
+        var(--surface);
+
+    color:
+        var(--text);
+
+    border-color:
+        var(--border);
+}
+
+#results td {
+
+    color:
+        var(--text);
+
+    border-color:
+        var(--border);
+}
+
+#results tbody tr:nth-child(odd) td {
+
+    background:
+        rgba(255,255,255,.02);
+}
+
+body.theme-light
+#results tbody tr:nth-child(odd) td {
+
+    background:
+        rgba(0,0,0,.02);
+}
+
+#results tbody tr:hover td {
+
+    background:
+        rgba(34,197,94,.10);
+}
+
+/* =====================
+   CLICKABLE CELLS
+===================== */
+
+.cell-link {
+
+    color:
+        #22c55e;
+}
+
+.clickable-cell:hover .cell-link {
+
+    color:
+        #4ade80;
+}
+
+/* =====================
+   MODAL
+===================== */
+
+.modal-content {
+
+    background:
+        var(--glass);
+
+    border:
+        1px solid var(--border);
+
+    color:
+        var(--text);
+
+    box-shadow:
+        var(--shadow);
+}
+
+.drill-row {
+
+    background:
+        var(--surface);
+
+    border:
+        1px solid var(--border);
+}
+
+/* =====================
+   COMMAND PALETTE
+===================== */
+
+.cmd-box {
+
+    background:
+        var(--glass);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        20px;
+}
+
+.cmd-item:hover {
+
+    background:
+        rgba(34,197,94,.12);
+}
+
+.cmd-item.active {
+
+    background:
+        rgba(34,197,94,.18);
+
+    border-right:
+        3px solid #22c55e;
+}
+
+.cmd-tag {
+
+    background:
+        rgba(34,197,94,.15);
+
+    color:
+        #4ade80;
+}
+.card-open-btn {
+    width: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    margin-top: 14px;
+    padding: 12px;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary2)
+    );
+
+    box-shadow:
+        0 8px 20px rgba(37,99,235,.25);
+
+    transition: .18s ease;
+}
+
+.card-open-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 12px 26px rgba(37,99,235,.35);
+}
+
+.card-open-btn:active {
+    transform: scale(.98);
+}
+
+body.theme-light .card-open-btn {
+    box-shadow:
+        0 8px 18px rgba(37,99,235,.15);
+}
+.card {
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 5px;
+    height: 100%;
+
+    background: var(--card-color,#3b82f6);
+}
+.card-icon {
+
+    width: 56px;
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 14px;
+
+    border-radius: 16px;
+
+    font-size: 28px;
+
+    background: rgba(255,255,255,0.06);
+
+    border: 1px solid var(--border);
+
+    backdrop-filter: blur(10px);
+}
+
+body.theme-light .card-icon{
+    background:#f8fafc;
+}
+.card {
+
+    transition:
+        transform .18s,
+        box-shadow .18s,
+        border-color .18s;
+}
+
+.card:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(59,130,246,.4);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.25);
+}
+.card {
+    padding: 14px;
+    border-radius: 14px;
+    min-height: 100px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.card-icon {
+    width: 42px;
+    height: 42px;
+
+    font-size: 20px;
+
+    border-radius: 12px;
+
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-size: 15px;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.card-desc {
+    font-size: 12px;
+    line-height: 1.4;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;   /* מקסימום 2 שורות */
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+.card-open-btn {
+
+    margin-top: auto;
+
+    height: 36px;
+    padding: 0 14px;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        135deg,
+        #f59e0b,
+        #ea580c
+    );
+
+    color: white;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    box-shadow:
+        0 6px 18px rgba(234,88,12,.25);
+}
+
+.card-open-btn:hover {
+    transform: translateY(-1px);
+}
+.card::before {
+    width: 100%;
+    height: 3px;
+    top: 0;
+    left: 0;
+
+    background: var(--card-color);
+}
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: var(--card-color, transparent);
+}
+.card {
+    position: relative;
+    overflow: hidden;
+}
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: var(--card-color);
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: radial-gradient(
+        circle at top right,
+        var(--card-color),
+        transparent 60%
+    );
+
+    opacity: 0.06;
+    pointer-events: none;
+}
+}
+.card {
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--card-color, transparent);
+}
+.card {
+    position: relative;
+    overflow: hidden;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+}
+
+/* CARD - FIXED HEIGHT */
+.card {
+    height: 100px;
+    padding: 12px 14px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+/* TOP ROW */
+.card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* ICON */
+.card-icon {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+
+    background: rgba(255,255,255,0.06);
+.card {
+    height: auto !important;
+    min-height: 120px;     /* אם אתה רוצה אחידות */
+    
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-start !important;
+
+    gap: 6px;
+
+    padding: 12px 14px;
+
+    overflow: hidden;
+}
+    border-radius: 10px;
+
+    flex-shrink: 0;
+}
+
+/* TEXT AREA */
+.card-meta {
+    flex: 1;
+    overflow: hidden;
+}
+
+/* TITLE */
+.card-title {
+    font-size: 13px;
+    font-weight: 700;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* MODULE */
+.card-module {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+}
+
+/* DESC */
+.card-desc {
+    font-size: 12px;
+    color: var(--muted);
+
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* OPEN BUTTON - SMALL */
+.card-open-btn {
+    width: 30px;
+    height: 30px;
+
+    border-radius: 8px;
+
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.05);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: 0.15s ease;
+}
+
+.card-open-btn:hover {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-1px);
+}
+/* פס עדין פנימי במקום border */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 3px;
+    height: 100%;
+
+    background: var(--accent);
+
+    opacity: 0.8;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+
+    padding: 14px 14px 12px;
+
+    border-radius: 14px;
+
+    background: var(--glass);
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow);
+
+    height: 170px;              /* 🔥 אחיד לכל הכרטיסים */
+    overflow: hidden;
+
+    transition: 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+/* אייקון */
+.card-icon {
+    font-size: 20px;
+    line-height: 1;
+    margin-top: 18px; /* נותן מקום ל-fav */
+}
+
+/* כותרת */
+.card-title {
+    font-size: 14px;
+    font-weight: 700;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* תיאור – מוגבל כדי לא לשבור גובה */
+.card-desc {
+    font-size: 12px;
+    color: var(--muted);
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;   /* 🔥 מקסימום 2 שורות */
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+/* FAV */
+.fav {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+.card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* אייקון קבוע */
+.card-icon {
+    flex: 0 0 auto;
+}
+
+/* אזור טקסט חייב לתפוס מקום */
+.card-meta {
+    flex: 1;
+    min-width: 0; /* 🔥 קריטי ל-ellipsis */
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* כותרת */
+.card-title {
+    font-size: 14px;
+    font-weight: 700;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* מודול */
+.card-module {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+/* כפתור */
+.card-open-btn {
+    flex: 0 0 auto;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-start; /* 🔥 קריטי */
+    gap: 6px;
+
+    height: 100px;
+
+    padding: 14px;
+
+    overflow: hidden;
+}
+.card-desc {
+    margin-top: 4px;   /* במקום רווחים לא נשלטים */
+    line-height: 1.3;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+.card {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-desc {
+    flex: 1;
+    overflow: hidden;
+}
+.card-desc {
+    margin: 0;
+}
+body.theme-light .card-open-btn {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    border: none;
+}
+body.theme-light .card-open-btn:hover {
+    filter: brightness(1.05);
+}
+body.theme-light .card-open-btn {
+    background: rgba(37, 99, 235, 0.12);
+    color: #1d4ed8;
+    border: 1px solid rgba(37, 99, 235, 0.25);
+}
+body.theme-light .card-open-btn:hover {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+.card-open-btn {
+    transition: all 0.15s ease;
+}
+body.theme-light .card-open-btn {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+body.theme-light .card-open-btn:hover {
+    background: var(--accent);
+    color: white;
+}
+/* =========================
+   QUERY CONTAINER
+========================= */
+
+.query-card {
+    padding: 12px 14px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* =========================
+   HEADER AREA
+========================= */
+
+.query-title {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.query-desc {
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+/* =========================
+   FORM LAYOUT (קומפקטי אמיתי)
+========================= */
+
+.query-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+}
+
+/* אם אין לך wrapper - עדיין עובד */
+.query-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    padding: 8px;
+    border-radius: 10px;
+}
+
+/* =========================
+   LABELS
+========================= */
+
+.query-field label {
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+/* =========================
+   INPUTS (קומפקטיים)
+========================= */
+
+.query-card input,
+.query-card select {
+    width: 100%;
+  
+    padding: 7px 10px;
+    font-size: 13px;
+
+    border-radius: 8px;
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.query-divider {
+    height: 1px;
+    margin: 6px 0;
+}
+
+/* =========================
+   BUTTONS (RUN + BACK)
+========================= */
+
+.run-btn,
+.back-btn {
+    height: 34px;
+    padding: 0 12px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    border-radius: 10px;
+}
+
+/* =========================
+   ACTION BAR (כפתורים למטה/למעלה)
+========================= */
+
+.query-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+/* RUN מודגש */
+.run-btn {
+    flex: 1;
+}
+
+/* BACK קטן */
+.back-btn {
+    flex: 0;
+}
+
+/* =========================
+   EXPORT BAR (אם קיים)
+========================= */
+
+.export-bar {
+    margin-top: 8px;
+    gap: 6px;
+}
+
+/* =========================
+   MOBILE FIX
+========================= */
+
+@media (max-width: 768px) {
+
+    .query-form {
+        grid-template-columns: 1fr;
+    }
+
+    .query-card input,
+    .query-card select {
+        max-width: 100%;
+    }
+
+    .run-btn,
+    .back-btn {
+        height: 36px;
+        font-size: 13px;
+    }
+}
+.query-card {
+    width: 100%;
+    max-width: 780px;
+    margin: 0 auto;
+
+    overflow: hidden; /* 🔥 מונע בריחה החוצה */
+}
+.query-card input,
+.query-card select {
+    width: 100%;
+    max-width: 100%;
+
+    display: block;
+}
+.run-btn,
+.back-btn {
+    width: auto;
+    max-width: 100%;
+    display: inline-flex;
+}
+.query-form {
+    width: 100%;
+    min-width: 0;   /* 🔥 קריטי למניעת overflow */
+}
+/* =========================
+   ACTIONS FIX
+========================= */
+
+.query-actions {
+    display: flex;
+    justify-content: center;  /* מרכז */
+    margin-top: 10px;
+}
+
+/* 🚨 זה הקריטי */
+.run-btn {
+    width: auto;          /* לא full width */
+    min-width: 160px;     /* גודל נורמלי */
+    max-width: 220px;
+
+    height: 36px;
+
+    padding: 0 16px;
+
+    border-radius: 10px;
+    font-size: 13px;
+}
+.run-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.run-icon {
+    font-size: 14px;
+}
+/* =========================
+   DATE INPUT DARK MODE FIX
+========================= */
+/* =========================
+   FORCE DATE ICON VISIBILITY (DARK MODE)
+========================= */
+
+input[type="date"] {
+    color-scheme: dark;
+
+    /* 🔥 קריטי - מחזיר native UI */
+    appearance: auto;
+    -webkit-appearance: auto;
+    -moz-appearance: auto;
+}
+
+/* Chrome / Edge calendar icon */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 1;
+    filter: invert(1) brightness(1.3);
+    cursor: pointer;
+}
+
+/* hover */
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 0.9;
+}
+/* WRAPPER לשדה תאריך */
+.query-date-wrap {
+    position: relative;
+    width: 100%;
+}
+
+/* ה-input עצמו */
+.query-date-wrap input[type="date"] {
+    width: 100%;
+    padding-right: 38px; /* מקום לאייקון */
+    cursor: pointer;
+}
+
+/* אייקון קליקבילי */
+.query-date-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    pointer-events: none;
+
+    font-size: 16px;
+    opacity: 0.7;
+}
+
+/* DARK MODE – שיהיה ברור שיש אינטראקציה */
+body.theme-dark .query-date-wrap {
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.03);
+}
+
+/* hover רמז ללחיצה */
+.query-date-wrap:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(34,197,94,0.12);
+}
+/* 🔥 הופך את ה-date icon לגלוי בדארק */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+/* hover שיהיה ברור שיש אינטראקציה */
+input[type="date"]:hover::-webkit-calendar-picker-indicator {
+    opacity: 1;
+}
+input[type="date"] {
+    cursor: pointer;
+}
+
+input[type="date"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(34,197,94,0.15);
+    border-color: var(--primary);
+}
+/* ===== INPUT BASE (DARK FIX) ===== */
+
+body.theme-dark input,
+body.theme-dark select {
+    background: rgba(255,255,255,0.06);  /* 🔥 לא שחור מדי */
+    border: 1px solid rgba(255,255,255,0.14);
+    color: #fff;
+}
+
+/* hover */
+body.theme-dark input:hover,
+body.theme-dark select:hover {
+    border-color: rgba(34,197,94,0.5);
+}
+
+/* focus */
+body.theme-dark input:focus,
+body.theme-dark select:focus {
+    background: rgba(255,255,255,0.08);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(34,197,94,0.15);
+}
+body.theme-dark input[type="date"] {
+    background: rgba(255,255,255,0.06) !important;
+    color-scheme: dark; /* 🔥 קריטי לדפדפן */
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.hidden{
+    display:none !important;
+}
+
+.modal{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    z-index:99999;
+}
+
+.modal-box{
+
+    width:min(420px,92vw);
+
+    background:var(--card);
+    color:var(--text);
+
+    border:1px solid var(--border);
+    border-radius:18px;
+
+    padding:24px;
+
+    text-align:center;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.35);
+}
+
+.logout-box h3{
+
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.logout-box p{
+
+    opacity:.8;
+    margin-bottom:22px;
+}
+
+.logout-actions{
+
+    display:flex;
+    gap:12px;
+    justify-content:center;
+}
+
+.logout-actions button{
+
+    flex:1;
+
+    padding:12px;
+
+    border:none;
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    transition:.2s;
+}
+
+.btn-secondary{
+
+    background:#6b7280;
+    color:#fff;
+}
+
+.btn-secondary:hover{
+
+    filter:brightness(1.1);
+}
+
+.btn-danger{
+
+    background:#dc2626;
+    color:#fff;
+}
+
+.btn-danger:hover{
+
+    background:#b91c1c;
+}
+.query-modal{
+    position:relative;
+}
+
+.modal-close{
+    position:absolute;
+    top:12px;
+    right:15px;
+}
+.query-modal-header {
+    position: relative;
+    padding-right: 45px;
+}
+.query-modal-header {
+    position: relative;
+    padding-inline-end: 45px;
+}
+.modal-close {
+    position: absolute;
+
+    top: 12px;
+    right: 15px;
+
+    width: 32px;
+    height: 32px;
+
+    font-size: 24px;
+    line-height: 28px;
+
+    cursor: pointer;
+
+    z-index: 9999;
+
+    background: transparent;
+    border: none;
+
+    pointer-events: auto;
+}
+.query-actions-bar {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    width:100%;
+
+    margin-top:15px;
+
+    margin-bottom:15px;
+
+}
+
+
+.query-actions-bar button {
+
+    height:38px;
+
+    padding:0 18px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+}
+
+
+.back-btn {
+
+    background:#374151;
+
+    color:white;
+
+}
+
+
+.excel-btn {
+
+    background:#16a34a;
+
+    color:white;
+
+}
+
+
+.pdf-btn {
+
+    background:#dc2626;
+
+    color:white;
+
+}
+.query-actions-bar {
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    width:100%;
+
+    direction:rtl;
+
+    margin-top:15px;
+
+    margin-bottom:15px;
+
+}
+
+
+.query-actions-right {
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+
+.query-actions-left {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    direction:ltr;
+
+}
+
+
+.query-actions-bar button {
+
+    height:38px;
+
+    padding:0 18px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+}
+
+
+.back-btn {
+
+    background:#374151;
+
+    color:white;
+
+}
+
+
+.excel-btn {
+
+    background:#16a34a;
+
+    color:white;
+
+}
+
+
+.pdf-btn {
+
+    background:#dc2626;
+
+    color:white;
+
+}
+.query-header-grid {
+
+    display:grid;
+
+    grid-template-columns: 1fr auto;
+
+    grid-template-rows: auto auto;
+
+    align-items:center;
+
+    width:100%;
+
+    gap:6px 15px;
+
+}
+
+
+/* שם השאילתא */
+
+.query-title {
+
+    grid-column:1;
+
+    grid-row:1;
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+/* =========================
+   QUERY HEADER GRID
+========================= */
+
+.query-header-grid {
+
+    display:grid;
+
+    grid-template-columns: 1fr auto;
+
+    grid-template-rows: auto auto;
+
+    align-items:center;
+
+    gap:6px 20px;
+
+}
+
+
+/* שם שאילתא */
+
+.query-title {
+
+    grid-column:1;
+
+    grid-row:1;
+
+}
+
+
+/* Back - שורה ראשונה */
+
+.header-back {
+
+    grid-column:2;
+
+    grid-row:1;
+
+    justify-self:end;
+
+}
+
+
+/* תיאור */
+
+.query-subtitle {
+
+    grid-column:1;
+
+    grid-row:2;
+
+    opacity:.75;
+
+}
+
+
+/* Excel + PDF - שורה שניה */
+
+.header-export {
+
+    grid-column:2;
+
+    grid-row:2;
+
+    display:flex;
+
+    gap:10px;
+
+    justify-self:end;
+
+}
+
+
+
+.query-header-grid button {
+
+    height:34px;
+
+    padding:0 15px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+}
+
+/* =========================
+   QUERY PARAM MODAL COMPACT
+========================= */
+
+.query-modal {
+
+    width: 460px;
+    max-width: 92vw;
+
+    padding: 18px;
+
+}
+
+
+/* HEADER */
+
+.query-modal-header {
+
+    margin-bottom:14px;
+
+}
+
+
+.query-modal-header .drill-title {
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+
+.query-modal-header .drill-subtitle {
+
+    font-size:13px;
+
+    opacity:.7;
+
+    margin-top:4px;
+
+}
+
+
+
+/* =========================
+   PARAMETERS GRID
+========================= */
+
+.query-form {
+
+    display:grid;
+
+    grid-template-columns:repeat(2, minmax(0,1fr));
+
+    gap:10px;
+
+}
+
+
+
+/* FIELD */
+
+.query-field {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:4px;
+
+}
+
+
+.query-field label {
+
+    font-size:12px;
+
+    font-weight:600;
+
+    opacity:.8;
+
+}
+
+
+
+/* INPUTS */
+
+.query-field input,
+.query-field select {
+
+    height:30px;
+
+    padding:0 8px;
+
+    font-size:13px;
+
+    border-radius:6px;
+
+}
+
+
+
+/* =========================
+   ACTIONS
+========================= */
+
+.query-actions {
+
+    margin-top:16px;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:8px;
+
+}
+
+
+
+.run-btn,
+.query-modal .back-btn {
+
+    height:32px;
+
+    padding:0 16px;
+
+    font-size:13px;
+
+    border-radius:6px;
+
+}
+
+
+
+/* =========================
+   SINGLE PARAMETER
+   CENTER SMALL
+========================= */
+
+.query-form:has(.query-field:only-child) {
+
+    grid-template-columns:280px;
+
+    justify-content:center;
+
+}
+
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .query-modal {
+
+        width:90vw;
+
+        padding:14px;
+
+    }
+
+
+    .query-form {
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .query-form:has(.query-field:only-child){
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+/* =========================
+   QUERY MODAL ACTION BUTTONS
+========================= */
+
+.query-modal .query-actions {
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin-top:16px;
+}
+
+
+.query-modal .query-actions button {
+
+    width:90px !important;
+    height:32px !important;
+
+    min-width:90px !important;
+    max-width:90px !important;
+
+    padding:0 !important;
+    margin:0 !important;
+
+    box-sizing:border-box;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:13px;
+    line-height:1;
+
+    border-radius:6px;
+
+}
+
+
+/* RUN */
+.query-modal .run-btn {
+
+    background:#536779 !important;
+    color:white !important;
+
+    border:1px solid #64798c !important;
+
+}
+
+
+/* CANCEL / BACK */
+.query-modal .back-btn {
+
+    background:#3f4d5a !important;
+    color:#e5e7eb !important;
+
+    border:1px solid #596b7c !important;
+
+}
+/* =========================
+   RUN BUTTON GREEN STYLE
+========================= */
+
+.query-modal .run-btn {
+
+    background:#198754 !important;
+    color:white !important;
+
+    border:1px solid #20c997 !important;
+
+    transition:all .2s ease;
+
+}
+
+
+.query-modal .run-btn:hover {
+
+    background:#157347 !important;
+    border-color:#19b394 !important;
+
+}
+/* =========================
+   RESULTS TOOLBAR
+========================= */
+
+.results-toolbar {
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:row;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:12px;
+
+    direction:rtl;
+
+}
+
+
+.results-info {
+
+    font-size:13px;
+
+    color:#94a3b8;
+
+    white-space:nowrap;
+
+}
+
+
+.result-search {
+
+    width:220px;
+
+    height:32px;
+
+    padding:0 12px;
+
+    border-radius:6px;
+
+    border:1px solid #334155;
+
+    background:#111827;
+
+    color:#e5e7eb;
+
+    font-size:13px;
+
+    box-sizing:border-box;
+
+}
+
+
+.result-search::placeholder {
+
+    color:#64748b;
+
+}
+
+
+.result-search:focus {
+
+    outline:none;
+
+    border-color:#3b82f6;
+
+}
+.results-toolbar {
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:row;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:12px;
+
+    direction:ltr;
+
+}
+
+
+.results-info {
+
+    direction:rtl;
+
+    font-size:13px;
+
+    color:#94a3b8;
+
+    white-space:nowrap;
+
+}
+
+
+.result-search {
+
+    direction:rtl;
+
+}
+
+/* =========================
+   FINAL GRID COMPACT FIX
+========================= */
+
+.grid {
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 12px;
+}
+
+
+.card {
+    max-width: 240px;
+}
+/* QUERY LIST MODAL SIZE */
+.cmd-box {
+    width: min(520px, 92vw);
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP MAIN</title>
+
+    <link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="modal.css">
+</head>
+
+<body class="erp-app">
+
+<div class="app-shell">
+
+    <!-- HEADER WRAPPER -->
+    <div class="header-wrap">
+        <header class="main-header">
+
+            <div class="main-left">
+                <img src="arcosteel.png" class="main-logo">
+                <div class="main-title">ERP SYSTEM</div>
+            </div>
+
+            <div class="main-right">
+                <button onclick="goQueries()">📊</button>
+                <button onclick="toggleTheme()">🌙</button>
+                <button onclick="logout()">⏻</button>
+            </div>
+
+        </header>
+    </div>
+
+    <!-- CONTENT WRAPPER -->
+    <main id="mainContent">
+        <div class="content-wrapper"></div>
+    </main>
+
+</div>
+<!-- =========================
+     LOGOUT MODAL
+========================= -->
+
+<div id="logoutModal" class="modal hidden">
+
+    <div class="modal-box logout-box">
+
+        <h3>Sign Out</h3>
+
+        <p>
+            Are you sure you want to sign out?
+        </p>
+
+        <div class="logout-actions">
+
+            <button
+                class="btn-secondary"
+                onclick="closeLogoutModal()">
+                Cancel
+            </button>
+
+            <button
+                class="btn-danger"
+                onclick="confirmLogout()">
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script src="main.js"></script>
+
+</html>

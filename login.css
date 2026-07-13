@@ -1,0 +1,765 @@
+/* =====================================
+   ERP LOGIN 2026+ FINAL CLEAN
+===================================== */
+
+*{
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#000000;
+    --card:rgba(255,255,255,.04);
+    --border:rgba(255,255,255,.06);
+
+    --text:#ffffff;
+    --muted:#9ca3af;
+
+    --primary:#3b82f6;
+    --primary2:#22c55e;
+}
+/* =====================================
+   LIGHT MODE READY
+===================================== */
+
+body[data-theme="light"]{
+    --bg:#f5f7fb;
+    --card:#ffffff;
+    --border:rgba(15,23,42,.12);
+    --text:#0f172a;
+    --muted:#64748b;
+}
+
+/* =====================================
+   BODY
+===================================== */
+
+body{
+    margin:0;
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+background:#000;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:var(--text);
+}
+
+/* =====================================
+   CARD
+===================================== */
+
+.login-card{
+
+    width:420px;
+
+    padding:26px;
+
+    border-radius:20px;
+
+    background:var(--card);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid var(--border);
+
+    box-shadow:0 25px 80px rgba(0,0,0,.55);
+
+    text-align:center;
+
+    animation:fadeUp .35s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =====================================
+   LOGO
+===================================== */
+
+.login-logo{
+    height:52px;
+    background:#fff;
+    padding:6px 10px;
+    border-radius:12px;
+}
+
+/* =====================================
+   TEXT
+===================================== */
+
+.title{
+    margin:14px 0 6px;
+
+    font-size:24px;
+    font-weight:800;
+}
+
+.subtitle{
+    margin:0 0 14px;
+
+    font-size:13px;
+    color:var(--muted);
+}
+
+/* =====================================
+   INPUTS
+===================================== */
+
+input{
+    width:100%;
+    height:44px;
+
+    margin-top:10px;
+
+    padding:0 14px;
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+    background:rgba(255,255,255,.04);
+
+    color:var(--text);
+
+    font-size:14px;
+
+    outline:none;
+
+    transition:.2s;
+}
+
+input::placeholder{
+    color:var(--muted);
+}
+
+input:focus{
+    border-color:var(--primary);
+    box-shadow:0 0 0 3px rgba(59,130,246,.2);
+}
+
+/* =====================================
+   TOGGLES ROW
+===================================== */
+
+.toggles-row{
+    display:flex;
+    gap:14px;
+
+    margin-top:14px;
+}
+
+.toggle-box{
+    flex:1;
+}
+
+/* =====================================
+   TOGGLE
+===================================== */
+
+.toggle{
+    position:relative;
+
+    display:flex;
+
+    width:100%;
+    height:44px;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid var(--border);
+}
+
+.slider{
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:50%;
+    height:100%;
+
+    border-radius:12px;
+
+    background:rgba(59,130,246,.35);
+
+    transition:.25s;
+}
+
+.toggle .opt{
+    flex:1;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:12px;
+
+    color:var(--muted);
+
+    cursor:pointer;
+
+    z-index:2;
+}
+
+.toggle .opt.active{
+    color:var(--text);
+    font-weight:700;
+}
+
+/* =====================================
+   LOGIN BUTTON
+===================================== */
+
+button{
+    width:100%;
+    height:44px;
+
+    margin-top:16px;
+
+    border:none;
+    border-radius:12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary2)
+        );
+
+    color:white;
+
+    font-size:14px;
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-1px);
+    box-shadow:0 12px 30px rgba(59,130,246,.35);
+}
+
+button:active{
+    transform:scale(.98);
+}
+
+/* =====================================
+   LOGIN MESSAGE
+===================================== */
+
+#loginMessage{
+    display:none;
+
+    margin-top:14px;
+
+    padding:10px 12px;
+
+    border-radius:12px;
+
+    font-size:13px;
+    font-weight:600;
+}
+
+#loginMessage.error{
+    display:block;
+
+    background:rgba(239,68,68,.12);
+    border:1px solid rgba(239,68,68,.3);
+    color:#ff6b6b;
+}
+
+#loginMessage.success{
+    display:block;
+
+    background:rgba(34,197,94,.12);
+    border:1px solid rgba(34,197,94,.3);
+    color:#4ade80;
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width:480px){
+    .login-card{
+        width:94%;
+        padding:22px;
+    }
+
+    .toggles-row{
+        flex-direction:column;
+    }
+}
+
+#splash {
+    position: fixed;
+    inset: 0;
+    background: #0b1220;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999;
+    color: white;
+}
+
+#splash img {
+    width: 260px;
+    height: 120px;
+    background: #fff;   /* זה מה שאתה צריך */
+    padding: 10px;
+    border-radius: 16px;
+}
+#splash {
+    transition: opacity 0.3s ease;
+}
+background:
+    radial-gradient(
+        circle at top,
+        rgba(255,255,255,.03),
+        #000 40%
+    );
+.login-card{
+    width:420px;
+
+    padding:26px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.04);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.8);
+
+    text-align:center;
+
+    animation:fadeUp .35s ease;
+}
+#splash{
+    background:#000;
+}
+input{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.06);
+}
+
+input:focus{
+    border-color:rgba(255,255,255,.15);
+    box-shadow:0 0 0 3px rgba(255,255,255,.05);
+}
+.slider{
+    background: rgba(59,130,246,.28);
+    border: 1px solid rgba(59,130,246,.18);
+}
+button{
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #16a34a
+        );
+
+    box-shadow:
+        0 10px 25px rgba(34,197,94,.22);
+}
+/* =====================================
+   OTP MODAL
+===================================== */
+
+.modal{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.82);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:999999;
+
+    backdrop-filter:blur(8px);
+}
+
+.hidden{
+    display:none;
+}
+
+.modal-box{
+
+    width:380px;
+    max-width:92%;
+
+    background:#090909;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    padding:28px;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.8);
+
+    text-align:center;
+
+    animation:otpFade .25s ease;
+}
+
+@keyframes otpFade{
+    from{
+        opacity:0;
+        transform:translateY(10px) scale(.98);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.modal-box h3{
+
+    margin:0 0 8px;
+
+    color:#fff;
+
+    font-size:22px;
+    font-weight:800;
+}
+
+.modal-box p{
+
+    margin:0 0 18px;
+
+    color:#9ca3af;
+
+    font-size:13px;
+}
+
+.modal-box input{
+
+    width:100%;
+    height:48px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:12px;
+
+    color:#fff;
+
+    text-align:center;
+
+    font-size:24px;
+    font-weight:700;
+    letter-spacing:6px;
+}
+
+.modal-box input:focus{
+
+    border-color:#22c55e;
+
+    box-shadow:
+        0 0 0 3px rgba(34,197,94,.15);
+}
+
+.modal-box button{
+
+    width:100%;
+
+    margin-top:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #16a34a
+        );
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:12px;
+
+    height:46px;
+
+    font-size:14px;
+    font-weight:800;
+
+    cursor:pointer;
+}
+
+/* הודעת שגיאה */
+
+#otpError{
+
+    margin-top:14px;
+
+    padding:10px;
+
+    border-radius:12px;
+
+    background:rgba(239,68,68,.12);
+
+    border:1px solid rgba(239,68,68,.25);
+
+    color:#ff6b6b;
+
+    font-size:13px;
+
+    display:none;
+}
+.modal-box input{
+
+    width:100%;
+    height:48px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:12px;
+
+    color:#fff;
+
+    text-align:center;
+
+    font-size:18px;      /* היה 24 */
+    font-weight:600;     /* היה 700 */
+    letter-spacing:3px;  /* היה 6 */
+}
+.modal-box{
+    position:relative;
+}
+
+.modal-close{
+
+    position:absolute;
+
+    top:12px;
+    right:12px;
+
+    width:32px;
+    height:32px;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(255,255,255,.06);
+
+    color:#fff;
+
+    cursor:pointer;
+
+    font-size:16px;
+    font-weight:700;
+
+    margin:0;
+}
+
+.modal-close:hover{
+    background:rgba(255,255,255,.12);
+}
+#otpMessage{
+
+    display:none;
+
+    margin-top:14px;
+
+    padding:10px;
+
+    border-radius:12px;
+
+    font-size:13px;
+    font-weight:600;
+}
+
+#otpMessage.error{
+
+    display:block;
+
+    background:rgba(239,68,68,.12);
+
+    border:1px solid rgba(239,68,68,.25);
+
+    color:#ff6b6b;
+}
+
+#otpMessage.success{
+
+    display:block;
+
+    background:rgba(34,197,94,.12);
+
+    border:1px solid rgba(34,197,94,.25);
+
+    color:#4ade80;
+}
+.modal-close{
+
+    position:absolute;
+
+    top:12px;
+    right:12px;
+
+    width:32px !important;
+    height:32px !important;
+
+    min-width:32px;
+    max-width:32px;
+
+    padding:0;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(255,255,255,.06);
+
+    color:#fff;
+
+    cursor:pointer;
+
+    font-size:16px;
+    font-weight:700;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:0 !important;
+}
+/* =====================================
+   OTP CLOSE BUTTON FIX
+===================================== */
+
+.modal-close{
+
+    position:absolute;
+
+    top:12px;
+    right:12px;
+
+    width:32px !important;
+    min-width:32px !important;
+    max-width:32px !important;
+
+    height:32px !important;
+
+    padding:0 !important;
+    margin:0 !important;
+
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08) !important;
+
+    color:#fff;
+
+    font-size:15px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    box-shadow:none !important;
+
+    z-index:10;
+}
+
+.modal-close:hover{
+
+    background:rgba(255,255,255,.16) !important;
+
+    transform:none !important;
+}
+
+.modal-close:active{
+
+    transform:none !important;
+}
+
+/* כפתור האימות בלבד */
+.modal-box > button:not(.modal-close){
+
+    width:100%;
+
+    margin-top:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #16a34a
+        );
+
+    border:none;
+    border-radius:12px;
+
+    height:46px;
+
+    color:#fff;
+
+    font-size:14px;
+    font-weight:800;
+}
+.logout-actions{
+    display:flex;
+    gap:12px;
+    margin-top:24px;
+}
+
+.logout-actions button{
+    flex:1;
+}
+
+.btn-secondary{
+    background:#3b4656;
+    color:#fff;
+}
+
+.btn-secondary:hover{
+    background:#4b586a;
+}
+
+.btn-danger{
+    background:#d32f2f;
+    color:#fff;
+}
+
+.btn-danger:hover{
+    background:#b71c1c;
+}

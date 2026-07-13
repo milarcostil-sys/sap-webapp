@@ -1,44 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcosteel ERP</title>
 
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ERP SYSTEM</title>
+
+<link rel="stylesheet" href="dashboard.css">
+<link rel="stylesheet" href="modal.css">
 </head>
 
-<body>
+<body class="erp-app">
 
-<div class="layout">
+<script>
+if (!localStorage.getItem("token")) {
+    window.location.href = "index.html";
+}
+</script>
 
-    <!-- SIDEBAR -->
-    <div class="sidebar">
+<div class="app-shell">
 
-        <img src="arcosteel.jpg" class="sidebar-logo">
+    <!-- HEADER -->
+    <header class="app-header">
 
-        <button class="menu-btn active" onclick="showModule('home')">🏠 Dashboard</button>
-        <button class="menu-btn" onclick="showModule('items')">🔍 Items</button>
-        <button class="menu-btn" onclick="showModule('stock')">📦 Stock</button>
-        <button class="menu-btn" onclick="showModule('prices')">💰 Prices</button>
-        <button class="menu-btn" onclick="showModule('purchase')">🚚 Purchase</button>
+    <!-- LOGO LEFT -->
+    <div class="app-logo">
+        <img src="arcosteel.png" alt="logo">
+        <div>
+            <div class="logo-title">ERP SYSTEM</div>
+            <div class="logo-subtitle">SaaS Control Panel</div>
+        </div>
+    </div>
 
+    <!-- ACTIONS RIGHT -->
+    <div class="header-right">
+<button class="home-btn" onclick="backToDashboard()">
+    📊 Queries
+</button>
+        <input id="searchBox"
+               class="search-box"
+               placeholder="Search queries..."
+               oninput="renderDashboard()" />
+
+        <select id="moduleFilter"
+                class="module-filter"
+                onchange="renderDashboard()">
+            <option value="">All Modules</option>
+        </select>
+<button class="cmd-btn"
+        onclick="openCmdPalette()"
+        title="Quick Search">
+    🔍 /
+</button>
+        <button onclick="toggleFavorites()">⭐</button>
+<button id="headerThemeBtn" class="theme-btn" onclick="toggleTheme()">
+    🌙
+</button>
         <button class="logout-btn" onclick="logout()">Logout</button>
 
     </div>
 
-    <!-- MAIN -->
-    <div class="main">
+</header>
 
-        <div id="app"></div>
+
+<!-- MAIN -->
+<main class="main-container">
+
+    <div id="content"></div>
+
+    <div id="query-area"></div>
+
+</main>
+
+   </div>
+<!-- DRILL MODAL -->
+<div id="drillModal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <span class="close" onclick="closeDrill()">×</span>
+
+        <div id="drillContent"></div>
 
     </div>
 
 </div>
-
+<script src="config.js"></script>
 <script src="app.js"></script>
+<script src="desktop-ui.js"></script>
 
+<!-- COMMAND PALETTE -->
+<div id="cmdPalette" class="cmd-overlay" style="display:none">
+
+    <div class="cmd-box">
+
+        <input id="cmdInput"
+               class="cmd-input"
+               placeholder="Search queries, actions... (/)"
+               oninput="renderCmdPalette()"
+               autocomplete="off"/>
+
+        <div id="cmdResults" class="cmd-results"></div>
+
+    </div>
+
+</div>
+<!-- =========================
+     LOGOUT MODAL
+========================= -->
+
+<div id="logoutModal" class="modal hidden">
+
+    <div class="modal-box logout-box">
+
+        <h3>Sign Out</h3>
+
+        <p>
+            Are you sure you want to sign out?
+        </p>
+
+        <div class="logout-actions">
+
+            <button
+                class="btn-secondary"
+                onclick="closeLogoutModal()">
+                Cancel
+            </button>
+
+            <button
+                class="btn-danger"
+                onclick="confirmLogout()">
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- QUERY PARAMETER MODAL -->
+<div id="queryParamModal" class="modal hidden">
+
+    <div class="modal-content query-modal">
+<button class="modal-close"
+        onclick="closeQueryModal()">
+    ×
+</button>
+        <div class="query-modal-header">
+
+            <div class="drill-title"
+                 id="queryModalTitle">
+            </div>
+
+            <div class="drill-subtitle"
+                 id="queryModalDesc">
+            </div>
+
+        </div>
+
+
+        <div class="query-form"
+             id="queryModalFields">
+        </div>
+
+
+        <div class="query-actions">
+
+    <button class="run-btn"
+            onclick="executeModalQuery()">
+
+        🚀 Run
+
+    </button>
+
+
+    <button class="back-btn"
+            onclick="closeQueryModal()">
+
+        ✕ Cancel
+
+    </button>
+
+</div>
+
+    </div>
+
+</div>
 </body>
-
 </html>

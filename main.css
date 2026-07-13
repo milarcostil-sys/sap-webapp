@@ -1,0 +1,1110 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, Arial;
+    direction: rtl;
+}
+
+/* THEME */
+body.theme-dark {
+    --bg: #000;
+    --card: #111827;
+    --text: #fff;
+    --border: rgba(255,255,255,0.08);
+}
+
+body.theme-light {
+    --bg: #f5f7fb;
+    --card: #fff;
+    --text: #111827;
+    --border: rgba(0,0,0,0.08);
+}
+
+/* LAYOUT */
+.main-layout {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    padding: 12px;
+}
+
+/* HEADER */
+.main-header {
+    max-width: 900px;
+    margin: 12px auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 12px 14px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+
+/* BRAND */
+.main-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.main-logo {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.main-title {
+    font-weight: 900;
+}
+
+/* ACTIONS */
+.main-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.main-actions button {
+    padding: 8px 12px;
+    border-radius: 10px;
+
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+
+    cursor: pointer;
+}
+/* =========================
+   BASE
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, Arial;
+    direction: rtl;
+}
+
+/* =========================
+   THEMES (NO BLUE - CLEAN BLACK)
+========================= */
+
+body.theme-dark {
+    --bg: #000;
+    --card: #0b0b0b;
+    --text: #fff;
+    --border: rgba(255,255,255,0.06);
+}
+
+body.theme-light {
+    --bg: #f5f7fb;
+    --card: #fff;
+    --text: #111;
+    --border: rgba(0,0,0,0.08);
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.main-layout {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    padding: 12px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.main-header {
+    max-width: 1000px;
+    margin: 12px auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 12px 14px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+
+/* =========================
+   LEFT (LOGO)
+========================= */
+
+.main-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.main-logo {
+    width: 40px;
+    height: 40px;
+
+    background: #fff;   /* חשוב ללוגו שחור */
+    border-radius: 10px;
+    padding: 4px;
+
+    object-fit: contain;
+}
+
+.main-title {
+    font-weight: 900;
+    font-size: 14px;
+}
+
+/* =========================
+   RIGHT (BUTTONS)
+========================= */
+
+.main-right {
+    display: flex;
+    gap: 8px;
+}
+
+.main-right button {
+    padding: 8px 12px;
+
+    border-radius: 10px;
+
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+
+    cursor: pointer;
+
+    transition: 0.15s ease;
+}
+
+/* hover בלי כחול */
+.main-right button:hover {
+    background: rgba(255,255,255,0.06);
+}
+
+/* DARK override - בלי כחול בכלל */
+body.theme-dark .main-right button:hover {
+    background: rgba(255,255,255,0.06);
+}
+
+/* LIGHT hover */
+body.theme-light .main-right button:hover {
+    background: rgba(0,0,0,0.05);
+}
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* חשוב מאוד */
+.main-left {
+    order: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.main-right {
+    order: 2;
+    display: flex;
+    gap: 8px;
+}
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    direction: ltr;   /* 🔥 זה הפתרון */
+}
+.main-logo {
+    width: 200px;
+    height: 50px;
+    object-fit: contain;
+    background: #fff;
+    padding: 4px 10px;
+    border-radius: 10px;
+}
+.modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+.module-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    padding: 16px;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.module-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,255,255,0.2);
+}
+
+.module-title {
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.module-sub {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .modules-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .module-card {
+        padding: 12px;
+    }
+
+    .module-title {
+        font-size: 13px;
+    }
+}
+/* =========================
+   MAIN DASHBOARD GRID
+========================= */
+
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 18px;
+    padding: 20px;
+}
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.main-card {
+    position: relative;
+    height: 140px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px;
+    cursor: pointer;
+
+    transition: all .25s ease;
+}
+
+.main-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.15);
+}
+
+/* accent strip */
+.main-card-accent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background: linear-gradient(180deg, #3b82f6, #22c55e);
+}
+
+/* =========================
+   TEXT AREA
+========================= */
+
+.main-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-left: 10px;
+}
+
+.main-card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.main-card-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+}
+
+/* =========================
+   ACTION BUTTON
+========================= */
+
+.main-card-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: none;
+
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    color: white;
+    font-size: 18px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+
+    transition: all .2s ease;
+}
+
+.main-card-btn:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.main-empty {
+    padding: 40px;
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+}
+.modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+/* CARD */
+.module-card {
+    position: relative;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 18px;
+    cursor: pointer;
+
+    transform: translateY(12px);
+    opacity: 0;
+
+    animation: cardIn 0.35s ease forwards;
+}
+
+@keyframes cardIn {
+    from {
+        transform: translateY(12px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ACCENT BORDER */
+.module-card {
+    border-left: 4px solid var(--accent);
+}
+
+/* BADGE */
+.module-badge {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+/* OPEN BUTTON */
+.module-open-btn {
+    margin-top: 12px;
+      width: 50px;
+
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: var(--accent);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.module-open-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+}
+/* =========================================
+   MAIN → MOBILE MODE
+========================================= */
+
+body.mobile-mode #mainContent .content-wrapper {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 14px;
+}
+
+/* מבטל את ה-grid של הדסקטופ */
+body.mobile-mode .modules-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px;
+}
+
+/* כרטיס מודול */
+body.mobile-mode .module-card {
+
+    width: 100%;
+    min-height: unset !important;
+
+    padding: 12px 14px;
+
+    border-radius: 16px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+
+    box-sizing: border-box;
+}
+
+/* שורת עליונה */
+body.mobile-mode .module-top {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* כותרת */
+body.mobile-mode .module-title {
+    font-size: 15px;
+    font-weight: 800;
+    margin: 0;
+}
+
+/* תת כותרת */
+body.mobile-mode .module-sub {
+    font-size: 12px;
+    opacity: .75;
+    margin: 0;
+}
+
+/* כפתור */
+body.mobile-mode .module-open-btn {
+
+   width:50px;
+
+    height: 36px;
+
+    margin-top: 6px;
+    margin-right: auto;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+/* badge קטן */
+body.mobile-mode .module-badge {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+/* =========================================
+   MOBILE HEADER LAYOUT
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* הקונטיינר הראשי */
+    .main-layout {
+        max-width: 520px;
+        margin: 0 auto;
+        padding: 0 14px;
+        box-sizing: border-box;
+    }
+
+    /* ההדר */
+    .main-header {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 12px;
+
+        padding: 12px 0;
+
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+
+        box-sizing: border-box;
+    }
+
+    /* לוגו + כותרת */
+    .main-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        min-width: 0;
+        flex: 1;
+    }
+
+    .main-logo {
+        width: 42px;
+        height: 42px;
+
+        object-fit: contain;
+
+        background: #fff;
+        padding: 6px;
+        border-radius: 10px;
+    }
+
+    .main-title {
+        font-size: 18px;
+        font-weight: 800;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* כפתורים */
+    .main-right {
+        display: flex;
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
+    .main-right button {
+        width: 42px;
+        height: 42px;
+
+        padding: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 12px;
+    }
+
+    /* התוכן */
+    #mainContent,
+    .content-wrapper {
+        width: 100%;
+    }
+}
+@media (max-width:768px){
+
+    .main-header{
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+
+        backdrop-filter: blur(14px);
+
+        padding: 14px;
+        margin-bottom: 14px;
+    }
+}
+@media (max-width:768px){
+
+    .main-header{
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+
+        backdrop-filter: blur(14px);
+
+        padding: 14px;
+        margin-bottom: 14px;
+    }
+}
+/* =========================================
+   MOBILE WIDTH FIX
+========================================= */
+
+@media (max-width:768px){
+
+    .main-layout{
+        max-width:520px !important;
+        margin:0 auto !important;
+        padding:12px !important;
+    }
+
+    .main-header{
+        max-width:520px !important;   /* 🔥 זה מה שחסר */
+        width:100% !important;
+        margin:12px auto !important;
+    }
+
+    .modules-grid{
+        max-width:520px !important;
+        margin:20px auto !important;
+    }
+}
+@media (max-width:768px){
+    .main-header{
+        direction: rtl !important;
+    }
+}
+/* =========================
+   BASE RESET
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, Arial;
+    direction: rtl;
+}
+
+/* =========================
+   THEMES
+========================= */
+
+body.theme-dark {
+    --bg: #000;
+    --card: #0b0b0b;
+    --text: #fff;
+    --border: rgba(255,255,255,0.06);
+}
+
+body.theme-light {
+    --bg: #f5f7fb;
+    --card: #fff;
+    --text: #111;
+    --border: rgba(0,0,0,0.08);
+}
+
+/* =========================
+   PAGE WRAPPER
+========================= */
+
+.main-layout {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    padding: 12px;
+}
+
+/* =========================
+   DESKTOP DEFAULT
+========================= */
+
+.main-header {
+    max-width: 1000px;
+    margin: 12px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 12px 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+
+/* =========================
+   MOBILE FIX (החלק החשוב)
+========================= */
+
+@media (max-width: 768px) {
+
+    /* כל האפליקציה במרכז */
+    .main-layout {
+        max-width: 520px;
+        margin: 0 auto;
+        padding: 10px;
+    }
+
+    /* HEADER באותו רוחב בדיוק */
+    .main-header {
+        width: 100%;
+        max-width: 520px;
+        margin: 10px auto;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 12px;
+        border-radius: 16px;
+    }
+
+    /* לוגו + טקסט */
+    .main-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .main-logo {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        background: #fff;
+        padding: 4px;
+        border-radius: 10px;
+    }
+
+    .main-title {
+        font-size: 16px;
+        font-weight: 800;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* כפתורים */
+    .main-right {
+        display: flex;
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
+    .main-right button {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 10px;
+    }
+
+    /* תוכן */
+    #mainContent,
+    .content-wrapper {
+        width: 100%;
+    }
+}
+/* =========================
+   BASE LAYOUT
+========================= */
+
+.main-layout {
+    min-height: 100vh;
+    background: var(--bg);
+    padding: 12px;
+}
+
+/* =========================
+   HEADER + CONTENT ALIGN CONTROL
+========================= */
+
+.header-wrapper,
+.content-wrapper {
+    width: 100%;
+}
+
+/* =========================
+   HEADER DEFAULT (DESKTOP)
+========================= */
+
+.main-header {
+    max-width: 1000px;
+    margin: 12px auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 12px 14px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+
+/* =========================
+   MOBILE CONTROL (הפתרון האמיתי)
+========================= */
+
+@media (max-width: 768px) {
+
+    /* 🔥 זה הלב של הפתרון */
+    .header-wrapper,
+    .content-wrapper {
+        max-width: 520px;
+        margin: 0 auto;
+    }
+
+    /* header נצמד בדיוק לרוחב הזה */
+    .main-header {
+        width: 100%;
+        margin: 10px 0;
+        border-radius: 16px;
+    }
+
+    /* לא נותנים ל-layout לברוח */
+    .main-layout {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+.main-layout {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+
+    padding: 0; /* 🔥 קריטי */
+}
+/* =========================
+   BASE
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui;
+    direction: rtl;
+}
+
+/* =========================
+   THEME
+========================= */
+
+body.theme-dark {
+    --bg: #000;
+    --card: #0b0b0b;
+    --text: #fff;
+    --border: rgba(255,255,255,0.08);
+}
+
+body.theme-light {
+    --bg: #f5f7fb;
+    --card: #fff;
+    --text: #111;
+    --border: rgba(0,0,0,0.08);
+}
+
+/* =========================
+   APP SHELL
+========================= */
+
+.app-shell {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    padding: 12px;
+}
+
+/* =========================
+   HEADER (DEFAULT = DESKTOP)
+========================= */
+
+.header-wrap {
+    width: 100%;
+}
+
+.main-header {
+    max-width: 1000px;
+    margin: 12px auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 12px 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+
+/* =========================
+   MOBILE MODE (NO MEDIA QUERIES)
+========================= */
+
+body.mode-mobile .app-shell {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 🔥 זה מה שמחליף את כל ה-media queries */
+body.mode-mobile .header-wrap {
+    width: 100%;
+    max-width: 520px;
+}
+
+body.mode-mobile .main-header {
+    width: 100%;
+    max-width: 520px;
+    margin: 10px auto;
+
+    border-radius: 16px;
+    padding: 12px;
+}
+
+/* =========================
+   HEADER INTERNAL
+========================= */
+
+.main-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.main-logo {
+    width: 200px;
+    height: 50px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.main-title {
+    font-weight: 800;
+}
+
+/* buttons */
+.main-right {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.main-right button {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+}
+/* CONTENT */
+body.mode-mobile #mainContent,
+body.mode-mobile .content-wrapper {
+    width: 100%;
+    max-width: 520px;
+}
+
+/* GRID */
+body.mode-mobile .modules-grid {
+    width: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px;
+}
+
+/* CARD */
+body.mode-mobile .module-card {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+
+    padding: 14px;
+    border-radius: 16px;
+
+    transform: none;
+    opacity: 1;
+}
+/* =========================
+   CARD BORDER FIX
+========================= */
+
+body.theme-dark .module-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+body.theme-light .module-card {
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.12);
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.04),
+        0 6px 18px rgba(0,0,0,0.05);
+}
+body.theme-light .main-card {
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.12);
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.04),
+        0 6px 18px rgba(0,0,0,0.05);
+}
+body.theme-light .module-card,
+body.theme-light .main-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+

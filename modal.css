@@ -1,0 +1,95 @@
+/* =========================
+   MODAL
+========================= */
+
+.hidden{
+    display:none !important;
+}
+
+.modal{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    z-index:99999;
+}
+
+.modal-box{
+
+    width:min(420px,92vw);
+
+    background:var(--card);
+    color:var(--text);
+
+    border:1px solid var(--border);
+    border-radius:18px;
+
+    padding:24px;
+
+    text-align:center;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.35);
+}
+
+.logout-box h3{
+
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.logout-box p{
+
+    opacity:.8;
+    margin-bottom:22px;
+}
+
+.logout-actions{
+
+    display:flex;
+    gap:12px;
+    justify-content:center;
+}
+
+.logout-actions button{
+
+    flex:1;
+
+    padding:12px;
+
+    border:none;
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    transition:.2s;
+}
+
+.btn-secondary{
+
+    background:#6b7280;
+    color:#fff;
+}
+
+.btn-secondary:hover{
+
+    filter:brightness(1.1);
+}
+
+.btn-danger{
+
+    background:#dc2626;
+    color:#fff;
+}
+
+.btn-danger:hover{
+
+    background:#b91c1c;
+}

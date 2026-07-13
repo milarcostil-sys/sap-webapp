@@ -1,37 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcosteel ERP Login</title>
+<meta charset="UTF-8">
+<title>ARCOSTEEL ERP Login</title>
+<link rel="manifest" href="manifest.json">
 
-    <link rel="stylesheet" href="style.css">
+<meta name="theme-color" content="#0b1220">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="login.css">
 </head>
 
 <body>
+<div id="splash">
+    <img src="arcosteel.png">
+    <div>ERP SYSTEM</div>
+</div>
 
-<div class="login-page">
+<div class="login-bg">
 
     <div class="login-card">
 
-        <img src="arcosteel.jpg" class="logo">
+        <!-- LOGO -->
+        <div class="login-logo-wrap">
+            <img src="arcosteel.png" class="login-logo">
+        </div>
 
-        <h1>Arcosteel ERP</h1>
+        <h1 class="title">ERP SYSTEM</h1>
+        <p class="subtitle">Secure access portal</p>
 
         <input id="username" placeholder="Username">
         <input id="password" type="password" placeholder="Password">
 
-        <button class="login-btn" onclick="login()">Login</button>
+       <!-- UI + THEME -->
+<div class="toggles-row">
 
-        <div id="loginError" class="error-message"></div>
+    <!-- UI MODE -->
+    <div class="toggle-box">
+
+        <div class="toggle" id="uiToggle">
+
+            <div class="slider"></div>
+
+            <div class="opt active" data-value="desktop">
+                Desktop
+            </div>
+
+            <div class="opt" data-value="mobile">
+                Mobile
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- THEME -->
+    <div class="toggle-box">
+
+        <div class="toggle" id="themeToggle">
+
+            <div class="slider"></div>
+
+            <div class="opt" data-value="light">
+                ☀️
+            </div>
+
+            <div class="opt active" data-value="dark">
+                🌙
+            </div>
+
+        </div>
 
     </div>
 
 </div>
 
+<input type="hidden" id="uiMode" value="desktop">
+<input type="hidden" id="themeMode" value="dark">
+
+     
+        <button onclick="login()">Login</button>
+
+        <div id="loginMessage"></div>
+
+    </div>
+
+</div>
+
+<div id="otpModal" class="modal hidden">
+
+    <div class="modal-box">
+
+        <button
+            class="modal-close"
+            onclick="closeOtpModal()">
+            ✕
+        </button>
+
+        <h3>Two Factor Authentication</h3>
+
+        <p>
+            Enter the code sent to your WhatsApp
+        </p>
+
+        <input
+            id="otpInput"
+            maxlength="6"
+            placeholder="000000">
+
+        <button onclick="verifyOtp()">
+            Verify
+        </button>
+
+        <div id="otpMessage"></div>
+
+    </div>
+
+</div>
+<script src="config.js"></script>
 <script src="app.js"></script>
 
-</body>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
+    function bindToggle(toggleId, hiddenId) {
+
+        const toggle = document.getElementById(toggleId);
+        const hidden = document.getElementById(hiddenId);
+        const slider = toggle.querySelector(".slider");
+        const opts = toggle.querySelectorAll(".opt");
+
+        opts.forEach((opt, index) => {
+
+            opt.addEventListener("click", () => {
+
+                const val = opt.dataset.value;
+                hidden.value = val;
+
+                opts.forEach(o => o.classList.remove("active"));
+                opt.classList.add("active");
+
+                slider.style.transform =
+                    index === 0 ? "translateX(0%)" : "translateX(100%)";
+            });
+        });
+    }
+
+    bindToggle("uiToggle", "uiMode");
+    bindToggle("themeToggle", "themeMode");
+// =========================
+// RESTORE SAVED THEME
+// =========================
+
+const savedTheme =
+    localStorage.getItem("themeMode") || "dark";
+
+const themeHidden =
+    document.getElementById("themeMode");
+
+themeHidden.value = savedTheme;
+
+const themeToggle =
+    document.getElementById("themeToggle");
+
+const themeOpts =
+    themeToggle.querySelectorAll(".opt");
+
+const slider =
+    themeToggle.querySelector(".slider");
+
+themeOpts.forEach(o => o.classList.remove("active"));
+
+if (savedTheme === "light") {
+
+    themeOpts[0].classList.add("active");
+    slider.style.transform = "translateX(0%)";
+
+} else {
+
+    themeOpts[1].classList.add("active");
+    slider.style.transform = "translateX(100%)";
+}
+});
+
+
+
+</script>
+</body>
 </html>
