@@ -14,25 +14,6 @@ const IS_LOGIN =
     PAGE === "index.html" ||
     PATH === "/";
 
-console.log(
-    "APP CHECK",
-    {
-        path: window.location.pathname,
-        page: PAGE,
-        main: IS_MAIN
-    }
-);
-console.log("IS_MAIN VALUE =", IS_MAIN);
-console.log(
-    "APP CHECK",
-    {
-        pathname: window.location.pathname,
-        href: window.location.href,
-        PATH: PATH,
-        PAGE: PAGE,
-        IS_MAIN: IS_MAIN
-    }
-);
 const UI_MODE = localStorage.getItem("uiMode") || "desktop";
 const THEME_MODE = localStorage.getItem("themeMode") || "dark";
 // =========================
@@ -114,7 +95,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     // =========================
     // MAIN PAGE STOP
     // =========================
-   console.log("BEFORE MAIN STOP", IS_MAIN);
+  
 
 if (IS_MAIN || IS_LOGIN) {
     return;
