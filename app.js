@@ -20,6 +20,16 @@ console.log(
     }
 );
 console.log("IS_MAIN VALUE =", IS_MAIN);
+console.log(
+    "APP CHECK",
+    {
+        pathname: window.location.pathname,
+        href: window.location.href,
+        PATH: PATH,
+        PAGE: PAGE,
+        IS_MAIN: IS_MAIN
+    }
+);
 const UI_MODE = localStorage.getItem("uiMode") || "desktop";
 const THEME_MODE = localStorage.getItem("themeMode") || "dark";
 // =========================
