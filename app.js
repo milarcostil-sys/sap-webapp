@@ -114,13 +114,11 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     } catch (err) {
 
-        console.error(err);
+    console.error("MAIN INIT ERROR:", err);
 
-        localStorage.clear();
-
-        location.href =
-            "index.html";
-    }
+    // לא מוחקים token בגלל שגיאת JS
+    return;
+}
 });
 
 document.addEventListener(
