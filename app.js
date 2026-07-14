@@ -1,9 +1,14 @@
 
 const PAGE =
-    window.location.pathname.split("/").pop() || "index.html";
+    window.location.pathname
+        .split("/")
+        .pop()
+        .replace(".html","")
+        || "index";
 
-const IS_MAIN = PAGE === "main.html";
-const IS_DASHBOARD = !IS_MAIN;
+
+const IS_MAIN =
+    PAGE === "main";
 
 const UI_MODE = localStorage.getItem("uiMode") || "desktop";
 const THEME_MODE = localStorage.getItem("themeMode") || "dark";
