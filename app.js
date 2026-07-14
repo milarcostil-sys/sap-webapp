@@ -929,10 +929,13 @@ if (data.enabled === false) {
 }
 
 localStorage.setItem("token", data.token);
+
+console.log("SAVED TOKEN:", data.token);
+console.log("LOCAL STORAGE NOW:", localStorage.getItem("token"));
+
 localStorage.setItem("uiMode", uiMode);
 localStorage.setItem("themeMode", themeMode);
 
-applyTheme(themeMode);
 window.location.href = "main.html";
 
 /*
