@@ -1,6 +1,6 @@
 const CONFIG = {
     local: "http://localhost:8000",
-    production: "/api"
+    production: "https://api.arcosteelonline.com"
 };
 
 const ENV = "production";
