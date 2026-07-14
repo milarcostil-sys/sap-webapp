@@ -10,6 +10,9 @@ const IS_MAIN =
     PATH.endsWith("/main.html");
 
 const IS_DASHBOARD = !IS_MAIN;
+const IS_LOGIN =
+    PAGE === "index.html" ||
+    PATH === "/";
 
 console.log(
     "APP CHECK",
@@ -113,8 +116,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     // =========================
    console.log("BEFORE MAIN STOP", IS_MAIN);
 
-if (IS_MAIN) {
-    console.log("STOPPING MAIN INIT");
+if (IS_MAIN || IS_LOGIN) {
     return;
 }
 
