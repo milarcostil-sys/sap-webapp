@@ -865,21 +865,18 @@ async function login() {
     const uiMode = document.getElementById("uiMode").value;
     const themeMode = document.getElementById("themeMode").value;
 
-    const res = await fetch(API_BASE + "/login", {
+ const res = await fetch(API_BASE + "/login", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, password })
+    headers: { 
+        "Content-Type": "application/json" 
+    },
+    body: JSON.stringify({ 
+        username, 
+        password 
+    })
 });
 
-
-console.log("LOGIN STATUS:", res.status);
-console.log("LOGIN HEADERS:", [...res.headers.entries()]);
-
-const text = await res.text();
-
-console.log("LOGIN RESPONSE:", text);
-
-const data = JSON.parse(text);
+const data = await res.json();
 
 // שגיאות
 if (!res.ok) {
@@ -928,8 +925,7 @@ if (data.enabled === false) {
 
 localStorage.setItem("token", data.token);
 
-console.log("SAVED TOKEN:", data.token);
-console.log("LOCAL STORAGE NOW:", localStorage.getItem("token"));
+
 
 localStorage.setItem("uiMode", uiMode);
 localStorage.setItem("themeMode", themeMode);
