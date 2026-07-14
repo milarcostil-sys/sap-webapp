@@ -1,6 +1,6 @@
 const CONFIG = {
     local: "http://localhost:8000",
-    production: "https://api.arcosteelonline.com"
+    production: "/api"
 };
 
 // מחליפים רק את השורה הזאת
