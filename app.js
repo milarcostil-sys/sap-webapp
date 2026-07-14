@@ -10,6 +10,7 @@ const IS_MAIN =
     PATH.endsWith("/main.html");
 
 const IS_DASHBOARD = !IS_MAIN;
+
 console.log(
     "APP CHECK",
     {
@@ -18,7 +19,7 @@ console.log(
         main: IS_MAIN
     }
 );
-
+console.log("IS_MAIN VALUE =", IS_MAIN);
 const UI_MODE = localStorage.getItem("uiMode") || "desktop";
 const THEME_MODE = localStorage.getItem("themeMode") || "dark";
 // =========================
@@ -100,9 +101,12 @@ window.addEventListener("DOMContentLoaded", async () => {
     // =========================
     // MAIN PAGE STOP
     // =========================
-    if (IS_MAIN) {
-        return;
-    }
+   console.log("BEFORE MAIN STOP", IS_MAIN);
+
+if (IS_MAIN) {
+    console.log("STOPPING MAIN INIT");
+    return;
+}
 
     // =========================
     // DASHBOARD INIT
