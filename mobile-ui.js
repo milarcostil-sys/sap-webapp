@@ -1,20 +1,5 @@
 "use strict";
 
-const moduleColorMap = {};
-const colorPalette = [
-    "#3b82f6",
-    "#22c55e",
-    "#f59e0b",
-    "#8b5cf6",
-    "#ef4444",
-    "#06b6d4",
-    "#84cc16",
-    "#f97316",
-    "#ec4899",
-    "#14b8a6",
-    "#a855f7",
-    "#eab308"
-];
 
 
 /* =========================
