@@ -868,12 +868,20 @@ async function login() {
     const themeMode = document.getElementById("themeMode").value;
 
     const res = await fetch(API_BASE + "/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password })
-    });
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password })
+});
 
-const data = await res.json();
+
+console.log("LOGIN STATUS:", res.status);
+console.log("LOGIN HEADERS:", [...res.headers.entries()]);
+
+const text = await res.text();
+
+console.log("LOGIN RESPONSE:", text);
+
+const data = JSON.parse(text);
 
 // שגיאות
 if (!res.ok) {
