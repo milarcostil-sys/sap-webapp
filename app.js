@@ -1,14 +1,23 @@
 
-const PAGE =
-    window.location.pathname
-        .split("/")
-        .pop()
-        .replace(".html","")
-        || "index";
+const PATH =
+    window.location.pathname.toLowerCase();
 
+const PAGE =
+    PATH.split("/").filter(Boolean).pop() || "index.html";
 
 const IS_MAIN =
-    PAGE === "main";
+    PATH.endsWith("/main") ||
+    PATH.endsWith("/main.html");
+
+const IS_DASHBOARD = !IS_MAIN;
+console.log(
+    "APP CHECK",
+    {
+        path: window.location.pathname,
+        page: PAGE,
+        main: IS_MAIN
+    }
+);
 
 const UI_MODE = localStorage.getItem("uiMode") || "desktop";
 const THEME_MODE = localStorage.getItem("themeMode") || "dark";
@@ -48,8 +57,10 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     const page = PAGE;
 
-    const publicPages = ["index.html"];
-
+  const publicPages = [
+    "index",
+    "index.html"
+];
     // =========================
     // AUTH CHECK
     // =========================
