@@ -1,5 +1,7 @@
 
-const PAGE = window.location.pathname.split("/").pop();
+const PAGE =
+    window.location.pathname.split("/").pop() || "index.html";
+
 const IS_MAIN = PAGE === "main.html";
 const IS_DASHBOARD = !IS_MAIN;
 
