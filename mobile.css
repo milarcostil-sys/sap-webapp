@@ -2203,3 +2203,14 @@ body.mobile-mode .module-badge {
     font-size: 12px;
     font-weight: 800;
 }
+/* =========================
+   SEARCH INPUT RTL FIX
+========================= */
+
+#searchBox {
+    direction: rtl;
+    text-align: right;
+}
+#searchBox::placeholder {
+    text-align: right;
+}
