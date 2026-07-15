@@ -3573,7 +3573,8 @@ body.theme-dark input[type="date"] {
 
     font-size:13px;
 
-    color:#94a3b8;
+    color: var(--muted);
+
 
     white-space:nowrap;
 
@@ -3602,4 +3603,42 @@ body.theme-dark input[type="date"] {
 /* QUERY LIST MODAL SIZE */
 .cmd-box {
     width: min(520px, 92vw);
+}
+/* =========================
+   RESULTS SEARCH THEME FIX
+========================= */
+
+.result-search {
+
+    background: var(--glass);
+    color: var(--text);
+    border: 1px solid var(--border);
+
+}
+
+
+.result-search::placeholder {
+
+    color: var(--muted);
+
+}
+
+
+/* LIGHT */
+body.theme-light .result-search {
+
+    background: #ffffff;
+    color: #111111;
+    border: 1px solid #e5e7eb;
+
+}
+
+
+/* DARK */
+body.theme-dark .result-search {
+
+    background: #111111;
+    color: #ffffff;
+    border: 1px solid #262626;
+
 }
