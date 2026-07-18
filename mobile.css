@@ -2293,3 +2293,8 @@ body.mobile-mode .module-badge {
 
     color: #fff;
 }
+button:active,
+.mobile-icon-btn:active {
+    transform:scale(.96);
+}
+
