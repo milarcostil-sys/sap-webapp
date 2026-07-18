@@ -1106,5 +1106,31 @@ body.theme-light .main-card {
     border: 1px solid #e5e7eb;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
+/* =========================
+   DESKTOP HEADER LOGOUT
+========================= */
 
+.main-right button:last-child {
+
+    color: #ef4444;
+
+    border-color: rgba(239,68,68,.25);
+
+}
+
+
+.main-right button:last-child:hover {
+
+    background: rgba(239,68,68,.15);
+
+    color: #dc2626;
+
+    border-color: #ef4444;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(239,68,68,.25);
+
+}
 

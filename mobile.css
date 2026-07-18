@@ -2214,3 +2214,30 @@ body.mobile-mode .module-badge {
 #searchBox::placeholder {
     text-align: right;
 }
+/* =========================
+   MOBILE HEADER LOGOUT
+========================= */
+
+.mobile-actions .mobile-icon-btn:last-child {
+
+    color: #ef4444;
+
+    border-color: rgba(239,68,68,.25);
+
+}
+
+
+.mobile-actions .mobile-icon-btn:last-child:hover {
+
+    background: rgba(239,68,68,.15);
+
+    color: #dc2626;
+
+    border-color: #ef4444;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(239,68,68,.25);
+
+}
