@@ -1133,4 +1133,34 @@ body.theme-light .main-card {
         0 8px 20px rgba(239,68,68,.25);
 
 }
+/* =========================
+   LOGOUT BUTTON
+========================= */
 
+.main-right button:last-child {
+
+    background: rgba(239,68,68,.12);
+
+    color: #ef4444;
+
+    border: 1px solid rgba(239,68,68,.35);
+
+    font-weight: 800;
+
+}
+
+
+.main-right button:last-child:hover {
+
+    background: #dc2626;
+
+    color: #fff;
+
+    border-color: #dc2626;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(239,68,68,.35);
+
+}
