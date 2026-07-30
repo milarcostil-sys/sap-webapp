@@ -4241,3 +4241,49 @@ body.theme-dark .result-search {
 }
 
 }
+
+/* =====================================
+   FINAL MOBILE TABLE CONTENT WIDTH
+===================================== */
+
+@media (max-width:768px){
+
+    #results {
+        overflow-x:auto !important;
+        width:100%;
+    }
+
+
+    #results table {
+
+        width:max-content !important;
+
+        min-width:max-content !important;
+
+        table-layout:auto !important;
+
+        border-collapse:collapse !important;
+
+    }
+
+
+    #results th,
+    #results td {
+
+        width:auto !important;
+
+        min-width:0 !important;
+
+        max-width:none !important;
+
+        white-space:nowrap !important;
+
+        overflow:visible !important;
+
+        text-overflow:unset !important;
+
+        padding:8px 14px;
+
+    }
+
+}
