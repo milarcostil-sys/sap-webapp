@@ -2298,3 +2298,54 @@ button:active,
     transform:scale(.96);
 }
 
+/* =========================================
+   MOBILE PATCH V10
+   STICKY HEADER FIX
+========================================= */
+
+/* מחזיר את הגלילה ל-body ומונע בעיות Sticky */
+body.mobile-app{
+    height: auto !important;
+    min-height: 100vh;
+    overflow-y: visible !important;
+}
+
+/* Header דביק */
+.mobile-header{
+    position: sticky !important;
+    top: 0;
+    z-index: 99999;
+
+    background: var(--bg) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid var(--border);
+
+    box-shadow: 0 4px 18px rgba(0,0,0,.18);
+}
+
+/* צל מעט חזק יותר בדארק */
+body.theme-dark .mobile-header{
+    background: rgba(0,0,0,.92) !important;
+    box-shadow: 0 6px 24px rgba(0,0,0,.45);
+}
+
+/* מצב לייט */
+body.theme-light .mobile-header{
+    background: rgba(245,247,251,.92) !important;
+    box-shadow: 0 6px 20px rgba(15,23,42,.10);
+}
+
+/* מוודא שהתוכן תמיד נשאר מתחת ל-header */
+main{
+    position: relative;
+    z-index: 1;
+}
+
+.mobile-card,
+.mobile-query-card,
+.mobile-result-card{
+    position: relative;
+    z-index: 1;
+}
