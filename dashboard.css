@@ -3737,3 +3737,47 @@ body.theme-dark .result-search {
     }
 
 }
+
+/* =========================================
+   DESKTOP TABLE VIEW ON MOBILE - EXCEL MODE
+========================================= */
+
+@media (max-width:768px){
+
+    .table-wrapper {
+        width:100%;
+        overflow-x:auto;
+        overflow-y:hidden;
+        -webkit-overflow-scrolling:touch;
+    }
+
+
+    #results table {
+
+        width:max-content !important;
+
+        min-width:1200px !important;
+
+        table-layout:auto !important;
+
+        border-collapse:collapse;
+
+    }
+
+
+    #results th,
+    #results td {
+
+        min-width:120px !important;
+
+        max-width:none !important;
+
+        white-space:nowrap !important;
+
+        overflow:visible !important;
+
+        text-overflow:clip !important;
+
+    }
+
+}
