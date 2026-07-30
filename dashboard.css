@@ -4093,3 +4093,43 @@ body.theme-dark .result-search {
     }
 
 }
+/* =====================================
+   MOBILE TABLE - NATURAL COLUMN WIDTH
+===================================== */
+
+@media(max-width:768px){
+
+    .table-wrapper {
+        overflow-x:auto !important;
+        width:100% !important;
+    }
+
+
+    .table-wrapper table {
+
+        width:max-content !important;
+        min-width:max-content !important;
+
+        table-layout:auto !important;
+
+    }
+
+
+    .table-wrapper th,
+    .table-wrapper td {
+
+        width:auto !important;
+
+        min-width:unset !important;
+
+        max-width:none !important;
+
+        white-space:nowrap !important;
+
+        overflow:visible !important;
+
+        text-overflow:clip !important;
+
+    }
+
+}
