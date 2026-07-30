@@ -4172,3 +4172,33 @@ body.theme-dark .result-search {
     }
 
 }
+@media(max-width:768px){
+
+    #results table,
+    .mobile-excel-table table {
+
+        width:max-content !important;
+        min-width:max-content !important;
+
+        table-layout:auto !important;
+
+    }
+
+
+    #results th,
+    #results td,
+    .mobile-excel-table th,
+    .mobile-excel-table td {
+
+        width:auto !important;
+        min-width:120px;
+
+        white-space:nowrap !important;
+
+        overflow:visible !important;
+
+        text-overflow:clip !important;
+
+    }
+
+}
