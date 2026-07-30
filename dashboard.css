@@ -3818,3 +3818,182 @@ body.theme-dark .result-search {
     }
 
 }
+/* =========================================
+   FINAL TABLE AUTO WIDTH OVERRIDE
+========================================= */
+
+#results {
+    overflow-x: auto;
+}
+
+#results table {
+    width: max-content !important;
+    min-width: 100% !important;
+    table-layout: auto !important;
+}
+
+#results th,
+#results td {
+
+    width: auto !important;
+
+    min-width: 80px !important;
+    max-width: none !important;
+
+    white-space: nowrap !important;
+
+    overflow: visible !important;
+    text-overflow: unset !important;
+}
+/* =====================================
+   SMART TABLE WIDTH BY CONTENT
+===================================== */
+
+#results table {
+
+    width: max-content !important;
+    min-width: 100%;
+
+    table-layout: auto !important;
+
+    border-collapse: collapse;
+}
+
+
+#results th,
+#results td {
+
+    white-space: nowrap;
+
+    width: auto !important;
+
+    min-width: 80px;
+
+    max-width: none !important;
+
+    overflow: visible;
+
+    text-overflow: clip;
+}
+
+
+/* טקסט ארוך */
+
+#results td.long-text,
+#results th.long-text {
+
+    min-width: 250px;
+
+}
+
+
+/* מספרים */
+
+#results td.number,
+#results th.number {
+
+    min-width:90px;
+
+    text-align:center;
+
+}
+
+
+/* מובייל */
+
+@media(max-width:768px){
+
+    #results {
+
+        overflow-x:auto;
+
+    }
+
+
+    #results table {
+
+        width:max-content !important;
+
+    }
+
+
+    #results th,
+    #results td {
+
+        min-width:120px;
+
+    }
+
+}
+/* MOBILE DESKTOP TABLE MODE */
+@media(max-width:768px){
+
+    #results {
+        overflow-x:auto;
+    }
+
+    .table-wrapper{
+        overflow-x:auto;
+    }
+
+    #results table{
+        width:max-content !important;
+        min-width:1200px !important;
+        table-layout:auto !important;
+    }
+
+    #results th,
+    #results td{
+        white-space:nowrap !important;
+        min-width:120px;
+        max-width:none !important;
+        overflow:visible !important;
+        text-overflow:unset !important;
+    }
+}
+/* =========================================
+   MOBILE TABLE - EXCEL MODE
+   NO TEXT CUTTING
+========================================= */
+
+@media (max-width:768px){
+
+    #results,
+    .table-wrapper {
+
+        width:100%;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+
+    }
+
+
+    #results table {
+
+        width:max-content !important;
+        min-width:100% !important;
+
+        table-layout:auto !important;
+
+        border-collapse:collapse;
+
+    }
+
+
+    #results th,
+    #results td {
+
+        white-space:nowrap !important;
+
+        width:auto !important;
+        min-width:120px;
+
+        max-width:none !important;
+
+        overflow:visible !important;
+
+        text-overflow:unset !important;
+
+    }
+
+}
