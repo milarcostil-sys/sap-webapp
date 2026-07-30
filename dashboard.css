@@ -4287,3 +4287,17 @@ body.theme-dark .result-search {
     }
 
 }
+@media(max-width:768px){
+
+#results table {
+    display: table;
+    width: auto !important;
+    min-width: auto !important;
+}
+
+#results th,
+#results td {
+    min-width: auto !important;
+}
+
+}
