@@ -1252,7 +1252,7 @@ select {
 
 #results table {
     width: 100%;
-  
+    table-layout: fixed;
     border-collapse: collapse;
 }
 
@@ -4122,6 +4122,45 @@ body.theme-dark .result-search {
 
         min-width:unset !important;
 
+        max-width:none !important;
+
+        white-space:nowrap !important;
+
+        overflow:visible !important;
+
+        text-overflow:clip !important;
+
+    }
+
+}
+
+/* =====================================
+   MOBILE EXCEL TABLE MODE
+===================================== */
+
+@media(max-width:768px){
+
+    .mobile-excel-table {
+        overflow-x:auto !important;
+        width:100% !important;
+    }
+
+
+    .mobile-excel-table table {
+
+        width:max-content !important;
+        min-width:max-content !important;
+
+        table-layout:auto !important;
+
+    }
+
+
+    .mobile-excel-table th,
+    .mobile-excel-table td {
+
+        width:auto !important;
+        min-width:0 !important;
         max-width:none !important;
 
         white-space:nowrap !important;

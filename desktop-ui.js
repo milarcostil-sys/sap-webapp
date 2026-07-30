@@ -313,7 +313,8 @@ function renderTable(data) {
         </div>
 
 
-        <div class="table-wrapper">
+                <div class="table-wrapper mobile-excel-table">
+
 
             <table>
 
