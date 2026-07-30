@@ -4055,3 +4055,44 @@ body.theme-dark .result-search {
     }
 
 }
+/* =========================================
+   FORCE MOBILE TABLE NO ELLIPSIS
+========================================= */
+
+@media(max-width:768px){
+
+    .table-wrapper,
+    #results {
+        overflow-x:auto !important;
+    }
+
+
+    .table-wrapper table,
+    #results table {
+
+        width:max-content !important;
+        min-width:1200px !important;
+
+        table-layout:auto !important;
+
+    }
+
+
+    .table-wrapper th,
+    .table-wrapper td,
+    #results th,
+    #results td {
+
+        white-space:nowrap !important;
+
+        overflow:visible !important;
+
+        text-overflow:clip !important;
+
+        max-width:none !important;
+
+        width:auto !important;
+
+    }
+
+}
