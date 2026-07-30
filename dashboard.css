@@ -3699,3 +3699,41 @@ body.theme-dark .result-search {
         scale(.96);
 
 }
+
+/* =========================================
+   MOBILE TABLE FIX
+   מאפשר גלילה אופקית במקום חיתוך ערכים
+========================================= */
+
+@media (max-width:768px){
+
+    #results{
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    .table-wrapper{
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    #results table{
+
+        width:max-content !important;
+        min-width:100% !important;
+
+        table-layout:auto !important;
+    }
+
+    #results th,
+    #results td{
+
+        min-width:140px !important;
+        max-width:none !important;
+
+        white-space:nowrap;
+        overflow:visible;
+        text-overflow:clip;
+    }
+
+}
