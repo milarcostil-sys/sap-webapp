@@ -3997,3 +3997,61 @@ body.theme-dark .result-search {
     }
 
 }
+
+/* =========================================
+   TABLE CONTENT MODE
+   NO CUTTING VALUES
+========================================= */
+
+.table-wrapper {
+    width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+}
+
+
+.table-wrapper table {
+
+    border-collapse:collapse;
+
+    width:max-content !important;
+
+    min-width:100%;
+
+    table-layout:auto !important;
+}
+
+
+.table-wrapper th,
+.table-wrapper td {
+
+    white-space:nowrap !important;
+
+    width:auto !important;
+
+    min-width:100px;
+
+    max-width:none !important;
+
+    overflow:visible !important;
+
+    text-overflow:unset !important;
+
+}
+@media(max-width:768px){
+
+    .table-wrapper table {
+
+        min-width:1200px !important;
+
+    }
+
+
+    .table-wrapper th,
+    .table-wrapper td {
+
+        min-width:140px;
+
+    }
+
+}
