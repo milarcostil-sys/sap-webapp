@@ -3781,3 +3781,40 @@ body.theme-dark .result-search {
     }
 
 }
+/* =========================================
+   MOBILE DESKTOP TABLE - FORCE EXCEL MODE
+========================================= */
+
+@media (max-width:768px){
+
+    #results {
+        overflow-x:auto !important;
+    }
+
+    .table-wrapper {
+        overflow-x:auto !important;
+        width:100% !important;
+    }
+
+    #results table {
+        width:max-content !important;
+        min-width:1200px !important;
+        table-layout:auto !important;
+    }
+
+
+    #results th,
+    #results td {
+
+        width:auto !important;
+
+        min-width:150px !important;
+        max-width:none !important;
+
+        white-space:nowrap !important;
+
+        overflow:visible !important;
+        text-overflow:clip !important;
+    }
+
+}
