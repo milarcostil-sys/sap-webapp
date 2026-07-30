@@ -1175,7 +1175,6 @@ select {
     min-width: 0;
     max-width: 0;
 
-    
     white-space: nowrap;
 }
 
@@ -1260,8 +1259,7 @@ select {
 #results th,
 #results td {
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+   
 }
 
 
