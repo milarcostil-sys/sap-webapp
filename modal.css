@@ -263,3 +263,1024 @@
     user-select:none;
 
 }
+/* =========================
+   DRILL LAYOUT
+========================= */
+
+.drill-main {
+
+    display:flex;
+    flex-direction:column;
+
+    width:100%;
+
+    gap:16px;
+
+    margin-top:0;
+    padding-top:0;
+
+}
+
+
+/* =========================
+   TOP AREA
+========================= */
+
+.drill-top {
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    direction:rtl;
+
+    margin:0;
+
+    padding:0;
+
+}
+
+
+
+
+/* =========================
+   IMAGE
+========================= */
+
+.drill-image-box {
+
+    width:150px;
+
+    height:150px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+}
+
+
+.drill-image {
+
+    width:150px;
+
+    height:150px;
+
+    object-fit:contain;
+
+    background:#fff;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:8px;
+
+    cursor:zoom-in;
+
+    user-select:none;
+
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease;
+
+}
+
+
+.drill-image:hover {
+
+    transform:scale(1.03);
+
+}
+
+
+/* =========================
+   DATA AREA
+========================= */
+
+.drill-body {
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .drill-top {
+
+        justify-content:space-between;
+
+    }
+
+
+    .drill-image-box {
+
+        width:140px;
+
+        height:140px;
+
+    }
+
+
+    .drill-image {
+
+        width:140px;
+
+        height:140px;
+
+    }
+
+
+    .drill-makat {
+
+        font-size:20px;
+
+    }
+
+}
+.drill-top {
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    direction:rtl;
+
+}
+.drill-makat {
+
+    font-size:22px;
+    font-weight:700;
+    padding-top:5px;
+
+}
+.drill-top {
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:row;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    direction:rtl;
+
+    margin:0;
+
+    padding:0;
+
+}
+
+
+.drill-makat {
+
+    font-size:22px;
+
+    font-weight:700;
+
+    text-align:right;
+
+    order:1;
+
+}
+
+
+.drill-image-box {
+
+    width:150px;
+
+    height:150px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    order:2;
+
+}
+/* =========================
+   DRILL TOP FINAL FIX
+========================= */
+
+.drill-top {
+
+    width:100%;
+
+    display:flex !important;
+
+    flex-direction:row !important;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    direction:rtl;
+
+}
+
+
+.drill-makat {
+
+    order:1;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+
+.drill-image-box {
+
+    order:2;
+
+    width:150px;
+
+    height:150px;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:center;
+
+}
+.drill-main {
+    width:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+
+.drill-top {
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:flex-start;
+    direction:rtl;
+}
+
+
+.drill-header {
+    width:100%;
+    margin-top:18px;
+}
+/* =========================
+   DRILL TOP AREA
+========================= */
+
+.drill-top {
+
+    display:flex;
+
+    flex-direction:row;
+
+    align-items:flex-start;
+
+    justify-content:space-between;
+
+    width:100%;
+
+    padding-top:0;
+
+    margin-top:0;
+
+}
+
+
+
+/* Makat always top */
+
+.drill-makat {
+
+    order:0;
+
+    align-self:flex-start;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    margin:0;
+
+    padding:0;
+
+}
+
+
+
+/* Image top left */
+
+.drill-image-box {
+
+    order:1;
+
+    margin:0;
+
+    padding:0;
+
+    width:140px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+}
+
+
+.drill-image {
+
+    width:140px;
+
+    height:140px;
+
+    object-fit:contain;
+
+}
+.drill-top {
+
+    display:grid;
+
+    grid-template-columns: 1fr 140px;
+
+    direction:rtl;
+
+    align-items:start;
+
+}
+/* =========================
+   DRILL MODAL CONTAINER
+========================= */
+
+#drillModal .modal-content{
+
+    width:min(900px,92vw);
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    background:var(--card);
+
+    color:var(--text);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:24px;
+
+    position:relative;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.35);
+
+}
+
+
+/* CLOSE BUTTON */
+
+#drillModal .close{
+
+    position:absolute;
+
+    top:10px;
+
+    right:16px;
+
+    font-size:32px;
+
+    line-height:1;
+
+    cursor:pointer;
+
+    z-index:10;
+
+}
+
+
+/* CONTENT STARTS AT TOP */
+
+#drillContent{
+
+    width:100%;
+
+    margin-top:0;
+
+    padding-top:0;
+
+}
+/* =========================
+   DRILL MODAL FIX
+========================= */
+
+
+#drillModal .modal-content{
+
+    width:min(900px,92vw);
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    background:var(--card);
+
+    color:var(--text);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:24px;
+
+    position:relative;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.35);
+
+}
+
+
+
+#drillModal .close{
+
+    position:absolute;
+
+    top:10px;
+
+    left:14px;
+
+    width:36px;
+
+    height:36px;
+
+    border:none;
+
+    background:none;
+
+    color:var(--text);
+
+    font-size:32px;
+
+    line-height:30px;
+
+    cursor:pointer;
+
+    z-index:5;
+
+}
+
+
+
+#drillContent{
+
+    width:100%;
+
+    margin:0;
+
+    padding:0;
+
+}
+
+
+
+#drillContent .drill-main{
+
+    width:100%;
+
+    margin:0;
+
+    padding:0;
+
+}
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:center;
+
+    z-index:99999;
+
+    padding-top:20px;
+
+}
+#drillModal .modal-content{
+
+    width:min(900px,92vw);
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    background:var(--card);
+
+    color:var(--text);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:24px;
+
+    position:relative;
+
+}
+/* =========================
+   DRILL DEBUG FINAL
+========================= */
+
+#drillModal .drill-main{
+
+    display:flex !important;
+
+    flex-direction:column !important;
+
+    width:100% !important;
+
+    margin:0 !important;
+
+    padding:0 !important;
+
+}
+
+
+
+#drillModal .drill-top{
+
+    display:flex !important;
+
+    flex-direction:row !important;
+
+    justify-content:space-between !important;
+
+    align-items:flex-start !important;
+
+    width:100% !important;
+
+    margin:0 !important;
+
+    padding:0 !important;
+
+    direction:rtl !important;
+
+}
+
+
+
+#drillModal .drill-makat{
+
+    display:block !important;
+
+    order:1 !important;
+
+    margin:0 !important;
+
+    padding:0 !important;
+
+    transform:none !important;
+
+}
+
+
+
+#drillModal .drill-image-box{
+
+    order:2 !important;
+
+    margin:0 !important;
+
+    padding:0 !important;
+
+}
+/* =========================
+   DRILL FINAL OVERRIDE
+========================= */
+
+
+#drillModal .drill-main {
+
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    margin:0;
+    padding:0;
+
+}
+
+
+#drillModal .drill-top {
+
+    width:100%;
+
+    display:flex !important;
+
+    flex-direction:row !important;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    direction:rtl;
+
+    margin:0;
+    padding:0;
+
+}
+
+
+
+#drillModal .drill-makat {
+
+    order:1;
+
+    margin:0;
+
+    padding:0;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+
+
+#drillModal .drill-image-box {
+
+    order:2;
+
+    width:140px;
+
+    height:140px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    margin:0;
+
+    padding:0;
+
+}
+
+
+
+#drillModal .drill-image {
+
+    width:140px;
+
+    height:140px;
+
+    object-fit:contain;
+
+}
+
+
+
+#drillModal .drill-header {
+
+    margin-top:16px;
+
+}
+
+
+
+#drillModal .drill-body {
+
+    width:100%;
+
+}
+/* =========================
+   DRILL FINAL CLEAN
+========================= */
+
+
+#drillModal .drill-main{
+
+    width:100%;
+    display:flex;
+    flex-direction:column;
+
+    margin:0;
+    padding:0;
+
+}
+
+
+/* TOP ROW */
+
+#drillModal .drill-top{
+
+    width:100%;
+
+    display:flex !important;
+
+    flex-direction:row !important;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    direction:rtl;
+
+    margin:0;
+
+    padding:0;
+
+}
+
+
+
+/* MAKAT */
+
+#drillModal .drill-makat{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    margin:0;
+
+    padding:0;
+
+    order:1;
+
+}
+
+
+
+/* IMAGE */
+
+#drillModal .drill-image-box{
+
+    order:2;
+
+    width:140px;
+
+    height:140px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    margin:0;
+
+    padding:0;
+
+}
+
+
+#drillModal .drill-image{
+
+    width:140px;
+
+    height:140px;
+
+    object-fit:contain;
+
+}
+
+
+
+/* TITLE */
+
+#drillModal .drill-header{
+
+    width:100%;
+
+    margin-top:16px;
+
+}
+
+
+
+/* DETAILS */
+
+#drillModal .drill-body{
+
+    width:100%;
+
+    margin-top:12px;
+
+}
+/* =========================
+   DRILL TOP ALIGN TO CLOSE
+========================= */
+
+#drillModal .modal-content{
+    padding-top:10px;
+}
+
+
+#drillModal #drillContent{
+    margin-top:0;
+}
+
+
+#drillModal .drill-top{
+    margin-top:0;
+    padding-top:0;
+}
+/* =========================
+   DRILL FINAL STRUCTURE
+========================= */
+
+
+#drillModal .drill-main{
+
+    width:100%;
+    display:flex;
+    flex-direction:column;
+
+}
+
+
+#drillModal .drill-top{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:row;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    direction:rtl;
+
+    margin:0;
+    padding:0;
+
+}
+
+
+
+#drillModal .drill-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:8px;
+
+}
+
+
+
+#drillModal .drill-makat{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    margin:0;
+
+    padding:0;
+
+}
+
+
+
+#drillModal .drill-header{
+
+    margin:0;
+
+}
+
+
+
+#drillModal .drill-title{
+
+    margin:0;
+
+}
+
+
+
+#drillModal .drill-image-box{
+
+    width:140px;
+
+    height:140px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+}
+
+
+
+#drillModal .drill-image{
+
+    width:140px;
+
+    height:140px;
+
+    object-fit:contain;
+
+}
+#drillModal .drill-info{
+
+    padding-top:35px;
+
+}
+/* =========================
+   DRILL DESKTOP FINAL SIZE
+========================= */
+
+@media (min-width:601px){
+
+    #drillModal .modal-content{
+
+        width:760px;
+
+        max-height:85vh;
+
+        padding:18px;
+
+    }
+
+
+    #drillModal #drillContent{
+
+        margin:0;
+        padding:0;
+
+    }
+
+
+    #drillModal .drill-main{
+
+        gap:12px;
+
+    }
+
+
+    #drillModal .drill-image-box,
+    #drillModal .drill-image{
+
+        width:120px;
+        height:120px;
+
+    }
+
+
+    #drillModal .drill-header{
+
+        margin-top:10px;
+
+    }
+
+
+    #drillModal .drill-body{
+
+        gap:8px;
+
+    }
+
+}

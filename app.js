@@ -1447,51 +1447,84 @@ async function openItemDrill(itemCode) {
 
 document.getElementById("drillContent").innerHTML = `
 
-<div class="drill-header">
-
-    <div class="drill-title-area">
-
-        <div class="drill-title">
-            ${data.title}
-        </div>
-
-        <div class="drill-subtitle">
-            Item Information
-        </div>
-
-    </div>
-
-</div>
 
 <div class="drill-main">
 
-    <div class="drill-image-box">
 
-        <img
-            class="drill-image"
-            src="${imageUrl}"
+    <div class="drill-top">
 
-            onclick="showImagePreview('${imageUrl}')"
 
-            onerror="
-                this.style.display='none';
-                this.nextElementSibling.style.display='flex';
-            "
-        >
+        <!-- RIGHT SIDE : ITEM INFO -->
+        <div class="drill-info">
 
-        <div class="drill-no-image">
 
-            <div class="drill-no-image-icon">
-                🖼️
+            <div class="drill-makat">
+                ${data.Makat || ""}
             </div>
 
-            <div class="drill-no-image-text">
-                אין תמונה לפריט
+
+
+            <div class="drill-header">
+
+                <div class="drill-title-area">
+
+                    <div class="drill-title">
+                        ${data.title || ""}
+                    </div>
+
+                </div>
+
             </div>
+
 
         </div>
 
+
+
+
+        <!-- LEFT SIDE : IMAGE -->
+        <div class="drill-image-box">
+
+
+            <img
+                class="drill-image"
+                src="${imageUrl}"
+                onclick="showImagePreview('${imageUrl}')"
+
+                onerror="
+                    this.style.display='none';
+                    this.nextElementSibling.style.display='flex';
+                "
+            >
+
+
+
+            <div class="drill-no-image">
+
+
+                <div class="drill-no-image-icon">
+                    🖼️
+                </div>
+
+
+                <div class="drill-no-image-text">
+                    אין תמונה לפריט
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
     </div>
+
+
+
+
+
+    <!-- DETAILS -->
 
     <div class="drill-body">
 
@@ -1499,7 +1532,10 @@ document.getElementById("drillContent").innerHTML = `
 
     </div>
 
+
+
 </div>
+
 
 `;
     document
