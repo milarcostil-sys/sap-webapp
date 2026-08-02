@@ -158,6 +158,19 @@ if (!localStorage.getItem("token")) {
 <script src="app.js"></script>
 <script src="mobile-ui.js"></script>
 
+<!-- =========================
+     IMAGE VIEWER
+========================= -->
+
+<div id="imagePreview"
+     class="image-preview hidden"
+     onclick="closeImagePreview()">
+
+    <img
+        id="imagePreviewImg"
+        onclick="event.stopPropagation()">
+
+</div>
 
 </body>
 </html>

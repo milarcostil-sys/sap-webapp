@@ -184,5 +184,18 @@ if (!localStorage.getItem("token")) {
     </div>
 
 </div>
+<!-- =========================
+     IMAGE VIEWER
+========================= -->
+
+<div id="imagePreview"
+     class="image-preview hidden"
+     onclick="closeImagePreview()">
+
+    <img
+        id="imagePreviewImg"
+        onclick="event.stopPropagation()">
+
+</div>
 </body>
 </html>

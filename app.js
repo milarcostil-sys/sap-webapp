@@ -1445,36 +1445,11 @@ async function openItemDrill(itemCode) {
         `;
     });
 
-    document.getElementById("drillContent").innerHTML = `
+document.getElementById("drillContent").innerHTML = `
 
-       <div class="drill-header">
+<div class="drill-header">
 
-    <div class="drill-image-box">
-
-        <img
-            class="drill-image"
-            src="${imageUrl}"
-            onerror="
-                this.style.display='none';
-                this.nextElementSibling.style.display='flex';
-            "
-        >
-
-        <div class="drill-no-image">
-
-            <div class="drill-no-image-icon">
-                📷
-            </div>
-
-            <div class="drill-no-image-text">
-                לא נמצאה תמונה
-            </div>
-
-        </div>
-
-    </div>
-
-    <div>
+    <div class="drill-title-area">
 
         <div class="drill-title">
             ${data.title}
@@ -1488,14 +1463,45 @@ async function openItemDrill(itemCode) {
 
 </div>
 
-        <div class="drill-body">
+<div class="drill-main">
 
-            ${rows}
+    <div class="drill-image-box">
+
+        <img
+            class="drill-image"
+            src="${imageUrl}"
+
+            onclick="showImagePreview('${imageUrl}')"
+
+            onerror="
+                this.style.display='none';
+                this.nextElementSibling.style.display='flex';
+            "
+        >
+
+        <div class="drill-no-image">
+
+            <div class="drill-no-image-icon">
+                🖼️
+            </div>
+
+            <div class="drill-no-image-text">
+                אין תמונה לפריט
+            </div>
 
         </div>
 
-    `;
+    </div>
 
+    <div class="drill-body">
+
+        ${rows}
+
+    </div>
+
+</div>
+
+`;
     document
     .getElementById("drillModal")
     .classList.remove("hidden");
@@ -1519,6 +1525,116 @@ window.addEventListener("click", function(e) {
 
     closeDrill();
     }
+});
+
+/* =========================
+   Image Viewer
+========================= */
+
+let currentZoom = 1;
+
+const ZOOM_STEP = 0.2;
+const MIN_ZOOM = 1;
+const MAX_ZOOM = 4;
+
+function showImagePreview(src){
+
+    const overlay =
+        document.getElementById("imagePreview");
+
+    const img =
+        document.getElementById("imagePreviewImg");
+
+    currentZoom = 1;
+
+    img.src = src;
+
+    img.style.transform = "scale(1)";
+
+    overlay.classList.remove("hidden");
+}
+
+function closeImagePreview(){
+
+    const overlay =
+        document.getElementById("imagePreview");
+
+    const img =
+        document.getElementById("imagePreviewImg");
+
+    currentZoom = 1;
+
+    img.style.transform = "scale(1)";
+
+    overlay.classList.add("hidden");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const img =
+        document.getElementById("imagePreviewImg");
+
+    if(!img) return;
+
+    /* Double Click */
+
+    img.addEventListener("dblclick", () => {
+
+        currentZoom =
+            currentZoom === 1 ? 2 : 1;
+
+        img.style.transform =
+            `scale(${currentZoom})`;
+
+    });
+
+    /* Mouse Wheel */
+
+    img.addEventListener("wheel", e => {
+
+        e.preventDefault();
+
+        if(e.deltaY < 0){
+
+            currentZoom = Math.min(
+                currentZoom + ZOOM_STEP,
+                MAX_ZOOM
+            );
+
+        }else{
+
+            currentZoom = Math.max(
+                currentZoom - ZOOM_STEP,
+                MIN_ZOOM
+            );
+
+        }
+
+        img.style.transform =
+            `scale(${currentZoom})`;
+
+    });
+
+    /* Disable Drag */
+
+    img.addEventListener("dragstart", e => {
+
+        e.preventDefault();
+
+    });
+
+});
+
+/* ESC */
+
+document.addEventListener("keydown", e => {
+
+    if(e.key === "Escape"){
+
+        closeImagePreview();
+
+    }
+
 });
 
 function formatValue(value, format) {
