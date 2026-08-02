@@ -93,3 +93,73 @@
 
     background:#b91c1c;
 }
+/* =========================
+   DRILL IMAGE
+========================= */
+
+.drill-image-box{
+
+    width:110px;
+    height:110px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+}
+
+.drill-image{
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    border-radius:12px;
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    padding:6px;
+}
+
+/* אין תמונה */
+
+.drill-no-image{
+
+    display:none;
+
+    width:100%;
+    height:100%;
+
+    border-radius:12px;
+
+    border:2px dashed var(--border);
+
+    background:var(--glass);
+
+    color:var(--muted);
+
+    align-items:center;
+    justify-content:center;
+
+    flex-direction:column;
+
+    text-align:center;
+
+    gap:8px;
+
+    font-size:12px;
+}
+
+.drill-no-image-icon{
+
+    font-size:28px;
+}
+
+.drill-no-image-text{
+
+    font-weight:600;
+}

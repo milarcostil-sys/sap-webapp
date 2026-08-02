@@ -1417,7 +1417,10 @@ async function openItemDrill(itemCode) {
     );
 
     const data = await res.json();
-
+    
+    const imageUrl =
+    API_BASE + "/item-image/" + encodeURIComponent(itemCode);
+ 
     if (data.error) {
         alert(data.error);
         return;
@@ -1444,25 +1447,46 @@ async function openItemDrill(itemCode) {
 
     document.getElementById("drillContent").innerHTML = `
 
-        <div class="drill-header">
+       <div class="drill-header">
 
-            <div class="drill-icon">
-                📦
+    <div class="drill-image-box">
+
+        <img
+            class="drill-image"
+            src="${imageUrl}"
+            onerror="
+                this.style.display='none';
+                this.nextElementSibling.style.display='flex';
+            "
+        >
+
+        <div class="drill-no-image">
+
+            <div class="drill-no-image-icon">
+                📷
             </div>
 
-            <div>
-
-                <div class="drill-title">
-                    ${data.title}
-                </div>
-
-                <div class="drill-subtitle">
-                    Item Information
-                </div>
-
+            <div class="drill-no-image-text">
+                לא נמצאה תמונה
             </div>
 
         </div>
+
+    </div>
+
+    <div>
+
+        <div class="drill-title">
+            ${data.title}
+        </div>
+
+        <div class="drill-subtitle">
+            Item Information
+        </div>
+
+    </div>
+
+</div>
 
         <div class="drill-body">
 
