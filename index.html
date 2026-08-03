@@ -185,7 +185,23 @@ if (savedTheme === "light") {
 }
 });
 
+// =========================
+// ENTER TO LOGIN
+// =========================
 
+document.addEventListener("keydown", function(e){
+
+    if (e.key !== "Enter") return;
+
+    const otpModal = document.getElementById("otpModal");
+
+    if (otpModal && !otpModal.classList.contains("hidden")) {
+        return; // בזמן OTP לא מבצעים Login
+    }
+
+    login();
+
+});
 
 </script>
 </body>
