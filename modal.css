@@ -790,13 +790,13 @@
 
     display:flex;
 
-    align-items:flex-start;
+    align-items:center;
 
     justify-content:center;
 
     z-index:99999;
 
-    padding-top:20px;
+    padding:20px;
 
 }
 #drillModal .modal-content{
@@ -1282,5 +1282,60 @@
         gap:8px;
 
     }
+
+}
+/* =========================
+   DRILL CLOSE BUTTON
+========================= */
+
+#drillModal .close{
+
+    position:absolute;
+
+    top:14px;
+    left:14px;
+
+    width:40px;
+    height:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:none;
+    border-radius:50%;
+
+    background:var(--glass);
+    border:1px solid var(--border);
+
+    color:var(--text);
+
+    font-size:24px;
+    font-weight:700;
+    line-height:1;
+
+    cursor:pointer;
+
+    transition:
+        background .2s,
+        transform .15s,
+        box-shadow .2s;
+
+    z-index:100;
+}
+
+#drillModal .close:hover{
+
+    background:var(--hover);
+
+    transform:scale(1.08);
+
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
+
+}
+
+#drillModal .close:active{
+
+    transform:scale(.96);
 
 }
