@@ -4301,3 +4301,110 @@ body.theme-dark .result-search {
 }
 
 }
+
+/* =========================
+   RESULT ITEMCODE + IMAGE
+========================= */
+
+.itemcode-cell{
+    vertical-align:middle;
+}
+
+
+.itemcode-result-wrap{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    white-space:nowrap;
+
+}
+
+
+/* =========================
+   THUMBNAIL
+========================= */
+
+.itemcode-thumbnail-wrap{
+
+    width:54px;
+    height:54px;
+
+    min-width:54px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+}
+
+
+.itemcode-thumbnail{
+
+    width:54px;
+    height:54px;
+
+    object-fit:contain;
+
+    box-sizing:border-box;
+
+    background:#fff;
+
+    border:1px solid var(--border);
+
+    border-radius:9px;
+
+    padding:3px;
+
+    cursor:zoom-in;
+
+    user-select:none;
+
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease;
+
+}
+
+
+.itemcode-thumbnail:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:
+        0 6px 16px rgba(0,0,0,.18);
+
+}
+
+
+/* =========================
+   NO IMAGE
+========================= */
+
+.itemcode-thumbnail-missing{
+
+    width:54px;
+    height:54px;
+
+    box-sizing:border-box;
+
+    align-items:center;
+    justify-content:center;
+
+    border:1px dashed var(--border);
+
+    border-radius:9px;
+
+    background:var(--glass);
+
+    color:var(--muted);
+
+    font-size:19px;
+
+    cursor:default;
+
+}

@@ -1339,3 +1339,105 @@
     transform:scale(.96);
 
 }
+
+/* =========================
+   EXPORT IMAGE CHOICE
+========================= */
+
+.export-image-choice-box{
+
+    width:min(380px,90vw);
+
+    direction:rtl;
+
+    text-align:center;
+
+}
+
+
+.export-image-choice-icon{
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+}
+
+
+.export-image-choice-title{
+
+    font-size:20px;
+
+    font-weight:800;
+
+    margin-bottom:8px;
+
+}
+
+
+.export-image-choice-text{
+
+    font-size:14px;
+
+    opacity:.75;
+
+    margin-bottom:22px;
+
+}
+
+
+.export-image-choice-actions{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+
+.export-image-choice-actions button{
+
+    flex:1;
+
+    padding:12px 14px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    transition:
+        transform .15s ease,
+        filter .15s ease;
+
+}
+
+
+.export-image-choice-actions button:hover{
+
+    transform:translateY(-1px);
+
+    filter:brightness(1.08);
+
+}
+
+
+.export-without-images{
+
+    background:#6b7280;
+
+    color:#fff;
+
+}
+
+
+.export-with-images{
+
+    background:#16a34a;
+
+    color:#fff;
+
+}

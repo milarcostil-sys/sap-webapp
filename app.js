@@ -779,118 +779,532 @@ async function runQuery(id) {
 /* =========================
    EXPORT EXCEL
 ========================= */
-async function exportExcel() {
+/* =========================
+   CHECK ITEMCODE
+========================= */
 
-    if (!App.lastResult) {
-        alert("Run query first");
-        return;
-    }
+function resultHasItemCode() {
 
-    const token = localStorage.getItem("token");
+    const columns =
+        App.lastResult?.columns || [];
 
-    const res = await fetch(
-        API_BASE + "/export/excel",
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + token
-            },
-            body: JSON.stringify({
-                query_name: App.currentQuery.name,
-                ...App.lastResult
-            })
-        }
+
+    return columns.some(c =>
+        (c.field || "")
+            .toLowerCase()
+            .includes("itemcode")
     );
-
-    if (!res.ok) {
-        alert("Export failed");
-        return;
-    }
-
-    const blob = await res.blob();
-
-    const url = window.URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-
-    a.href = url;
-
-    a.download =
-        `${App.currentQuery.name}.xlsx`;
-
-    document.body.appendChild(a);
-
-    a.click();
-
-    a.remove();
-
-    window.URL.revokeObjectURL(url);
 }
 
+
+/* =========================
+   EXPORT EXCEL
+========================= */
+
+function exportExcel() {
+
+    if (!App.lastResult) {
+
+        alert("Run query first");
+
+        return;
+    }
+
+
+    // =========================
+    // NO ITEMCODE
+    // NORMAL EXPORT
+    // =========================
+
+    if (!resultHasItemCode()) {
+
+        performExcelExport(false);
+
+        return;
+    }
+
+
+    // =========================
+    // HAS ITEMCODE
+    // ASK USER
+    // =========================
+
+    openExcelImageChoice();
+
+}
+
+
+/* =========================
+   REAL EXCEL EXPORT
+========================= */
+
+async function performExcelExport(
+    includeImages
+) {
+
+    if (!App.lastResult) return;
+
+
+    closeExcelImageChoice();
+
+
+    const token =
+        localStorage.getItem("token");
+
+
+    try {
+
+        const res = await fetch(
+
+            API_BASE + "/export/excel",
+
+            {
+                method: "POST",
+
+                headers: {
+
+                    "Content-Type":
+                        "application/json",
+
+                    "Authorization":
+                        "Bearer " + token
+                },
+
+                body: JSON.stringify({
+
+                    query_name:
+                        App.currentQuery.name,
+
+                    ...App.lastResult,
+
+                    include_images:
+                        !!includeImages
+
+                })
+            }
+        );
+
+
+        if (!res.ok) {
+
+            alert("Export failed");
+
+            return;
+        }
+
+
+        const blob =
+            await res.blob();
+
+
+        const url =
+            window.URL.createObjectURL(
+                blob
+            );
+
+
+        const a =
+            document.createElement("a");
+
+
+        a.href = url;
+
+
+        a.download =
+            `${App.currentQuery.name}.xlsx`;
+
+
+        document.body.appendChild(a);
+
+
+        a.click();
+
+
+        a.remove();
+
+
+        window.URL.revokeObjectURL(
+            url
+        );
+
+
+    } catch (err) {
+
+        console.error(
+            "Excel export error:",
+            err
+        );
+
+
+        alert("Export failed");
+
+    }
+
+}
+/* =========================
+   EXCEL IMAGE CHOICE
+========================= */
+
+function openExcelImageChoice() {
+
+    let modal =
+        document.getElementById(
+            "excelImageChoiceModal"
+        );
+
+
+    if (!modal) {
+
+        modal =
+            document.createElement("div");
+
+
+        modal.id =
+            "excelImageChoiceModal";
+
+
+        modal.className =
+            "modal hidden";
+
+
+        modal.innerHTML = `
+
+            <div
+                class="modal-box export-image-choice-box"
+                onclick="event.stopPropagation()"
+            >
+
+                <div class="export-image-choice-icon">
+                    📊
+                </div>
+
+
+                <div class="export-image-choice-title">
+                    ייצוא Excel
+                </div>
+
+
+                <div class="export-image-choice-text">
+                    האם לכלול תמונות פריטים בקובץ?
+                </div>
+
+
+                <div class="export-image-choice-actions">
+
+
+                    <button
+                        class="export-without-images"
+                        onclick="performExcelExport(false)"
+                    >
+                        ללא תמונות
+                    </button>
+
+
+                    <button
+                        class="export-with-images"
+                        onclick="performExcelExport(true)"
+                    >
+                        🖼️ עם תמונות
+                    </button>
+
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        modal.addEventListener(
+            "click",
+            closeExcelImageChoice
+        );
+
+
+        document.body.appendChild(
+            modal
+        );
+
+    }
+
+
+    modal.classList.remove(
+        "hidden"
+    );
+
+}
+
+
+function closeExcelImageChoice() {
+
+    const modal =
+        document.getElementById(
+            "excelImageChoiceModal"
+        );
+
+
+    if (!modal) return;
+
+
+    modal.classList.add(
+        "hidden"
+    );
+
+}
 /* =========================
    EXPORT PDF
 ========================= */
-async function exportPDF() {
+
+function exportPDF() {
 
     if (!App.lastResult) {
+
         alert("Run query first");
+
         return;
     }
 
-    const token = localStorage.getItem("token");
 
-    const res = await fetch(
-        API_BASE + "/query/export/pdf",
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + token
-            },
-            body: JSON.stringify({
-                query_name: App.currentQuery.name,
-                ...App.lastResult
-            })
+    // =========================
+    // NO ITEMCODE
+    // NORMAL EXPORT
+    // =========================
+
+    if (!resultHasItemCode()) {
+
+        performPDFExport(false);
+
+        return;
+    }
+
+
+    // =========================
+    // HAS ITEMCODE
+    // ASK USER
+    // =========================
+
+    openPDFImageChoice();
+}
+
+
+/* =========================
+   REAL PDF EXPORT
+========================= */
+
+async function performPDFExport(
+    includeImages
+) {
+
+    if (!App.lastResult) return;
+
+
+    closePDFImageChoice();
+
+
+    const token =
+        localStorage.getItem("token");
+
+
+    try {
+
+        const res = await fetch(
+
+            API_BASE + "/query/export/pdf",
+
+            {
+                method: "POST",
+
+                headers: {
+
+                    "Content-Type":
+                        "application/json",
+
+                    "Authorization":
+                        "Bearer " + token
+                },
+
+                body: JSON.stringify({
+
+                    query_name:
+                        App.currentQuery.name,
+
+                    ...App.lastResult,
+
+                    include_images:
+                        !!includeImages
+
+                })
+            }
+        );
+
+
+        if (!res.ok) {
+
+            alert("Export failed");
+
+            return;
         }
+
+
+        const blob =
+            await res.blob();
+
+
+        const url =
+            window.URL.createObjectURL(
+                blob
+            );
+
+
+        const a =
+            document.createElement("a");
+
+
+        a.href = url;
+
+
+        a.download =
+            `${App.currentQuery.name}.pdf`;
+
+
+        document.body.appendChild(a);
+
+
+        a.click();
+
+
+        a.remove();
+
+
+        window.URL.revokeObjectURL(
+            url
+        );
+
+
+    } catch (err) {
+
+        console.error(
+            "PDF export error:",
+            err
+        );
+
+
+        alert("Export failed");
+
+    }
+
+}
+
+
+/* =========================
+   PDF IMAGE CHOICE
+========================= */
+
+function openPDFImageChoice() {
+
+    let modal =
+        document.getElementById(
+            "pdfImageChoiceModal"
+        );
+
+
+    if (!modal) {
+
+        modal =
+            document.createElement("div");
+
+
+        modal.id =
+            "pdfImageChoiceModal";
+
+
+        modal.className =
+            "modal hidden";
+
+
+        modal.innerHTML = `
+
+            <div
+                class="modal-box export-image-choice-box"
+                onclick="event.stopPropagation()"
+            >
+
+                <div class="export-image-choice-icon">
+                    📄
+                </div>
+
+
+                <div class="export-image-choice-title">
+                    ייצוא PDF
+                </div>
+
+
+                <div class="export-image-choice-text">
+                    האם לכלול תמונות פריטים בקובץ?
+                </div>
+
+
+                <div class="export-image-choice-actions">
+
+
+                    <button
+                        class="export-without-images"
+                        onclick="performPDFExport(false)"
+                    >
+                        ללא תמונות
+                    </button>
+
+
+                    <button
+                        class="export-with-images"
+                        onclick="performPDFExport(true)"
+                    >
+                        🖼️ עם תמונות
+                    </button>
+
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        modal.addEventListener(
+            "click",
+            closePDFImageChoice
+        );
+
+
+        document.body.appendChild(
+            modal
+        );
+
+    }
+
+
+    modal.classList.remove(
+        "hidden"
     );
 
-    if (!res.ok) {
-        alert("Export failed");
-        return;
-    }
-
-    const blob = await res.blob();
-
-    const url = window.URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-
-    a.href = url;
-
-    a.download =
-        `${App.currentQuery.name}.pdf`;
-
-    document.body.appendChild(a);
-
-    a.click();
-
-    a.remove();
-
-    window.URL.revokeObjectURL(url);
 }
 
-function showLoginMessage(msg, type = "error") {
 
-    const el = document.getElementById("loginMessage");
+function closePDFImageChoice() {
 
-    if (!el) return;
+    const modal =
+        document.getElementById(
+            "pdfImageChoiceModal"
+        );
 
-    el.style.display = "block";
-    el.className = `login-message ${type}`;
-    el.innerText = msg;
+
+    if (!modal) return;
+
+
+    modal.classList.add(
+        "hidden"
+    );
 }
-
 async function login() {
 
     const username = document.getElementById("username").value;
@@ -1399,6 +1813,22 @@ function filterResults(value) {
 
     }, 0);
 }
+
+/* =========================
+   ITEM IMAGE URL
+========================= */
+
+function getItemImageUrl(itemCode) {
+
+    if (!itemCode) return "";
+
+    return (
+        API_BASE +
+        "/item-image/" +
+        encodeURIComponent(itemCode)
+    );
+}
+
 /* =========================
    Drill MODEL
 ========================= */
@@ -1418,8 +1848,7 @@ async function openItemDrill(itemCode) {
 
     const data = await res.json();
     
-    const imageUrl =
-    API_BASE + "/item-image/" + encodeURIComponent(itemCode);
+    const imageUrl = getItemImageUrl(itemCode);
  
     if (data.error) {
         alert(data.error);

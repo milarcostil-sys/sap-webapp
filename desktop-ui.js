@@ -257,6 +257,17 @@ function renderTable(data) {
 
 
     // =========================
+    // FIND ITEMCODE COLUMN
+    // =========================
+
+    const itemCodeColumn = columns.find(c =>
+        (c.field || "")
+            .toLowerCase()
+            .includes("itemcode")
+    );
+
+
+    // =========================
     // FILTER RESULTS
     // =========================
 
@@ -313,7 +324,7 @@ function renderTable(data) {
         </div>
 
 
-                <div class="table-wrapper mobile-excel-table">
+        <div class="table-wrapper mobile-excel-table">
 
 
             <table>
@@ -396,24 +407,77 @@ function renderTable(data) {
 
             const field =
                 (c.field || "")
-                .toLowerCase();
+                    .toLowerCase();
 
 
+
+            // =========================
+            // ITEMCODE + IMAGE
+            // =========================
 
             if (field.includes("itemcode")) {
 
 
+                const itemCode =
+                    r[c.field] ?? "";
+
+
+                const imageUrl =
+                    getItemImageUrl(itemCode);
+
+
                 html += `
 
-                    <td class="clickable-cell"
+                    <td class="clickable-cell itemcode-cell"
 
-                        onclick="openItemDrill('${r[c.field]}')">
+                        onclick="openItemDrill('${itemCode}')">
 
-                        <span class="cell-link">
 
-                            ${value ?? ""}
+                        <div class="itemcode-result-wrap">
 
-                        </span>
+
+                            <div class="itemcode-thumbnail-wrap">
+
+                                <img
+                                    class="itemcode-thumbnail"
+
+                                    src="${imageUrl}"
+
+                                    loading="lazy"
+
+                                    alt=""
+
+                                    onclick="
+                                        event.stopPropagation();
+                                        showImagePreview('${imageUrl}');
+                                    "
+
+                                    onerror="
+                                        this.style.display='none';
+                                        this.nextElementSibling.style.display='flex';
+                                    "
+                                >
+
+
+                                <div
+                                    class="itemcode-thumbnail-missing"
+                                    style="display:none;"
+                                >
+                                    🖼️
+                                </div>
+
+                            </div>
+
+
+                            <span class="cell-link">
+
+                                ${value ?? ""}
+
+                            </span>
+
+
+                        </div>
+
 
                     </td>
 

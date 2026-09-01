@@ -317,124 +317,320 @@ function renderResultsMobile(data) {
     const el = document.getElementById("results");
 
     if (!data?.rows?.length) {
+
         el.innerHTML = `
             <div class="mobile-query-card">
-                <div class="card-title">אין נתונים להצגה</div>
-                <div class="card-desc">נסה להריץ שאילתה או לשנות פילטר</div>
+                <div class="card-title">
+                    אין נתונים להצגה
+                </div>
+
+                <div class="card-desc">
+                    נסה להריץ שאילתה או לשנות פילטר
+                </div>
             </div>
         `;
+
         return;
     }
 
+
     const rows = data.rows || [];
 
+
+    // =========================
+    // FILTER
+    // =========================
+
     const filtered = rows.filter(row => {
+
         if (!App.resultFilter) return true;
 
-        const s = App.resultFilter.toLowerCase();
+        const s =
+            App.resultFilter.toLowerCase();
 
         return Object.values(row).some(v =>
-            String(v ?? "").toLowerCase().includes(s)
+            String(v ?? "")
+                .toLowerCase()
+                .includes(s)
         );
+
     });
 
+
     let html = `
+
         <div class="mobile-results-toolbar">
+
             <div class="mobile-results-count">
                 ${filtered.length} / ${rows.length}
             </div>
 
             <input
-    id="resultFilter"
-    class="mobile-results-filter"
-    placeholder="🔍 סינון תוצאות..."
-    value="${App.resultFilter || ""}"
-    oninput="filterResults(this.value)"
->
+                id="resultFilter"
+                class="mobile-results-filter"
+                placeholder="🔍 סינון תוצאות..."
+                value="${App.resultFilter || ""}"
+                oninput="filterResults(this.value)"
+            >
+
         </div>
 
+
         <div class="mobile-grid">
+
     `;
+
 
     filtered.forEach((row, index) => {
 
-        const entries = Object.entries(row);
 
-        const preview = entries.slice(0, 5);
-        const details = entries.slice(5);
+        const entries =
+            Object.entries(row);
+
+
+        // =========================
+        // FIND ITEMCODE
+        // =========================
+
+        const itemEntry =
+            entries.find(([key]) =>
+                key.toLowerCase().includes("itemcode")
+            );
+
+
+        const itemCode =
+            itemEntry
+                ? itemEntry[1]
+                : null;
+
+
+        const imageUrl =
+            itemCode
+                ? getItemImageUrl(itemCode)
+                : "";
+
+
+        // =========================
+        // REMOVE ITEMCODE
+        // FROM NORMAL FIELDS
+        // =========================
+
+        const normalEntries =
+            entries.filter(([key]) =>
+                !key.toLowerCase().includes("itemcode")
+            );
+
+
+        // אם יש מק"ט:
+        // המק"ט מקבל Header משלו ולכן
+        // מציגים אחריו 4 שדות נוספים.
+        //
+        // אם אין מק"ט:
+        // ממשיכים בדיוק עם 5 שדות.
+
+        const previewCount =
+            itemCode ? 4 : 5;
+
+
+        const preview =
+            normalEntries.slice(
+                0,
+                previewCount
+            );
+
+
+        const details =
+            normalEntries.slice(
+                previewCount
+            );
+
 
         html += `
+
             <div class="mobile-result-card">
+
         `;
 
-        // ======================
-        // PREVIEW (5 ראשונים)
-        // ======================
-        preview.forEach(([key, value]) => {
 
-            const lower = key.toLowerCase();
-            const isItem = lower.includes("itemcode");
+        // =========================
+        // ITEM HEADER
+        // =========================
+
+        if (itemCode) {
 
             html += `
-                <div class="mobile-field">
-                    <div class="mobile-field-label">${key}</div>
 
-                    ${
-                        isItem
-                        ? `
-                            <div class="mobile-field-value mobile-drill"
-                                 onclick="openItemDrill('${value}')">
-                                🔎 ${value}
-                            </div>
-                        `
-                        : `
-                            <div class="mobile-field-value">
-                                ${value ?? ""}
-                            </div>
-                        `
-                    }
+                <div class="mobile-item-header">
+
+
+                    <div class="mobile-item-info">
+
+                        <div class="mobile-item-label">
+                            ${itemEntry[0]}
+                        </div>
+
+
+                        <div
+                            class="mobile-item-code mobile-drill"
+                            onclick="openItemDrill('${itemCode}')"
+                        >
+
+                            🔎 ${itemCode}
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="mobile-item-image-wrap">
+
+
+                        <img
+                            class="mobile-item-image"
+
+                            src="${imageUrl}"
+
+                            loading="lazy"
+
+                            alt=""
+
+                            onclick="
+                                event.stopPropagation();
+                                showImagePreview('${imageUrl}');
+                            "
+
+                            onerror="
+                                this.style.display='none';
+                                this.nextElementSibling.style.display='flex';
+                            "
+                        >
+
+
+                        <div
+                            class="mobile-item-no-image"
+                            style="display:none;"
+                        >
+
+                            🖼️
+
+                        </div>
+
+
+                    </div>
+
+
                 </div>
+
             `;
+
+        }
+
+
+        // =========================
+        // PREVIEW
+        // =========================
+
+        preview.forEach(([key, value]) => {
+
+            html += `
+
+                <div class="mobile-field">
+
+                    <div class="mobile-field-label">
+                        ${key}
+                    </div>
+
+                    <div class="mobile-field-value">
+                        ${value ?? ""}
+                    </div>
+
+                </div>
+
+            `;
+
         });
 
-        // ======================
-        // BUTTON
-        // ======================
+
+        // =========================
+        // DETAILS BUTTON
+        // =========================
+
         if (details.length) {
 
             html += `
-                <button class="mobile-expand"
-                        onclick="toggleResultCard(${index})">
+
+                <button
+                    class="mobile-expand"
+                    onclick="toggleResultCard(${index})"
+                >
+
                     ▼ פרטים נוספים
+
                 </button>
 
-                <div id="result-details-${index}"
-                     class="mobile-result-details"
-                     style="display:none;">
+
+                <div
+                    id="result-details-${index}"
+                    class="mobile-result-details"
+                    style="display:none;"
+                >
+
             `;
 
-            // ======================
+
+            // =========================
             // DETAILS
-            // ======================
+            // =========================
+
             details.forEach(([key, value]) => {
 
                 html += `
+
                     <div class="mobile-field">
-                        <div class="mobile-field-label">${key}</div>
-                        <div class="mobile-field-value">${value ?? ""}</div>
+
+                        <div class="mobile-field-label">
+                            ${key}
+                        </div>
+
+                        <div class="mobile-field-value">
+                            ${value ?? ""}
+                        </div>
+
                     </div>
+
                 `;
+
             });
 
-            html += `</div>`;
+
+            html += `
+
+                </div>
+
+            `;
+
         }
 
-        html += `</div>`;
+
+        html += `
+
+            </div>
+
+        `;
+
     });
 
-    html += `</div>`;
+
+    html += `
+
+        </div>
+
+    `;
+
 
     el.innerHTML = html;
+
 }
 /* =========================
    BACK
