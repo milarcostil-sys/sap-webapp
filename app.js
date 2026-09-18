@@ -1305,259 +1305,9 @@ function closePDFImageChoice() {
         "hidden"
     );
 }
-async function login() {
-
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-
-    const uiMode = document.getElementById("uiMode").value;
-    const themeMode = document.getElementById("themeMode").value;
-
- const res = await fetch(API_BASE + "/login", {
-    method: "POST",
-    headers: { 
-        "Content-Type": "application/json" 
-    },
-    body: JSON.stringify({ 
-        username, 
-        password 
-    })
-});
-
-const data = await res.json();
-
-// שגיאות
-if (!res.ok) {
-
-    if (data.detail === "User disabled") {
-        showLoginMessage(
-            "Your account is disabled. Contact admin.",
-            "error"
-        );
-        return;
-    }
-
-    showLoginMessage(
-        "Invalid username or password",
-        "error"
-    );
-    return;
-}
-
 // =========================
-// OTP REQUIRED
+// LOGIN MESSAGE
 // =========================
-if (data.status === "otp_required") {
-
-    window.pendingUser = username;
-
-    document
-        .getElementById("otpModal")
-        .classList.remove("hidden");
-
-    return;
-}
-
-// =========================
-// NORMAL LOGIN
-// =========================
-if (data.enabled === false) {
-
-    showLoginMessage(
-        "Your account is disabled. Contact admin.",
-        "error"
-    );
-
-    return;
-}
-
-localStorage.setItem("token", data.token);
-
-
-
-localStorage.setItem("uiMode", uiMode);
-localStorage.setItem("themeMode", themeMode);
-
-window.location.href = "main.html";
-
-/*
-    if (uiMode === "mobile") {
-        window.location.href = "dashboard.mobile.html";
-    } else {
-        window.location.href = "dashboard.html";
-    }
-*/
-}
-
-let otpLoading = false;
-async function verifyOtp() {
-
-    // =========================
-    // PREVENT DOUBLE SUBMIT
-    // =========================
-    if (otpLoading) return;
-
-    const otpInput =
-        document.getElementById(
-            "otpInput"
-        );
-
-    const otp =
-        otpInput
-            .value
-            .trim();
-
-    // =========================
-    // LOCAL VALIDATION
-    // =========================
-    if (!otp) {
-
-        showOtpMessage(
-            "Please enter verification code"
-        );
-
-        otpInput.focus();
-
-        return;
-    }
-
-    if (!/^\d{6}$/.test(otp)) {
-
-        showOtpMessage(
-            "Verification code must contain 6 digits"
-        );
-
-        otpInput.focus();
-        otpInput.select();
-
-        return;
-    }
-
-    otpLoading = true;
-
-    // =========================
-    // CLEAR MESSAGE
-    // =========================
-    document.getElementById(
-        "otpMessage"
-    ).style.display = "none";
-
-    // =========================
-    // DISABLE INPUT
-    // =========================
-    otpInput.disabled = true;
-
-    try {
-
-        const res = await fetch(
-            API_BASE + "/login/verify-otp",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type":
-                        "application/json"
-                },
-                body: JSON.stringify({
-                    username:
-                        window.pendingUser,
-                    otp: otp
-                })
-            }
-        );
-
-        const data =
-            await res.json();
-
-        // =========================
-        // ERROR
-        // =========================
-        if (!res.ok) {
-
-            otpLoading = false;
-
-            otpInput.disabled = false;
-            otpInput.focus();
-            otpInput.select();
-
-            if (
-                data.detail ===
-                "OTP expired"
-            ) {
-
-                showOtpMessage(
-                    "Verification code expired"
-                );
-
-            } else if (
-                data.detail ===
-                "OTP not found"
-            ) {
-
-                showOtpMessage(
-                    "Verification session expired"
-                );
-
-            } else {
-
-                showOtpMessage(
-                    "Invalid verification code"
-                );
-            }
-
-            return;
-        }
-
-        // =========================
-        // SUCCESS
-        // =========================
-        showOtpMessage(
-            "Verification successful",
-            "success"
-        );
-
-        localStorage.setItem(
-            "token",
-            data.token
-        );
-
-        localStorage.setItem(
-            "themeMode",
-            document.getElementById(
-                "themeMode"
-            ).value
-        );
-
-        localStorage.setItem(
-            "uiMode",
-            document.getElementById(
-                "uiMode"
-            ).value
-        );
-
-        otpLoading = false;
-
-        setTimeout(() => {
-
-            window.location.href =
-                "main.html";
-
-        }, 500);
-
-    } catch (err) {
-
-        otpLoading = false;
-
-        otpInput.disabled = false;
-
-        showOtpMessage(
-            "Server error"
-        );
-
-        otpInput.focus();
-        otpInput.select();
-    }
-}
-
 function showLoginMessage(msg, type = "error") {
 
     const el = document.getElementById("loginMessage");
@@ -1569,6 +1319,9 @@ function showLoginMessage(msg, type = "error") {
     el.innerText = msg;
 }
 
+// =========================
+// LOGIN
+// =========================
 async function login() {
 
     const username = document.getElementById("username").value;
@@ -1821,6 +1574,8 @@ async function verifyOtp() {
         otpInput.select();
     }
 }
+
+
 
 
 function showOtpMessage(msg, type = "error") {
