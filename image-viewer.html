@@ -74,15 +74,8 @@ body {
 
 .viewer {
 
-    width: min(
-        98vw,
-        1100px
-    );
-
-    height: min(
-        96vh,
-        900px
-    );
+    width: 100%;
+    height: 100%;
 
     display: flex;
 
@@ -99,7 +92,7 @@ body {
 
 .viewer-top {
 
-    min-height: 60px;
+    min-height: 58px;
 
     display: flex;
 
@@ -108,9 +101,9 @@ body {
     justify-content: flex-start;
 
     padding:
-        14px
+        12px
         24px
-        6px;
+        4px;
 
     background: #000000;
 
@@ -150,16 +143,14 @@ body {
 
 
 /* =========================================================
-   IMAGE AREA - WHITE CANVAS
+   CENTER AREA
 ========================================================= */
 
-.image-area {
+.viewer-center {
 
     flex: 1;
 
     min-height: 0;
-
-    position: relative;
 
     display: flex;
 
@@ -167,14 +158,41 @@ body {
 
     justify-content: center;
 
+    padding:
+        10px
+        14px;
+
+    background: #000000;
+
+}
+
+
+/* =========================================================
+   IMAGE AREA - WHITE CANVAS
+========================================================= */
+
+.image-area {
+
+    width: min(
+        72vw,
+        700px
+    );
+
+    height: min(
+        68vh,
+        540px
+    );
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
     overflow: auto;
 
-    padding:
-        18px;
-
-    margin:
-        0
-        14px;
+    padding: 16px;
 
     background: #ffffff;
 
@@ -274,7 +292,7 @@ body {
 
 .viewer-footer {
 
-    min-height: 52px;
+    min-height: 58px;
 
     display: flex;
 
@@ -286,7 +304,8 @@ body {
 
     padding:
         8px
-        10px;
+        10px
+        12px;
 
     background: #000000;
 
@@ -370,23 +389,14 @@ body {
 @media
 (max-width: 600px) {
 
-    .viewer {
-
-        width: 100%;
-
-        height: 100%;
-
-    }
-
-
     .viewer-top {
 
-        min-height: 52px;
+        min-height: 50px;
 
         padding:
-            10px
-            14px
-            4px;
+            8px
+            12px
+            2px;
 
     }
 
@@ -398,11 +408,25 @@ body {
     }
 
 
+    .viewer-center {
+
+        padding:
+            6px
+            10px;
+
+    }
+
+
     .image-area {
 
-        margin:
-            0
-            6px;
+        width: calc(
+            100% - 20px
+        );
+
+        height: min(
+            68vh,
+            520px
+        );
 
         padding: 10px;
 
@@ -413,9 +437,14 @@ body {
 
     .viewer-footer {
 
-        min-height: 50px;
+        min-height: 52px;
 
         gap: 6px;
+
+        padding:
+            6px
+            8px
+            10px;
 
     }
 
@@ -425,6 +454,26 @@ body {
         width: 38px;
 
         height: 34px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media
+(max-width: 380px) {
+
+    .image-area {
+
+        width: calc(
+            100% - 12px
+        );
+
+        height: 64vh;
 
     }
 
@@ -471,39 +520,45 @@ body {
 
 
         <!-- =================================================
-             IMAGE AREA
+             CENTER AREA
         ================================================== -->
 
-        <div class="image-area">
+        <div class="viewer-center">
 
 
-            <div
-                class="loading"
-                id="loading"
-            >
-                טוען תמונה...
-            </div>
+            <div class="image-area">
 
 
-            <img
-                id="itemImage"
-                alt="Item image"
-                draggable="false"
-            >
-
-
-            <div
-                class="no-image"
-                id="noImage"
-            >
-
-                <div class="no-image-icon">
-                    🖼️
+                <div
+                    class="loading"
+                    id="loading"
+                >
+                    טוען תמונה...
                 </div>
 
-                <div class="no-image-text">
-                    לא נמצאה תמונה לפריט
+
+                <img
+                    id="itemImage"
+                    alt="Item image"
+                    draggable="false"
+                >
+
+
+                <div
+                    class="no-image"
+                    id="noImage"
+                >
+
+                    <div class="no-image-icon">
+                        🖼️
+                    </div>
+
+                    <div class="no-image-text">
+                        לא נמצאה תמונה לפריט
+                    </div>
+
                 </div>
+
 
             </div>
 
