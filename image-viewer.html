@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>ARCOSTEEL - Item Image</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #1e293b 0%,
+            #0f172a 45%,
+            #020617 100%
+        );
+
+    color: white;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.viewer-page {
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 22px;
+
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.viewer-card {
+
+    position: relative;
+
+    width: min(
+        92vw,
+        760px
+    );
+
+    height: min(
+        90vh,
+        760px
+    );
+
+    background:
+        rgba(
+            15,
+            23,
+            42,
+            0.96
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 25px 70px
+        rgba(
+            0,
+            0,
+            0,
+            0.55
+        );
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.viewer-header {
+
+    min-height: 72px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        14px
+        20px;
+
+    border-bottom:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+}
+
+.viewer-item {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+}
+
+.viewer-label {
+
+    color: #94a3b8;
+
+    font-size: 12px;
+
+}
+
+.viewer-code {
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    direction: ltr;
+
+    text-align: right;
+
+}
+
+
+/* =========================
+   CLOSE
+========================= */
+
+.close-btn {
+
+    width: 42px;
+
+    height: 42px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition:
+        background .2s,
+        transform .2s;
+
+}
+
+.close-btn:hover {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.16
+        );
+
+    transform: scale(1.04);
+
+}
+
+
+/* =========================
+   IMAGE AREA
+========================= */
+
+.image-area {
+
+    flex: 1;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 24px;
+
+    overflow: auto;
+
+}
+
+#itemImage {
+
+    display: none;
+
+    max-width: 100%;
+
+    max-height: 100%;
+
+    object-fit: contain;
+
+    border-radius: 12px;
+
+    transform-origin: center center;
+
+    transition:
+        transform .15s ease;
+
+    user-select: none;
+
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+.loading {
+
+    color: #94a3b8;
+
+    font-size: 15px;
+
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+.no-image {
+
+    display: none;
+
+    text-align: center;
+
+    color: #94a3b8;
+
+}
+
+.no-image-icon {
+
+    font-size: 55px;
+
+    margin-bottom: 12px;
+
+}
+
+.no-image-text {
+
+    font-size: 16px;
+
+}
+
+
+/* =========================
+   FOOTER / CONTROLS
+========================= */
+
+.viewer-footer {
+
+    min-height: 64px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 10px;
+
+    border-top:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+}
+
+.zoom-btn {
+
+    min-width: 44px;
+
+    height: 40px;
+
+    padding:
+        0
+        14px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    color: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+}
+
+.zoom-btn:hover {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        );
+
+}
+
+.zoom-level {
+
+    min-width: 55px;
+
+    text-align: center;
+
+    color: #cbd5e1;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media
+(max-width: 600px) {
+
+    .viewer-page {
+
+        padding: 0;
+
+    }
+
+    .viewer-card {
+
+        width: 100%;
+
+        height: 100%;
+
+        max-width: none;
+
+        max-height: none;
+
+        border-radius: 0;
+
+        border: none;
+
+    }
+
+    .image-area {
+
+        padding: 12px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="viewer-page">
+
+
+    <div class="viewer-card">
+
+
+        <div class="viewer-header">
+
+
+            <div class="viewer-item">
+
+                <div class="viewer-label">
+                    מק״ט
+                </div>
+
+                <div
+                    class="viewer-code"
+                    id="itemCode"
+                >
+                </div>
+
+            </div>
+
+
+            <button
+                class="close-btn"
+                onclick="closeViewer()"
+                title="סגור"
+            >
+                ✕
+            </button>
+
+
+        </div>
+
+
+
+        <div class="image-area">
+
+
+            <div
+                class="loading"
+                id="loading"
+            >
+                טוען תמונה...
+            </div>
+
+
+            <img
+                id="itemImage"
+                alt="Item image"
+                draggable="false"
+            >
+
+
+            <div
+                class="no-image"
+                id="noImage"
+            >
+
+                <div class="no-image-icon">
+                    🖼️
+                </div>
+
+                <div class="no-image-text">
+                    לא נמצאה תמונה לפריט
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="viewer-footer">
+
+
+            <button
+                class="zoom-btn"
+                onclick="zoomOut()"
+                title="הקטן"
+            >
+                −
+            </button>
+
+
+            <div
+                class="zoom-level"
+                id="zoomLevel"
+            >
+                100%
+            </div>
+
+
+            <button
+                class="zoom-btn"
+                onclick="zoomIn()"
+                title="הגדל"
+            >
+                +
+            </button>
+
+
+            <button
+                class="zoom-btn"
+                onclick="resetZoom()"
+                title="גודל רגיל"
+            >
+                ↺
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<script src="config.js"></script>
+
+
+<script>
+
+let currentZoom = 1;
+
+const ZOOM_STEP = 0.2;
+
+const MIN_ZOOM = 1;
+
+const MAX_ZOOM = 4;
+
+
+/* =========================
+   READ ITEM CODE
+========================= */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const itemCode =
+    (
+        params.get("item") || ""
+    ).trim();
+
+
+document
+    .getElementById("itemCode")
+    .textContent =
+        itemCode || "-";
+
+
+/* =========================
+   LOAD IMAGE
+========================= */
+
+function loadItemImage() {
+
+    const loading =
+        document.getElementById(
+            "loading"
+        );
+
+    const img =
+        document.getElementById(
+            "itemImage"
+        );
+
+    const noImage =
+        document.getElementById(
+            "noImage"
+        );
+
+
+    if (!itemCode) {
+
+        loading.style.display =
+            "none";
+
+        noImage.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    const imageUrl =
+        API_BASE +
+        "/item-image/" +
+        encodeURIComponent(
+            itemCode
+        );
+
+
+    img.onload = function() {
+
+        loading.style.display =
+            "none";
+
+        noImage.style.display =
+            "none";
+
+        img.style.display =
+            "block";
+
+    };
+
+
+    img.onerror = function() {
+
+        loading.style.display =
+            "none";
+
+        img.style.display =
+            "none";
+
+        noImage.style.display =
+            "block";
+
+    };
+
+
+    img.src =
+        imageUrl;
+
+}
+
+
+/* =========================
+   ZOOM
+========================= */
+
+function applyZoom() {
+
+    const img =
+        document.getElementById(
+            "itemImage"
+        );
+
+    img.style.transform =
+        `scale(${currentZoom})`;
+
+    document
+        .getElementById(
+            "zoomLevel"
+        )
+        .textContent =
+            Math.round(
+                currentZoom * 100
+            ) + "%";
+
+}
+
+
+function zoomIn() {
+
+    currentZoom =
+        Math.min(
+            currentZoom +
+            ZOOM_STEP,
+            MAX_ZOOM
+        );
+
+    applyZoom();
+
+}
+
+
+function zoomOut() {
+
+    currentZoom =
+        Math.max(
+            currentZoom -
+            ZOOM_STEP,
+            MIN_ZOOM
+        );
+
+    applyZoom();
+
+}
+
+
+function resetZoom() {
+
+    currentZoom = 1;
+
+    applyZoom();
+
+}
+
+
+/* =========================
+   DOUBLE CLICK ZOOM
+========================= */
+
+document
+    .getElementById(
+        "itemImage"
+    )
+    .addEventListener(
+        "dblclick",
+        function() {
+
+            currentZoom =
+                currentZoom === 1
+                    ? 2
+                    : 1;
+
+            applyZoom();
+
+        }
+    );
+
+
+/* =========================
+   MOUSE WHEEL
+========================= */
+
+document
+    .getElementById(
+        "itemImage"
+    )
+    .addEventListener(
+        "wheel",
+        function(e) {
+
+            e.preventDefault();
+
+            if (e.deltaY < 0) {
+
+                zoomIn();
+
+            } else {
+
+                zoomOut();
+
+            }
+
+        },
+        {
+            passive: false
+        }
+    );
+
+
+/* =========================
+   CLOSE
+========================= */
+
+function closeViewer() {
+
+    window.close();
+
+}
+
+
+/* =========================
+   ESC
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(e) {
+
+        if (e.key === "Escape") {
+
+            closeViewer();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   START
+========================= */
+
+loadItemImage();
+
+</script>
+
+
+</body>
+
+</html>
