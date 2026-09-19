@@ -12,7 +12,12 @@
 
 <title>ARCOSTEEL - Item Image</title>
 
+
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -20,9 +25,12 @@
 
 html,
 body {
+
     margin: 0;
+
     width: 100%;
     height: 100%;
+
 }
 
 body {
@@ -32,23 +40,18 @@ body {
         Helvetica,
         sans-serif;
 
-    background:
-        radial-gradient(
-            circle at top,
-            #1e293b 0%,
-            #0f172a 45%,
-            #020617 100%
-        );
+    background: #000000;
 
-    color: white;
+    color: #ffffff;
 
     overflow: hidden;
+
 }
 
 
-/* =========================
+/* =========================================================
    PAGE
-========================= */
+========================================================= */
 
 .viewer-page {
 
@@ -60,38 +63,85 @@ body {
     align-items: center;
     justify-content: center;
 
-    padding: 22px;
+    padding: 18px;
+
+    background: #000000;
 
 }
 
 
-/* =========================
-   CARD
-========================= */
+/* =========================================================
+   VIEWER CARD
+========================================================= */
 
 .viewer-card {
 
     position: relative;
 
     width: min(
-        92vw,
-        760px
+        96vw,
+        900px
     );
 
     height: min(
-        90vh,
-        760px
+        94vh,
+        850px
     );
 
-    background:
-        rgba(
-            15,
-            23,
-            42,
-            0.96
-        );
+    display: flex;
+
+    flex-direction: column;
+
+    background: #000000;
 
     border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 25px 80px
+        rgba(
+            0,
+            0,
+            0,
+            0.85
+        );
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.viewer-header {
+
+    min-height: 68px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding:
+        12px
+        18px;
+
+    background: #000000;
+
+    border-bottom:
         1px solid
         rgba(
             255,
@@ -100,54 +150,12 @@ body {
             0.10
         );
 
-    border-radius: 22px;
-
-    box-shadow:
-        0 25px 70px
-        rgba(
-            0,
-            0,
-            0,
-            0.55
-        );
-
-    display: flex;
-
-    flex-direction: column;
-
-    overflow: hidden;
-
 }
 
 
-/* =========================
-   HEADER
-========================= */
-
-.viewer-header {
-
-    min-height: 72px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding:
-        14px
-        20px;
-
-    border-bottom:
-        1px solid
-        rgba(
-            255,
-            255,
-            255,
-            0.08
-        );
-
-}
+/* =========================================================
+   ITEM INFO
+========================================================= */
 
 .viewer-item {
 
@@ -155,19 +163,25 @@ body {
 
     flex-direction: column;
 
-    gap: 4px;
+    gap: 3px;
+
+    min-width: 0;
 
 }
 
 .viewer-label {
 
-    color: #94a3b8;
+    color: #8b949e;
 
-    font-size: 12px;
+    font-size: 11px;
+
+    line-height: 1;
 
 }
 
 .viewer-code {
+
+    color: #ffffff;
 
     font-size: 21px;
 
@@ -177,65 +191,91 @@ body {
 
     text-align: right;
 
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
 }
 
 
-/* =========================
-   CLOSE
-========================= */
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
 
 .close-btn {
 
-    width: 42px;
+    flex: 0 0 auto;
 
-    height: 42px;
+    width: 40px;
+    height: 40px;
 
-    border: none;
+    display: flex;
 
-    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
 
-    background:
+    border:
+        1px solid
         rgba(
             255,
             255,
             255,
-            0.08
+            0.15
         );
 
-    color: white;
+    border-radius: 10px;
 
-    font-size: 22px;
+    background: #111111;
+
+    color: #ffffff;
+
+    font-size: 21px;
+
+    line-height: 1;
 
     cursor: pointer;
 
     transition:
-        background .2s,
-        transform .2s;
+        background 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.15s ease;
 
 }
 
 .close-btn:hover {
 
-    background:
+    background: #222222;
+
+    border-color:
         rgba(
             255,
             255,
             255,
-            0.16
+            0.30
         );
 
     transform: scale(1.04);
 
 }
 
+.close-btn:active {
 
-/* =========================
+    transform: scale(0.97);
+
+}
+
+
+/* =========================================================
    IMAGE AREA
-========================= */
+========================================================= */
 
 .image-area {
 
     flex: 1;
+
+    min-height: 0;
 
     position: relative;
 
@@ -245,11 +285,18 @@ body {
 
     justify-content: center;
 
-    padding: 24px;
+    padding: 22px;
 
     overflow: auto;
 
+    background: #000000;
+
 }
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
 
 #itemImage {
 
@@ -259,36 +306,54 @@ body {
 
     max-height: 100%;
 
+    width: auto;
+    height: auto;
+
     object-fit: contain;
 
-    border-radius: 12px;
+    border-radius: 10px;
 
     transform-origin: center center;
 
     transition:
-        transform .15s ease;
+        transform 0.12s ease;
 
     user-select: none;
 
+    -webkit-user-drag: none;
+
 }
 
 
-/* =========================
+/* =========================================================
    LOADING
-========================= */
+========================================================= */
 
 .loading {
 
-    color: #94a3b8;
+    position: absolute;
 
-    font-size: 15px;
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    color: #8b949e;
+
+    font-size: 14px;
+
+    white-space: nowrap;
 
 }
 
 
-/* =========================
-   ERROR
-========================= */
+/* =========================================================
+   NO IMAGE
+========================================================= */
 
 .no-image {
 
@@ -296,13 +361,13 @@ body {
 
     text-align: center;
 
-    color: #94a3b8;
+    color: #8b949e;
 
 }
 
 .no-image-icon {
 
-    font-size: 55px;
+    font-size: 52px;
 
     margin-bottom: 12px;
 
@@ -310,18 +375,18 @@ body {
 
 .no-image-text {
 
-    font-size: 16px;
+    font-size: 15px;
 
 }
 
 
-/* =========================
-   FOOTER / CONTROLS
-========================= */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 .viewer-footer {
 
-    min-height: 64px;
+    min-height: 60px;
 
     display: flex;
 
@@ -331,7 +396,9 @@ body {
 
     gap: 10px;
 
-    padding: 10px;
+    padding: 9px 12px;
+
+    background: #000000;
 
     border-top:
         1px solid
@@ -339,10 +406,15 @@ body {
             255,
             255,
             255,
-            0.08
+            0.10
         );
 
 }
+
+
+/* =========================================================
+   ZOOM BUTTONS
+========================================================= */
 
 .zoom-btn {
 
@@ -350,58 +422,80 @@ body {
 
     height: 40px;
 
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
     padding:
         0
-        14px;
+        13px;
 
-    border: none;
-
-    border-radius: 10px;
-
-    background:
+    border:
+        1px solid
         rgba(
             255,
             255,
             255,
-            0.08
+            0.12
         );
 
-    color: white;
+    border-radius: 10px;
+
+    background: #111111;
+
+    color: #ffffff;
 
     font-size: 18px;
 
     cursor: pointer;
 
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.15s ease;
+
 }
 
 .zoom-btn:hover {
 
-    background:
+    background: #222222;
+
+    border-color:
         rgba(
             255,
             255,
             255,
-            0.15
+            0.25
         );
+
+}
+
+.zoom-btn:active {
+
+    transform: scale(0.96);
 
 }
 
 .zoom-level {
 
-    min-width: 55px;
+    min-width: 56px;
 
     text-align: center;
 
-    color: #cbd5e1;
+    color: #c9d1d9;
 
     font-size: 13px;
+
+    direction: ltr;
 
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media
 (max-width: 600px) {
@@ -411,6 +505,7 @@ body {
         padding: 0;
 
     }
+
 
     .viewer-card {
 
@@ -422,15 +517,88 @@ body {
 
         max-height: none;
 
-        border-radius: 0;
-
         border: none;
+
+        border-radius: 0;
 
     }
 
+
+    .viewer-header {
+
+        min-height: 62px;
+
+        padding:
+            10px
+            12px;
+
+    }
+
+
+    .viewer-code {
+
+        font-size: 18px;
+
+    }
+
+
+    .close-btn {
+
+        width: 38px;
+
+        height: 38px;
+
+    }
+
+
     .image-area {
 
-        padding: 12px;
+        padding: 10px;
+
+    }
+
+
+    .viewer-footer {
+
+        min-height: 58px;
+
+        padding:
+            8px
+            10px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media
+(max-width: 380px) {
+
+    .viewer-footer {
+
+        gap: 6px;
+
+    }
+
+
+    .zoom-btn {
+
+        min-width: 40px;
+
+        padding:
+            0
+            10px;
+
+    }
+
+
+    .zoom-level {
+
+        min-width: 48px;
 
     }
 
@@ -450,6 +618,10 @@ body {
     <div class="viewer-card">
 
 
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
         <div class="viewer-header">
 
 
@@ -463,6 +635,7 @@ body {
                     class="viewer-code"
                     id="itemCode"
                 >
+                    -
                 </div>
 
             </div>
@@ -470,6 +643,7 @@ body {
 
             <button
                 class="close-btn"
+                type="button"
                 onclick="closeViewer()"
                 title="סגור"
             >
@@ -480,6 +654,9 @@ body {
         </div>
 
 
+        <!-- =================================================
+             IMAGE AREA
+        ================================================== -->
 
         <div class="image-area">
 
@@ -518,12 +695,16 @@ body {
         </div>
 
 
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
 
         <div class="viewer-footer">
 
 
             <button
                 class="zoom-btn"
+                type="button"
                 onclick="zoomOut()"
                 title="הקטן"
             >
@@ -541,6 +722,7 @@ body {
 
             <button
                 class="zoom-btn"
+                type="button"
                 onclick="zoomIn()"
                 title="הגדל"
             >
@@ -550,8 +732,9 @@ body {
 
             <button
                 class="zoom-btn"
+                type="button"
                 onclick="resetZoom()"
-                title="גודל רגיל"
+                title="איפוס"
             >
                 ↺
             </button>
@@ -566,10 +749,18 @@ body {
 </div>
 
 
+<!-- =====================================================
+     API CONFIG
+====================================================== -->
+
 <script src="config.js"></script>
 
 
 <script>
+
+/* =========================================================
+   SETTINGS
+========================================================= */
 
 let currentZoom = 1;
 
@@ -580,9 +771,9 @@ const MIN_ZOOM = 1;
 const MAX_ZOOM = 4;
 
 
-/* =========================
-   READ ITEM CODE
-========================= */
+/* =========================================================
+   READ ITEM CODE FROM URL
+========================================================= */
 
 const params =
     new URLSearchParams(
@@ -595,41 +786,51 @@ const itemCode =
     ).trim();
 
 
-document
-    .getElementById("itemCode")
-    .textContent =
-        itemCode || "-";
+const itemCodeElement =
+    document.getElementById(
+        "itemCode"
+    );
 
 
-/* =========================
+itemCodeElement.textContent =
+    itemCode || "-";
+
+
+/* =========================================================
+   GET DOM ELEMENTS
+========================================================= */
+
+const loadingElement =
+    document.getElementById(
+        "loading"
+    );
+
+const imageElement =
+    document.getElementById(
+        "itemImage"
+    );
+
+const noImageElement =
+    document.getElementById(
+        "noImage"
+    );
+
+const zoomLevelElement =
+    document.getElementById(
+        "zoomLevel"
+    );
+
+
+/* =========================================================
    LOAD IMAGE
-========================= */
+========================================================= */
 
 function loadItemImage() {
-
-    const loading =
-        document.getElementById(
-            "loading"
-        );
-
-    const img =
-        document.getElementById(
-            "itemImage"
-        );
-
-    const noImage =
-        document.getElementById(
-            "noImage"
-        );
 
 
     if (!itemCode) {
 
-        loading.style.display =
-            "none";
-
-        noImage.style.display =
-            "block";
+        showNoImage();
 
         return;
 
@@ -644,65 +845,75 @@ function loadItemImage() {
         );
 
 
-    img.onload = function() {
+    imageElement.onload =
+        function() {
 
-        loading.style.display =
-            "none";
+            loadingElement.style.display =
+                "none";
 
-        noImage.style.display =
-            "none";
+            noImageElement.style.display =
+                "none";
 
-        img.style.display =
-            "block";
+            imageElement.style.display =
+                "block";
 
-    };
+            resetZoom();
 
-
-    img.onerror = function() {
-
-        loading.style.display =
-            "none";
-
-        img.style.display =
-            "none";
-
-        noImage.style.display =
-            "block";
-
-    };
+        };
 
 
-    img.src =
+    imageElement.onerror =
+        function() {
+
+            showNoImage();
+
+        };
+
+
+    imageElement.src =
         imageUrl;
 
 }
 
 
-/* =========================
-   ZOOM
-========================= */
+/* =========================================================
+   SHOW NO IMAGE
+========================================================= */
 
-function applyZoom() {
+function showNoImage() {
 
-    const img =
-        document.getElementById(
-            "itemImage"
-        );
+    loadingElement.style.display =
+        "none";
 
-    img.style.transform =
-        `scale(${currentZoom})`;
+    imageElement.style.display =
+        "none";
 
-    document
-        .getElementById(
-            "zoomLevel"
-        )
-        .textContent =
-            Math.round(
-                currentZoom * 100
-            ) + "%";
+    noImageElement.style.display =
+        "block";
 
 }
 
+
+/* =========================================================
+   APPLY ZOOM
+========================================================= */
+
+function applyZoom() {
+
+    imageElement.style.transform =
+        `scale(${currentZoom})`;
+
+    zoomLevelElement.textContent =
+        Math.round(
+            currentZoom * 100
+        ) + "%";
+
+}
+
+
+/* =========================================================
+   ZOOM IN
+========================================================= */
 
 function zoomIn() {
 
@@ -718,6 +929,10 @@ function zoomIn() {
 }
 
 
+/* =========================================================
+   ZOOM OUT
+========================================================= */
+
 function zoomOut() {
 
     currentZoom =
@@ -732,6 +947,10 @@ function zoomOut() {
 }
 
 
+/* =========================================================
+   RESET ZOOM
+========================================================= */
+
 function resetZoom() {
 
     currentZoom = 1;
@@ -741,74 +960,113 @@ function resetZoom() {
 }
 
 
-/* =========================
+/* =========================================================
    DOUBLE CLICK ZOOM
-========================= */
+========================================================= */
 
-document
-    .getElementById(
-        "itemImage"
-    )
-    .addEventListener(
-        "dblclick",
-        function() {
+imageElement.addEventListener(
+    "dblclick",
+    function() {
 
-            currentZoom =
-                currentZoom === 1
-                    ? 2
-                    : 1;
+        currentZoom =
+            currentZoom === 1
+                ? 2
+                : 1;
 
-            applyZoom();
+        applyZoom();
+
+    }
+);
+
+
+/* =========================================================
+   MOUSE WHEEL ZOOM
+========================================================= */
+
+imageElement.addEventListener(
+    "wheel",
+    function(e) {
+
+        e.preventDefault();
+
+
+        if (e.deltaY < 0) {
+
+            zoomIn();
+
+        } else {
+
+            zoomOut();
 
         }
-    );
+
+    },
+    {
+        passive: false
+    }
+);
 
 
-/* =========================
-   MOUSE WHEEL
-========================= */
+/* =========================================================
+   PREVENT IMAGE DRAG
+========================================================= */
 
-document
-    .getElementById(
-        "itemImage"
-    )
-    .addEventListener(
-        "wheel",
-        function(e) {
+imageElement.addEventListener(
+    "dragstart",
+    function(e) {
 
-            e.preventDefault();
+        e.preventDefault();
 
-            if (e.deltaY < 0) {
+    }
+);
 
-                zoomIn();
 
-            } else {
+/* =========================================================
+   CLOSE VIEWER
+========================================================= */
 
-                zoomOut();
+function closeViewer() {
+
+    /*
+        דפדפנים לא תמיד מאפשרים
+        לסגור חלון שנפתח ישירות
+        מקישור באקסל.
+
+        לכן:
+        1. מנסים window.close()
+        2. אם לא נסגר - מנסים history.back()
+    */
+
+
+    window.close();
+
+
+    setTimeout(
+        function() {
+
+            if (window.closed) {
+                return;
+            }
+
+
+            if (
+                window.history.length > 1
+            ) {
+
+                window.history.back();
 
             }
 
         },
-        {
-            passive: false
-        }
+        120
     );
-
-
-/* =========================
-   CLOSE
-========================= */
-
-function closeViewer() {
-
-    window.close();
 
 }
 
 
-/* =========================
-   ESC
-========================= */
+/* =========================================================
+   ESC CLOSE
+========================================================= */
 
 document.addEventListener(
     "keydown",
@@ -818,15 +1076,50 @@ document.addEventListener(
 
             closeViewer();
 
+            return;
+
+        }
+
+
+        /*
+            אפשר גם להשתמש במקלדת
+            לזום
+        */
+
+        if (
+            e.key === "+" ||
+            e.key === "="
+        ) {
+
+            zoomIn();
+
+        }
+
+
+        if (
+            e.key === "-"
+        ) {
+
+            zoomOut();
+
+        }
+
+
+        if (
+            e.key === "0"
+        ) {
+
+            resetZoom();
+
         }
 
     }
 );
 
 
-/* =========================
+/* =========================================================
    START
-========================= */
+========================================================= */
 
 loadItemImage();
 
