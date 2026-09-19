@@ -63,29 +63,25 @@ body {
     align-items: center;
     justify-content: center;
 
-    padding: 18px;
-
     background: #000000;
 
 }
 
 
 /* =========================================================
-   VIEWER CARD
+   VIEWER
 ========================================================= */
 
-.viewer-card {
-
-    position: relative;
+.viewer {
 
     width: min(
-        96vw,
-        900px
+        98vw,
+        1100px
     );
 
     height: min(
-        94vh,
-        850px
+        96vh,
+        900px
     );
 
     display: flex;
@@ -94,175 +90,60 @@ body {
 
     background: #000000;
 
-    border:
-        1px solid
-        rgba(
-            255,
-            255,
-            255,
-            0.12
-        );
-
-    border-radius: 18px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 25px 80px
-        rgba(
-            0,
-            0,
-            0,
-            0.85
-        );
-
 }
 
 
 /* =========================================================
-   HEADER
+   TOP INFO
 ========================================================= */
 
-.viewer-header {
+.viewer-top {
 
-    min-height: 68px;
+    min-height: 54px;
 
     display: flex;
 
     align-items: center;
 
-    justify-content: space-between;
-
-    gap: 15px;
+    justify-content: flex-start;
 
     padding:
-        12px
-        18px;
+        8px
+        12px;
 
     background: #000000;
 
-    border-bottom:
-        1px solid
-        rgba(
-            255,
-            255,
-            255,
-            0.10
-        );
-
 }
 
-
-/* =========================================================
-   ITEM INFO
-========================================================= */
-
-.viewer-item {
+.item-info {
 
     display: flex;
 
     flex-direction: column;
 
-    gap: 3px;
-
-    min-width: 0;
+    gap: 2px;
 
 }
 
-.viewer-label {
+.item-label {
 
-    color: #8b949e;
+    font-size: 10px;
 
-    font-size: 11px;
-
-    line-height: 1;
+    color: #777777;
 
 }
 
-.viewer-code {
+.item-code {
 
-    color: #ffffff;
-
-    font-size: 21px;
+    font-size: 18px;
 
     font-weight: 700;
+
+    color: #ffffff;
 
     direction: ltr;
 
     text-align: right;
-
-    white-space: nowrap;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-
-}
-
-
-/* =========================================================
-   CLOSE BUTTON
-========================================================= */
-
-.close-btn {
-
-    flex: 0 0 auto;
-
-    width: 40px;
-    height: 40px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border:
-        1px solid
-        rgba(
-            255,
-            255,
-            255,
-            0.15
-        );
-
-    border-radius: 10px;
-
-    background: #111111;
-
-    color: #ffffff;
-
-    font-size: 21px;
-
-    line-height: 1;
-
-    cursor: pointer;
-
-    transition:
-        background 0.15s ease,
-        border-color 0.15s ease,
-        transform 0.15s ease;
-
-}
-
-.close-btn:hover {
-
-    background: #222222;
-
-    border-color:
-        rgba(
-            255,
-            255,
-            255,
-            0.30
-        );
-
-    transform: scale(1.04);
-
-}
-
-.close-btn:active {
-
-    transform: scale(0.97);
 
 }
 
@@ -285,9 +166,12 @@ body {
 
     justify-content: center;
 
-    padding: 22px;
-
     overflow: auto;
+
+    padding:
+        6px
+        10px
+        10px;
 
     background: #000000;
 
@@ -307,20 +191,19 @@ body {
     max-height: 100%;
 
     width: auto;
+
     height: auto;
 
     object-fit: contain;
 
-    border-radius: 10px;
+    user-select: none;
+
+    -webkit-user-drag: none;
 
     transform-origin: center center;
 
     transition:
         transform 0.12s ease;
-
-    user-select: none;
-
-    -webkit-user-drag: none;
 
 }
 
@@ -342,7 +225,7 @@ body {
             -50%
         );
 
-    color: #8b949e;
+    color: #888888;
 
     font-size: 14px;
 
@@ -361,15 +244,15 @@ body {
 
     text-align: center;
 
-    color: #8b949e;
+    color: #888888;
 
 }
 
 .no-image-icon {
 
-    font-size: 52px;
+    font-size: 54px;
 
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 
 }
 
@@ -386,7 +269,7 @@ body {
 
 .viewer-footer {
 
-    min-height: 60px;
+    min-height: 52px;
 
     display: flex;
 
@@ -394,20 +277,13 @@ body {
 
     justify-content: center;
 
-    gap: 10px;
+    gap: 8px;
 
-    padding: 9px 12px;
+    padding:
+        6px
+        10px;
 
     background: #000000;
-
-    border-top:
-        1px solid
-        rgba(
-            255,
-            255,
-            255,
-            0.10
-        );
 
 }
 
@@ -418,9 +294,9 @@ body {
 
 .zoom-btn {
 
-    min-width: 44px;
+    width: 40px;
 
-    height: 40px;
+    height: 36px;
 
     display: flex;
 
@@ -428,9 +304,7 @@ body {
 
     justify-content: center;
 
-    padding:
-        0
-        13px;
+    padding: 0;
 
     border:
         1px solid
@@ -441,19 +315,18 @@ body {
             0.12
         );
 
-    border-radius: 10px;
+    border-radius: 9px;
 
     background: #111111;
 
     color: #ffffff;
 
-    font-size: 18px;
+    font-size: 17px;
 
     cursor: pointer;
 
     transition:
         background 0.15s ease,
-        border-color 0.15s ease,
         transform 0.15s ease;
 
 }
@@ -461,14 +334,6 @@ body {
 .zoom-btn:hover {
 
     background: #222222;
-
-    border-color:
-        rgba(
-            255,
-            255,
-            255,
-            0.25
-        );
 
 }
 
@@ -480,11 +345,11 @@ body {
 
 .zoom-level {
 
-    min-width: 56px;
+    min-width: 54px;
 
     text-align: center;
 
-    color: #c9d1d9;
+    color: #d0d0d0;
 
     font-size: 13px;
 
@@ -500,85 +365,46 @@ body {
 @media
 (max-width: 600px) {
 
-    .viewer-page {
-
-        padding: 0;
-
-    }
-
-
-    .viewer-card {
+    .viewer {
 
         width: 100%;
 
         height: 100%;
 
-        max-width: none;
-
-        max-height: none;
-
-        border: none;
-
-        border-radius: 0;
-
     }
 
 
-    .viewer-header {
+    .viewer-top {
 
-        min-height: 62px;
+        min-height: 48px;
 
         padding:
-            10px
-            12px;
+            6px
+            10px;
 
     }
 
 
-    .viewer-code {
+    .item-code {
 
-        font-size: 18px;
-
-    }
-
-
-    .close-btn {
-
-        width: 38px;
-
-        height: 38px;
+        font-size: 16px;
 
     }
 
 
     .image-area {
 
-        padding: 10px;
-
-    }
-
-
-    .viewer-footer {
-
-        min-height: 58px;
-
         padding:
-            8px
-            10px;
+            4px
+            6px
+            6px;
 
     }
 
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media
-(max-width: 380px) {
 
     .viewer-footer {
+
+        min-height: 50px;
 
         gap: 6px;
 
@@ -587,18 +413,9 @@ body {
 
     .zoom-btn {
 
-        min-width: 40px;
+        width: 38px;
 
-        padding:
-            0
-            10px;
-
-    }
-
-
-    .zoom-level {
-
-        min-width: 48px;
+        height: 34px;
 
     }
 
@@ -615,40 +432,30 @@ body {
 <div class="viewer-page">
 
 
-    <div class="viewer-card">
+    <div class="viewer">
 
 
         <!-- =================================================
-             HEADER
+             ITEM CODE
         ================================================== -->
 
-        <div class="viewer-header">
+        <div class="viewer-top">
 
 
-            <div class="viewer-item">
+            <div class="item-info">
 
-                <div class="viewer-label">
+                <div class="item-label">
                     מק״ט
                 </div>
 
                 <div
-                    class="viewer-code"
+                    class="item-code"
                     id="itemCode"
                 >
                     -
                 </div>
 
             </div>
-
-
-            <button
-                class="close-btn"
-                type="button"
-                onclick="closeViewer()"
-                title="סגור"
-            >
-                ✕
-            </button>
 
 
         </div>
@@ -696,7 +503,7 @@ body {
 
 
         <!-- =================================================
-             FOOTER
+             ZOOM
         ================================================== -->
 
         <div class="viewer-footer">
@@ -749,10 +556,6 @@ body {
 </div>
 
 
-<!-- =====================================================
-     API CONFIG
-====================================================== -->
-
 <script src="config.js"></script>
 
 
@@ -772,7 +575,7 @@ const MAX_ZOOM = 4;
 
 
 /* =========================================================
-   READ ITEM CODE FROM URL
+   URL PARAMETER
 ========================================================= */
 
 const params =
@@ -780,24 +583,23 @@ const params =
         window.location.search
     );
 
+
 const itemCode =
     (
         params.get("item") || ""
     ).trim();
 
 
-const itemCodeElement =
-    document.getElementById(
+document
+    .getElementById(
         "itemCode"
-    );
-
-
-itemCodeElement.textContent =
-    itemCode || "-";
+    )
+    .textContent =
+        itemCode || "-";
 
 
 /* =========================================================
-   GET DOM ELEMENTS
+   DOM
 ========================================================= */
 
 const loadingElement =
@@ -877,7 +679,7 @@ function loadItemImage() {
 
 
 /* =========================================================
-   SHOW NO IMAGE
+   NO IMAGE
 ========================================================= */
 
 function showNoImage() {
@@ -895,7 +697,7 @@ function showNoImage() {
 
 
 /* =========================================================
-   APPLY ZOOM
+   ZOOM
 ========================================================= */
 
 function applyZoom() {
@@ -911,10 +713,6 @@ function applyZoom() {
 }
 
 
-/* =========================================================
-   ZOOM IN
-========================================================= */
-
 function zoomIn() {
 
     currentZoom =
@@ -928,10 +726,6 @@ function zoomIn() {
 
 }
 
-
-/* =========================================================
-   ZOOM OUT
-========================================================= */
 
 function zoomOut() {
 
@@ -947,10 +741,6 @@ function zoomOut() {
 }
 
 
-/* =========================================================
-   RESET ZOOM
-========================================================= */
-
 function resetZoom() {
 
     currentZoom = 1;
@@ -961,7 +751,7 @@ function resetZoom() {
 
 
 /* =========================================================
-   DOUBLE CLICK ZOOM
+   DOUBLE CLICK
 ========================================================= */
 
 imageElement.addEventListener(
@@ -980,7 +770,7 @@ imageElement.addEventListener(
 
 
 /* =========================================================
-   MOUSE WHEEL ZOOM
+   MOUSE WHEEL
 ========================================================= */
 
 imageElement.addEventListener(
@@ -1008,7 +798,7 @@ imageElement.addEventListener(
 
 
 /* =========================================================
-   PREVENT IMAGE DRAG
+   PREVENT DRAG
 ========================================================= */
 
 imageElement.addEventListener(
@@ -1022,69 +812,13 @@ imageElement.addEventListener(
 
 
 /* =========================================================
-   CLOSE VIEWER
-========================================================= */
-
-function closeViewer() {
-
-    /*
-        דפדפנים לא תמיד מאפשרים
-        לסגור חלון שנפתח ישירות
-        מקישור באקסל.
-
-        לכן:
-        1. מנסים window.close()
-        2. אם לא נסגר - מנסים history.back()
-    */
-
-
-    window.close();
-
-
-    setTimeout(
-        function() {
-
-            if (window.closed) {
-                return;
-            }
-
-
-            if (
-                window.history.length > 1
-            ) {
-
-                window.history.back();
-
-            }
-
-        },
-        120
-    );
-
-}
-
-
-/* =========================================================
-   ESC CLOSE
+   KEYBOARD SHORTCUTS
 ========================================================= */
 
 document.addEventListener(
     "keydown",
     function(e) {
 
-        if (e.key === "Escape") {
-
-            closeViewer();
-
-            return;
-
-        }
-
-
-        /*
-            אפשר גם להשתמש במקלדת
-            לזום
-        */
 
         if (
             e.key === "+" ||
@@ -1092,6 +826,8 @@ document.addEventListener(
         ) {
 
             zoomIn();
+
+            return;
 
         }
 
@@ -1101,6 +837,8 @@ document.addEventListener(
         ) {
 
             zoomOut();
+
+            return;
 
         }
 
